@@ -18,15 +18,17 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     private String username;
     private String firstname;
     private String lastname;
     private String email;
     private String password;
+
     @Enumerated(EnumType.STRING)
     private Role role;
+
     private OffsetDateTime created_at;
     private OffsetDateTime updated_at;
 
