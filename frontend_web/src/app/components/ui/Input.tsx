@@ -1,7 +1,6 @@
 interface InputProps {
     label: string;
     htmlfor: string;
-    id: string;
     name: string;
     type: string;
     placeHolder: string;
@@ -13,7 +12,7 @@ interface InputProps {
     value?: string | number;
 }
 
-export default function Input({label, htmlfor, id, name, type, placeHolder, legend, error, required, minLength, onChange, value}: InputProps) {
+export default function Input({label, htmlfor, name, type, placeHolder, legend, error, required, minLength, onChange, value}: InputProps) {
     return (
         <fieldset className="fieldset">
             <label 
@@ -21,7 +20,6 @@ export default function Input({label, htmlfor, id, name, type, placeHolder, lege
                 className="fieldset-legend"
             >{label}</label>
             <input 
-                id={id} 
                 name={name} 
                 type={type} 
                 required={required} 

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-// import Footer from "@/app/components/layout/Footer";
-// import Navbar from "@/app/components/layout/Navbar";
+import Footer from "@/app/components/layout/Footer";
+import Navbar from "@/app/components/layout/Navbar";
 import SessionProviderWrapper from "@/app/SessionProviderWrapper";
 import { auth } from "../../auth";
 
@@ -15,13 +15,13 @@ export default async function RootLayout({children,}: Readonly<{children: React.
   const session = await auth();
 
   return (
-    <html lang="fr" data-theme="light">
+    <html lang="fr" data-theme="etudia">
       <body className={`antialiased`}>
 
       <SessionProviderWrapper session={session}>
-        {/* <Navbar/> */}
+        <Navbar/>
         {children}
-        {/* <Footer/> */}
+        <Footer/>
       </SessionProviderWrapper>
 
 

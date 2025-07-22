@@ -53,11 +53,11 @@ export default function LoginForm() {
 
     return (
         <form action={handleFormSubmit} className="space-y-3">
-            <div className="flex-1 rounded-lg bg-gray-50 px-6 pb-4 pt-8">
+            <div className="flex-1 rounded-lg bg-gray-50 px-6 pb-4 pt-8 bg-primary">
                 <div className="w-full">
 
-                    <Input onChange={checkIfUsername} label="Votre pseudo" htmlfor="username" id="username" name="username" type="username" placeHolder="john_doe" error={false} required={true}/>
-                    <Input onChange={checkIfPassword} label="Votre mot de passe" htmlfor="password" id="password" name="password" type="password" placeHolder="......" error={false} required={true} minLength={6}/>
+                    <Input onChange={checkIfUsername} label="Votre pseudo" htmlfor="username" name="username" type="username" placeHolder="john_doe" error={false} required={true}/>
+                    <Input onChange={checkIfPassword} label="Votre mot de passe" htmlfor="password" name="password" type="password" placeHolder="......" error={false} required={true} minLength={6}/>
 
                 </div>
                 <input type="hidden" name="redirectTo" value={callbackUrl} />
