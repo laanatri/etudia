@@ -13,7 +13,7 @@ import java.time.OffsetDateTime;
 @Setter
 @NoArgsConstructor
 @Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name = "role")
+//@DiscriminatorColumn(name = "role")
 public class User {
 
     @Id
@@ -29,7 +29,11 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+
+    @Column(name = "created_at", insertable = false, updatable = false)
     private OffsetDateTime created_at;
+
+    @Column(name = "updated_at", insertable = false, updatable = false)
     private OffsetDateTime updated_at;
 
 }
