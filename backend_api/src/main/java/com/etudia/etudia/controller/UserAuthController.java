@@ -6,7 +6,6 @@ import com.etudia.etudia.model.User;
 import com.etudia.etudia.service.JwtService;
 import com.etudia.etudia.service.UserInfosService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.autoconfigure.couchbase.CouchbaseProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
