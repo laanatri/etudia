@@ -31,9 +31,9 @@ public class User {
 
 
     @Column(name = "created_at", insertable = false, updatable = false)
-    private OffsetDateTime created_at;
+    private OffsetDateTime createdAt;
 
     @Column(name = "updated_at", insertable = false, updatable = false)
-    private OffsetDateTime updated_at;
+    private OffsetDateTime updatedAt;
 
 }
