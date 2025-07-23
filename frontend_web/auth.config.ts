@@ -22,23 +22,28 @@ export const authConfig = {
 
 
 
-            let expectedDashboardPath: string | undefined;
+            let baseDashboardPath: string | undefined;
+            let defaultDashboardPath: string | undefined;
+
             switch (userRole) {
                 case 'ROLE_ADMIN':
-                    expectedDashboardPath = '/dashboard/admin';
+                    baseDashboardPath = '/dashboard/admin';
+                    defaultDashboardPath = '/dashboard/admin';
                     break;
                 case 'ROLE_ETUDIANT':
-                    expectedDashboardPath = '/dashboard/etudiant';
+                    baseDashboardPath = '/dashboard/etudiant';
+                    defaultDashboardPath = '/dashboard/etudiant/accueil';
                     break;
                 default:
-                    expectedDashboardPath = undefined;
+                    baseDashboardPath = undefined;
+                    defaultDashboardPath = undefined;
                     break;
             }
 
             if (nextUrl.pathname === '/login') {
                 if (isLoggedIn) {
-                    if (expectedDashboardPath) {
-                        return Response.redirect(new URL(expectedDashboardPath, nextUrl));
+                    if (defaultDashboardPath) {
+                        return Response.redirect(new URL(defaultDashboardPath, nextUrl));
                     } else {
                         return Response.redirect(new URL('/login', nextUrl));
                     }
@@ -50,14 +55,19 @@ export const authConfig = {
                 if (!isLoggedIn) {
                     return false;
                 }
-                
-                if (nextUrl.pathname !== expectedDashboardPath) {
-                    if (expectedDashboardPath) {
-                        return Response.redirect(new URL(expectedDashboardPath, nextUrl));
+
+                if (baseDashboardPath && !nextUrl.pathname.startsWith(baseDashboardPath)) {
+                    if (defaultDashboardPath) {
+                        return Response.redirect(new URL(defaultDashboardPath, nextUrl));
                     } else {
                         return Response.redirect(new URL('/login', nextUrl));
                     }
                 }
+
+                if (nextUrl.pathname === baseDashboardPath && defaultDashboardPath) {
+                    return Response.redirect(new URL(defaultDashboardPath, nextUrl));
+                }
+
                 return true;
             }
             return true;

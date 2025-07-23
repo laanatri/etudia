@@ -78,9 +78,14 @@ export default function Navbar() {
                                         </Link>
                                     )}
                                     {session?.user?.role === 'ROLE_ETUDIANT' && (
-                                        <Link href="/dashboard/adopter" className="hover:text-gray-300">
-                                            Mon compte
-                                        </Link>
+                                        <>
+                                            <Link href="/dashboard/etudiant/accueil" className="hover:text-gray-300">
+                                                Dashboard
+                                            </Link>
+                                            <Link href="/dashboard/etudiant/compte" className="hover:text-gray-300">
+                                                Mon compte
+                                            </Link>
+                                        </>
                                     )}
 
                                     <button onClick={() => signOut({ callbackUrl: '/login' })} className="text-left cursor-pointer">

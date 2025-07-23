@@ -53,7 +53,7 @@ export default function LoginForm() {
 
     return (
         <form action={handleFormSubmit} className="space-y-3">
-            <div className="flex-1 rounded-lg bg-gray-50 px-6 pb-4 pt-8 bg-primary">
+            <div className="flex-1 rounded-lg bg-gray-50 px-6 py-4">
                 <div className="w-full">
 
                     <Input onChange={checkIfUsername} label="Votre pseudo" htmlfor="username" name="username" type="username" placeHolder="john_doe" error={false} required={true}/>

@@ -3,9 +3,9 @@ import {Suspense} from "react";
 
 export default function Login() {
     return (
-        <main>
+        <main className="px-2 py-4">
             <div>
-                <h1>Login</h1>
+                <h1 className="text-center">Connexion</h1>
             </div>
             <Suspense>
                 <LoginForm/>
