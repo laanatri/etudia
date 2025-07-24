@@ -1,6 +1,6 @@
 CREATE TABLE users
 (
-    id         bigserial,
+    id         serial,
     username   varchar(60) unique not null,
     firstname  varchar(255)       not null,
     lastname   varchar(255)       not null,
