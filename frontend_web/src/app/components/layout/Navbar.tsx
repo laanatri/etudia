@@ -57,13 +57,13 @@ export default function Navbar() {
                                 <img alt="image profil" src="https://rugby.vlaanderen/wp-content/uploads/2018/03/Anonymous-Profile-pic.jpg" />
                             </div>
                         </div>
-                        <div tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                        <div tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 y-2 mt-3 w-52 p-2 shadow text-lg">
 
-                            <Link href="/" className="hover:text-gray-300">
+                            <Link href="/" className="hover:text-gray-400">
                                 Accueil
                             </Link>
                             {status !== 'authenticated' ? (
-                                <Link href="/login" className="hover:text-gray-300">
+                                <Link href="/login" className="hover:text-gray-400">
                                     Connexion
                                 </Link>
                             ) : null}
@@ -73,22 +73,22 @@ export default function Navbar() {
                                     <hr className="my-5"/>
 
                                     {session?.user?.role === 'ROLE_ADMIN' && (
-                                        <Link href="/dashboard/admin" className="hover:text-gray-300">
+                                        <Link href="/dashboard/admin" className="hover:text-gray-400">
                                             Dashboard
                                         </Link>
                                     )}
                                     {session?.user?.role === 'ROLE_ETUDIANT' && (
                                         <>
-                                            <Link href="/dashboard/etudiant/accueil" className="hover:text-gray-300">
+                                            <Link href="/dashboard/etudiant/accueil" className="hover:text-gray-400">
                                                 Dashboard
                                             </Link>
-                                            <Link href="/dashboard/etudiant/compte" className="hover:text-gray-300">
+                                            <Link href="/dashboard/etudiant/compte" className="hover:text-gray-400">
                                                 Mon compte
                                             </Link>
                                         </>
                                     )}
 
-                                    <button onClick={() => signOut({ callbackUrl: '/login' })} className="text-left cursor-pointer">
+                                    <button onClick={() => signOut({ callbackUrl: '/login' })} className="text-left cursor-pointer hover:text-gray-400">
                                         Déconnexion
                                     </button>
 
