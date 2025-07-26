@@ -1,8 +1,7 @@
 import Image from "next/image";
 import imageLanding from "../../public/image_1.png"
-import Button from "@/app/components/ui/Button";
-
 import fonts from "./utils/fonts";
+import ButtonLink from "@/app/components/ui/ButtonLink";
 
 
 export default function Home() {
@@ -21,7 +20,7 @@ export default function Home() {
                   <div className="w-full md:w-5/8">
                       <h1 className="text-5xl font-bold mb-6">Étudie mieux, plus vite, sans t’épuiser</h1>
                       <p className={`${fonts.openSans.className}`}>EtudIA transforme tes cours en contenus interactifs pour t’aider à réviser plus efficacement.</p>
-                      <Button disabled={false} text={"Créer ta première capsule"}/>
+                      <ButtonLink href="/register" text="Créer ta première capsule"/>
                   </div>
               </div>
           </section>
@@ -90,8 +89,9 @@ export default function Home() {
                       <h2 className="text-4xl font-bold mb-6">La méthode de répétition espacée</h2>
                       <p className={`${fonts.openSans.className}`}>Pour mieux retenir, EtudIA t’aide à revoir tes flashcards au bon moment grâce à la méthode de répétition espacée. <br/>
                           Ce système te propose automatiquement les capsules que tu dois revoir selon ton historique. <br/>
-                          Résultat ? Tu oublies moins et tu révise plus intelligemment, sans surcharge. Des rappels doux t’aident à rester régulier·ère.</p>
-                      <Button disabled={false} text={"Créer ta première capsule"}/>
+                          Résultat ? Tu oublies moins et tu révise plus intelligemment, sans surcharge. Des rappels doux t’aident à rester régulier·ère.
+                      </p>
+                      <ButtonLink href="/register" text="Créer ta première capsule"/>
                   </div>
               </div>
           </section>
@@ -129,7 +129,8 @@ export default function Home() {
                       <h2 className="text-4xl font-bold mb-6">Une application mobile</h2>
                       <p className={`${fonts.openSans.className}`}>
                           Emporte EtudIA partout avec toi. <br/>
-                          L’app mobile EtudIA te permet de consulter et réviser tes capsules à tout moment, même hors ligne.                      </p>
+                          L’app mobile EtudIA te permet de consulter et réviser tes capsules à tout moment, même hors ligne.
+                      </p>
                   </div>
               </div>
           </section>
