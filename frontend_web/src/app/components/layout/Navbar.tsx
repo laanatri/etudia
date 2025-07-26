@@ -2,12 +2,12 @@
 
 import {useSession, signOut} from "next-auth/react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import {useRouter} from "next/navigation";
+import {useEffect, useState} from "react";
 
 export default function Navbar() {
 
-    const { data: session, status, update } = useSession();
+    const {data: session, status, update} = useSession();
     const router = useRouter();
     const [mounted, setMounted] = useState(false);
 
@@ -20,7 +20,7 @@ export default function Navbar() {
 
     console.log(isAuthenticated);
 
-        useEffect(() => {
+    useEffect(() => {
         setMounted(true);
     }, []);
 
@@ -43,62 +43,63 @@ export default function Navbar() {
     }
 
     return (
-        <>
-            <div className="navbar bg-base-100 shadow-sm p-2">
-                <div className="flex-1">
-                    <a className="btn btn-ghost text-xl">Etud IA</a>
-                </div>
+        <nav className="navbar bg-base-100 shadow-sm p-2 fixed top-0 z-20">
+            <div className="flex-1">
+                <a className="btn btn-ghost text-xl">Etud IA</a>
+            </div>
 
-                <div className="flex-none">
+            <div className="flex-none">
 
-                    <div className="dropdown dropdown-end">
-                        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                            <div className="w-10 rounded-full">
-                                <img alt="image profil" src="https://rugby.vlaanderen/wp-content/uploads/2018/03/Anonymous-Profile-pic.jpg" />
-                            </div>
-                        </div>
-                        <div tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 y-2 mt-3 w-52 p-2 shadow text-lg">
-
-                            <Link href="/" className="hover:text-gray-400">
-                                Accueil
-                            </Link>
-                            {status !== 'authenticated' ? (
-                                <Link href="/login" className="hover:text-gray-400">
-                                    Connexion
-                                </Link>
-                            ) : null}
-
-                            {isAuthenticated ? (
-                                <>
-                                    <hr className="my-5"/>
-
-                                    {session?.user?.role === 'ROLE_ADMIN' && (
-                                        <Link href="/dashboard/admin" className="hover:text-gray-400">
-                                            Dashboard
-                                        </Link>
-                                    )}
-                                    {session?.user?.role === 'ROLE_ETUDIANT' && (
-                                        <>
-                                            <Link href="/dashboard/etudiant/accueil" className="hover:text-gray-400">
-                                                Dashboard
-                                            </Link>
-                                            <Link href="/dashboard/etudiant/compte" className="hover:text-gray-400">
-                                                Mon compte
-                                            </Link>
-                                        </>
-                                    )}
-
-                                    <button onClick={() => signOut({ callbackUrl: '/login' })} className="text-left cursor-pointer hover:text-gray-400">
-                                        Déconnexion
-                                    </button>
-
-                                </>
-                            ) : null}
+                <div className="dropdown dropdown-end">
+                    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                        <div className="w-10 rounded-full">
+                            <img alt="image profil"
+                                 src="https://rugby.vlaanderen/wp-content/uploads/2018/03/Anonymous-Profile-pic.jpg"/>
                         </div>
                     </div>
+                    <div tabIndex={0}
+                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 y-2 mt-3 w-52 p-2 shadow text-lg">
 
+                        <Link href="/" className="hover:text-gray-400">
+                            Accueil
+                        </Link>
+                        {status !== 'authenticated' ? (
+                            <Link href="/login" className="hover:text-gray-400">
+                                Connexion
+                            </Link>
+                        ) : null}
+
+                        {isAuthenticated ? (
+                            <>
+                                <hr className="my-5"/>
+
+                                {session?.user?.role === 'ROLE_ADMIN' && (
+                                    <Link href="/dashboard/admin" className="hover:text-gray-400">
+                                        Dashboard
+                                    </Link>
+                                )}
+                                {session?.user?.role === 'ROLE_ETUDIANT' && (
+                                    <>
+                                        <Link href="/dashboard/etudiant/accueil" className="hover:text-gray-400">
+                                            Dashboard
+                                        </Link>
+                                        <Link href="/dashboard/etudiant/compte" className="hover:text-gray-400">
+                                            Mon compte
+                                        </Link>
+                                    </>
+                                )}
+
+                                <button onClick={() => signOut({callbackUrl: '/login'})}
+                                        className="text-left cursor-pointer hover:text-gray-400">
+                                    Déconnexion
+                                </button>
+
+                            </>
+                        ) : null}
+                    </div>
                 </div>
+
             </div>
-        </>
+        </nav>
     )
 }
