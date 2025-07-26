@@ -1,7 +1,7 @@
 'use client';
 
 import {CloudUpload} from "lucide-react";
-import Button from "@/app/components/ui/Button";
+import Button from "@/app/components/ui/ButtonForm";
 import {useState, ChangeEvent, JSX, FormEvent} from "react";
 
 interface FileUploadProps {

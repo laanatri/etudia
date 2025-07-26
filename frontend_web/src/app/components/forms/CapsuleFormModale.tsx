@@ -1,7 +1,7 @@
 'use client';
 
 import {useEffect, useState} from "react";
-import Button from "@/app/components/ui/Button";
+import Button from "@/app/components/ui/ButtonForm";
 
 type CapsuleDatas = {
     selectedFile: File | null;
