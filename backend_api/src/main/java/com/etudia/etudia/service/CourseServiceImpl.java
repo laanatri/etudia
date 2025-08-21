@@ -5,6 +5,8 @@ import com.etudia.etudia.repository.CourseRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class CourseServiceImpl implements CourseService {
@@ -14,6 +16,11 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public Course saveCourse(Course course) {
         return courseRepository.save(course);
+    }
+
+    @Override
+    public List<Course> getCoursesByUserId(Integer userId) {
+        return courseRepository.findByUser_Id(userId);
     }
 
 }
