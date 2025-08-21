@@ -8,6 +8,7 @@ import lombok.Setter;
 import java.time.OffsetDateTime;
 
 @Entity
+@Table(name = "readings")
 @Getter
 @Setter
 @NoArgsConstructor
