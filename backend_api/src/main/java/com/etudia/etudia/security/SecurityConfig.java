@@ -27,6 +27,7 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @Configuration
@@ -69,10 +70,15 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("http://localhost:3000"));
+        configuration.setAllowedOrigins(Arrays.asList(
+                "http://localhost:3000",
+                "https://localhost:3000",
+                "https://192.168.6.55:3000/*"
+        ));
+//        configuration.setAllowedOriginPatterns(Collections.singletonList("*"));
 
-        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        configuration.setAllowedHeaders(List.of("*"));
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PATCH", "DELETE", "OPTIONS"));
+        configuration.setAllowedHeaders(Collections.singletonList("*"));
         configuration.setAllowCredentials(true);
         configuration.setMaxAge(3600L);
 
@@ -87,9 +93,18 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                        .requestMatchers("/auth/generateToken", "/user/create", "/user/read", "/user/update/**").permitAll()
-                        .requestMatchers("/user/delete/**").permitAll()
-//                        .requestMatchers("/user/delete/**").hasAnyRole("ADMIN")
+                        .requestMatchers("/**").permitAll()
+//                        .requestMatchers("/auth/generateToken").permitAll()
+//                        .requestMatchers("/user/create").permitAll()
+//
+//                        .requestMatchers("/user/read").hasAnyRole("ADMIN", "ETUDIANT")
+//                        .requestMatchers("/user/update/**").hasAnyRole("ADMIN", "ETUDIANT")
+//
+//                        .requestMatchers("/course/**").hasAnyRole("ADMIN", "ETUDIANT")
+//                        .requestMatchers("/bloc/**").hasAnyRole("ADMIN", "ETUDIANT")
+//
+//
+//                        .requestMatchers("/user/delete/**").hasRole("ADMIN")
 
                         .anyRequest().authenticated()
                 )
