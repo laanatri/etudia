@@ -1,5 +1,6 @@
 package com.etudia.etudia.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,37 +8,24 @@ import lombok.Setter;
 
 import java.time.OffsetDateTime;
 
-@Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name = "type", discriminatorType = DiscriminatorType.STRING)
-@Getter
-@Setter
-@NoArgsConstructor
-public abstract class Capsule {
+public interface Capsule {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    Integer getId();
+    void setId(Integer id);
 
-    private String name;
-    private String themes;
+    String getName();
+    void setName(String name);
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
+    String getThemes();
+    void setThemes(String themes);
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "course_id")
-    private Course course;
+    User getUser();
+    void setUser(User user);
 
-    @Column(name = "created_at", insertable = false, updatable = false)
-    private OffsetDateTime createdAt;
+    Course getCourse();
+    void setCourse(Course course);
 
-    public Capsule(String name, String themes, User user, Course course) {
-        this.name = name;
-        this.themes = themes;
-        this.user = user;
-        this.course = course;
-    }
+    OffsetDateTime getCreatedAt();
+    void setCreatedAt(OffsetDateTime createdAt); // Add a setter for completeness, though often managed by DB
 
 }
