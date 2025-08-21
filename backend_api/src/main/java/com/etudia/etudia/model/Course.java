@@ -1,17 +1,23 @@
 package com.etudia.etudia.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "courses")
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Course {
 
     @Id
@@ -19,10 +25,13 @@ public class Course {
     private Integer id;
 
     private String name;
-    private String course_url;
+
+    @Column(name = "course_url")
+    private String courseUrl;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
+    @JsonBackReference("user-courses")
     private User user;
 
     @Column(name = "created_at", insertable = false, updatable = false)
