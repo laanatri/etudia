@@ -1,14 +1,18 @@
 package com.etudia.etudia.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
+@Table(name = "flashcards")
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class FlashCard {
 
     @Id
@@ -20,12 +24,7 @@ public class FlashCard {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "bloc_id")
+    @JsonBackReference("bloc-flashcards")
     private Bloc bloc;
-
-    public FlashCard(String title, String content, Bloc bloc) {
-        this.title = title;
-        this.content = content;
-        this.bloc = bloc;
-    }
 
 }
