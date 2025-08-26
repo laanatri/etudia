@@ -49,62 +49,56 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
     ...authConfig,
     providers: [
         Credentials({
+            name: "credentials",
+            credentials: {
+                username: { label: "Username", type: "text" },
+                password: { label: "Password", type: "password" }
+            },
             async authorize(credentials) {
-                console.log('\n--- authorize callback START ---'); // LOG 1
 
                 const parsedCredentials = z
                     .object({username: z.string(), password: z.string().min(6)})
                     .safeParse(credentials);
 
-                if (parsedCredentials.success) {
-                    const { username, password } = parsedCredentials.data;
+                if (!parsedCredentials.success) {
+                    console.log('🔍 Validation des credentials échouée');
+                    return null;
+                }
 
-                    try {
-                        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/generateToken`, {
-                            method: 'POST',
-                            headers: {
-                                'content-type': 'application/json'
-                            },
-                            body: JSON.stringify({username: username, password: password})
-                        })
-
-                        if (!response.ok) {
-                            const error = await response.json();
-                            console.log("Echec authentification backend : ", error.message); // LOG 2
-                            console.log('--- authorize callback END (failed) ---'); // LOG 3
-                            return null;
-                        }
-
-                        const authResponse: BackendAuthResponse = await response.json();
-                        console.log('Backend Auth Response (raw):', authResponse); // LOG 4: Vois-tu 'role' ici?
-
-                        const currentUser = {
-                            id: String(authResponse.id),
-                            username: authResponse.username,
-                            email: authResponse.email,
-                            firstname: authResponse.firstname,
-                            lastname: authResponse.lastname,
-                            role: authResponse.role,
-                            jwtToken: authResponse.jwtToken
-                        }
-                        console.log('currentUser (for NextAuth):', currentUser); // LOG 5: Vois-tu 'role' dans cet objet?
-                        console.log('--- authorize callback END (success) ---'); // LOG 6
-
-                        return currentUser;
+                const { username, password } = parsedCredentials.data;
 
 
-                    } catch (error) {
-                        console.log("Erreur de la requête au backend : ", error);
-                        console.log('--- authorize callback END (error) ---'); // LOG 7
 
-                        throw new Error("Echec autentification")
+                try {
+                    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/generateToken`, {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify({username: username, password: password})
+                    })
+
+                    if (!response.ok) {
+                        const error = await response.json();
+                        return null;
                     }
 
-                }
-                console.log('--- authorize callback END (invalid format) ---'); // LOG 8
+                    const authResponse: BackendAuthResponse = await response.json();
 
-                console.log("Formats invalide");
-                return null;
+                    const currentUser = {
+                        id: String(authResponse.id),
+                        username: authResponse.username,
+                        email: authResponse.email,
+                        firstname: authResponse.firstname,
+                        lastname: authResponse.lastname,
+                        role: authResponse.role,
+                        jwtToken: authResponse.jwtToken
+                    }
+
+                    return currentUser;
+                } catch (error) {
+                    throw new Error("Echec autentification")
+                }
             }
         })
     ]
