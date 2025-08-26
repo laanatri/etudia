@@ -1,12 +1,15 @@
 package com.etudia.etudia.controller;
 
+import com.etudia.etudia.dto.AuthResponse;
 import com.etudia.etudia.model.User;
+import com.etudia.etudia.service.JwtService;
 import com.etudia.etudia.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/user")
@@ -14,6 +17,7 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
+    private final JwtService jwtService;
 
     @PostMapping("/create")
     public User create(@RequestBody User user){
@@ -26,10 +30,25 @@ public class UserController {
     }
 
     @PatchMapping("/update/{id}")
-    public User update(@PathVariable Integer id, @RequestBody User user){
+    public ResponseEntity<?> update(@PathVariable Integer id, @RequestBody User user){
         return userService.updateUser(id, user)
-                .map(updatedUser -> ResponseEntity.ok().body(updatedUser))
-                .orElse(ResponseEntity.notFound().build()).getBody();
+            .map(updatedUser -> {
+
+                String updatedToken = jwtService.generateToken(updatedUser.getUsername());
+
+                AuthResponse authResponse = new AuthResponse(
+                    updatedToken,
+                    updatedUser.getId(),
+                    updatedUser.getUsername(),
+                    updatedUser.getEmail(),
+                    updatedUser.getFirstname(),
+                    updatedUser.getLastname(),
+                    updatedUser.getRole()
+                );
+
+                return ResponseEntity.ok().body(authResponse);
+            })
+            .orElse(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/delete/{id}")
