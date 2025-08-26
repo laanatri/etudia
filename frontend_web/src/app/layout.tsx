@@ -22,10 +22,8 @@ export default async function RootLayout({
     return (
         <html lang="fr" data-theme="etudia">
             <head>
-                {/* PWA Manifest */}
                 <link rel="manifest" href="/manifest.json" />
 
-                {/* PWA Meta tags */}
                 <meta name="theme-color" content="#ffffff" />
                 <meta name="apple-mobile-web-app-capable" content="yes" />
                 <meta
@@ -35,7 +33,6 @@ export default async function RootLayout({
                 <meta name="apple-mobile-web-app-title" content="Etud IA" />
                 <meta name="mobile-web-app-capable" content="yes" />
 
-                {/* Android specific */}
                 <meta name="application-name" content="Etud IA" />
                 <meta name="mobile-web-app-title" content="Etud IA" />
                 <meta name="msapplication-TileColor" content="#A5B4FC" />
@@ -44,13 +41,11 @@ export default async function RootLayout({
                     content="/browserconfig.xml"
                 />
 
-                {/* Viewport */}
                 <meta
                     name="viewport"
                     content="width=device-width, initial-scale=1"
                 />
 
-                {/* Icons */}
                 <link
                     rel="icon"
                     type="image/png"
@@ -65,7 +60,6 @@ export default async function RootLayout({
                 />
                 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-                {/* Service Worker Registration */}
                 <script
                     dangerouslySetInnerHTML={{
                         __html: `

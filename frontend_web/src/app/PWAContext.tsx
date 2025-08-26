@@ -2,8 +2,7 @@
 
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 
-
-const PWAContext = createContext(false);
+const PWAContext = createContext<boolean>(false);
 
 export function PWAProvider({children}: {children: ReactNode}) {
     const [isPWA, setIsPWA] = useState(false);
@@ -13,7 +12,10 @@ export function PWAProvider({children}: {children: ReactNode}) {
             const standalone = window.matchMedia('(display-mode: standalone)').matches;
             const iosStandalone = (window.navigator as any).standalone === true;
     
-            setIsPWA(standalone || iosStandalone);
+            // setIsPWA(standalone || iosStandalone);
+
+            // Pour tester
+            setIsPWA(true);
         }
 
         checkPWA();
