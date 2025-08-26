@@ -6,21 +6,9 @@ export const authConfig = {
         signIn: '/login',
     },
     callbacks: {
-
-        
         authorized({auth, request: {nextUrl}}) {
             const isLoggedIn = !!auth?.user;
             const userRole = auth?.user?.role
-
-
-
-
-            console.log('\n--- Middleware Auth Debug ---');
-            console.log('isLoggedIn:', isLoggedIn);
-            console.log('User Role (as seen by middleware):', userRole); // <-- C'EST ÇA QU'IL FAUT VOIR !
-            console.log('Current Pathname:', nextUrl.pathname);
-
-
 
             let baseDashboardPath: string | undefined;
             let defaultDashboardPath: string | undefined;
@@ -72,20 +60,7 @@ export const authConfig = {
             }
             return true;
         },
-        async jwt({ token, user, account, profile }) {
-
-
-
-
-            console.log('\n--- JWT callback START ---'); // LOG 9
-            console.log('JWT - Initial token:', token);
-            console.log('JWT - User from authorize (should have role):', user); // LOG 10: Le rôle est-il ici?
-            console.log('JWT - Account:', account);
-            console.log('JWT - Profile:', profile);
-
-
-
-
+        async jwt({ token, user, account, profile, trigger }) {
 
             if (user) {
                 token.id = user.id;
@@ -97,26 +72,36 @@ export const authConfig = {
                 token.jwtToken = user.jwtToken;
             }
 
+            if (trigger === 'update' && token.id && token.jwtToken) {
 
-            console.log('JWT - Final token (after processing user):', token); // LOG 11: Le rôle est-il dans token maintenant?
-            console.log('--- JWT callback END ---'); // LOG 12
+                try {
+                    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/${token.id}`, {
+                        headers: {
+                            'Authorization': `Bearer ${token.jwtToken}`,
+                            'Content-Type': 'application/json'
+                        }
+                    });
 
+                    if (response.ok) {
+                        const freshUserData = await response.json();
 
+                        token.username = freshUserData.username;
+                        token.email = freshUserData.email;
+                        token.firstname = freshUserData.firstname;
+                        token.lastname = freshUserData.lastname;
+                        token.role = freshUserData.role;
+
+                    } else {
+                        console.error('🔄 JWT - Erreur lors de la récupération des données:', response.status);
+                    }
+                } catch (error) {
+                    console.error('🔄 JWT - Erreur lors de la récupération des données fraîches:', error);
+                }
+            }
 
             return token;
         },
         async session({ session, token }) {
-
-
-
-
-
-            console.log('\n--- Session callback START ---'); // LOG 13
-            console.log('Session - Initial session:', session);
-            console.log('Session - Token (should have role):', token); // LOG 14: Le rôle est-il dans token?
-
-
-
 
             if (token && session.user) {
                 session.user.id = token.id as string;
@@ -127,13 +112,6 @@ export const authConfig = {
                 session.user.role = token.role as string;
                 session.user.jwtToken = token.jwtToken as string;
             }
-
-
-
-            console.log('Session - Final session.user:', session.user); // LOG 15: Le rôle est-il dans session.user maintenant?
-            console.log('--- Session callback END ---'); // LOG 16
-
-            
 
             return session;
         }
