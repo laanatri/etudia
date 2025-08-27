@@ -1,7 +1,7 @@
 import type { NextAuthConfig } from "next-auth";
 
 export const authConfig = {
-    secret: process.env.AUTH_SECRET,
+    secret: process.env.NEXTAUTH_SECRET,
     pages: {
         signIn: '/login',
     },
@@ -60,48 +60,70 @@ export const authConfig = {
             }
             return true;
         },
-        async jwt({ token, user, account, profile, trigger }) {
+        async jwt({ token, user, account, profile, trigger, session }) {  // AJOUT: session comme paramètre
+            console.log('NEXTAUTH JWT callback - trigger:', trigger);
 
+            // Login initial - user contient les données d'authentification
             if (user) {
-                token.id = user.id;
+                console.log('NEXTAUTH JWT callback - user provided ->', user);
+                token.id = String(user.id);
                 token.username = user.username;
                 token.email = user.email;
                 token.firstname = user.firstname;
                 token.lastname = user.lastname;
                 token.role = user.role;
                 token.jwtToken = user.jwtToken;
+
+                console.log('NEXTAUTH JWT callback - user applied, returning token', token);
+                return token;
             }
 
-            if (trigger === 'update' && token.id && token.jwtToken) {
+            // Update explicite de session
+            if (trigger === 'update') {
+                console.log('NEXTAUTH JWT callback - update trigger with session:', session);
+                
+                // CORRECTION: session?.user contient les données de mise à jour
+                if (session?.user) {
+                    console.log('NEXTAUTH JWT callback - applying update from session.user');
+                    // Copier les propriétés de session.user vers token
+                    Object.assign(token, session.user);
+                    return token;
+                }
+                
+                // Rafraîchissement des données utilisateur si pas de données explicites
+                if (token.id && token.jwtToken) {
+                    console.log('NEXTAUTH JWT callback - refreshing user data from API');
+                    try {
+                        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/${token.id}`, {
+                            headers: {
+                                'Authorization': `Bearer ${token.jwtToken}`,
+                                'Content-Type': 'application/json'
+                            }
+                        });
 
-                try {
-                    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/${token.id}`, {
-                        headers: {
-                            'Authorization': `Bearer ${token.jwtToken}`,
-                            'Content-Type': 'application/json'
+                        if (response.ok) {
+                            const freshUserData = await response.json();
+                            console.log('🔄 Données fraîches récupérées:', freshUserData);
+                            
+                            token.username = freshUserData.username ?? token.username;
+                            token.email = freshUserData.email ?? token.email;
+                            token.firstname = freshUserData.firstname ?? token.firstname;
+                            token.lastname = freshUserData.lastname ?? token.lastname;
+                            token.role = freshUserData.role ?? token.role;
+                        } else {
+                            console.error('🔄 JWT - Erreur récupération données:', response.status);
                         }
-                    });
-
-                    if (response.ok) {
-                        const freshUserData = await response.json();
-
-                        token.username = freshUserData.username;
-                        token.email = freshUserData.email;
-                        token.firstname = freshUserData.firstname;
-                        token.lastname = freshUserData.lastname;
-                        token.role = freshUserData.role;
-
-                    } else {
-                        console.error('🔄 JWT - Erreur lors de la récupération des données:', response.status);
+                    } catch (error) {
+                        console.error('🔄 JWT - Erreur fetch:', error);
                     }
-                } catch (error) {
-                    console.error('🔄 JWT - Erreur lors de la récupération des données fraîches:', error);
                 }
             }
 
+            console.log('NEXTAUTH JWT callback - returning token', token);
             return token;
         },
         async session({ session, token }) {
+            console.log('NEXTAUTH SESSION callback - token received ->', token);
 
             if (token && session.user) {
                 session.user.id = token.id as string;
@@ -112,7 +134,7 @@ export const authConfig = {
                 session.user.role = token.role as string;
                 session.user.jwtToken = token.jwtToken as string;
             }
-
+            console.log('NEXTAUTH SESSION callback - returning session ->', session);
             return session;
         }
     },
