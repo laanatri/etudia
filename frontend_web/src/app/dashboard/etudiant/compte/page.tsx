@@ -1,13 +1,13 @@
 "use client";
 
-import { useSession } from "next-auth/react";
-import fonts from "@/app/utils/fonts";
+import { signOut, useSession } from "next-auth/react";
+import fonts from "@/utils/fonts";
 import Input from "@/app/components/ui/Input";
 import ButtonForm from "@/app/components/ui/ButtonForm";
 import Alert from "@/app/components/ui/Alert";
 import Loader from "@/app/components/ui/Loader";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { LogOut } from "lucide-react";
 
 interface ExtendedSession {
     user: {
@@ -24,8 +24,6 @@ interface ExtendedSession {
 export default function Compte() {
     const { data: session, status, update } = useSession();
     const typedSession = session as ExtendedSession | null;
-
-    const router = useRouter();
 
     const [errorMessage, setErrorMessage] = useState<string | undefined>(
         undefined
@@ -142,8 +140,6 @@ export default function Compte() {
                 await update({
                     user: newUser,
                 });
-
-                // window.location.reload();
             }
 
             setSuccessMessage(
@@ -294,6 +290,15 @@ export default function Compte() {
                                 text={successMessage}
                             />
                         )}
+
+                        <button
+                            onClick={() =>
+                                signOut({ callbackUrl: "/login" })
+                            }
+                            className="btn btn-secondary rounded-full text-xl font-normal text-black border border-black shadow-[4px_4px_0_0_rgba(0,0,0,1)] text-left cursor-pointer hover:text-gray-400 mt-10 w-full"
+                        >
+                            <LogOut /> Déconnexion
+                        </button>
                     </div>
                     <Loader isLoading={isPending} />
                 </form>
