@@ -2,7 +2,7 @@
 
 import LoginForm from "@/app/components/forms/LoginForm";
 import {Suspense} from "react";
-import fonts from "./../utils/fonts";
+import fonts from "@/utils/fonts";
 import ButtonLink from "@/app/components/ui/ButtonLink";
 import { usePWA } from "../PWAContext";
 

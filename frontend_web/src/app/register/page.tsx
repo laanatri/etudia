@@ -2,9 +2,10 @@
 
 import {Suspense} from "react";
 import RegisterForm from "@/app/components/forms/RegisterForm";
-import fonts from "@/app/utils/fonts";
+import fonts from "@/utils/fonts";
 import ButtonLink from "@/app/components/ui/ButtonLink";
 import { usePWA } from "../PWAContext";
+
 
 export default function Register() {
     const isPWA = usePWA();
