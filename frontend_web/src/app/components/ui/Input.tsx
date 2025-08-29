@@ -1,7 +1,7 @@
 'use client';
 
 import {Eye, EyeClosed} from "lucide-react";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 
 interface InputProps {
     label: string;
@@ -20,9 +20,7 @@ interface InputProps {
 
 export default function Input({label, htmlfor, name, type, placeHolder, legend, error, required, minLength, onChange, value, isPassword}: InputProps) {
 
-
     const [showPassword, setShowPassword] = useState(false);
-
     const inputType = isPassword ? (showPassword ? 'text' : 'password') : type;
 
     return (
