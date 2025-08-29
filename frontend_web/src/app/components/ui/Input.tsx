@@ -29,14 +29,14 @@ export default function Input({label, htmlfor, name, type, placeHolder, legend, 
         <fieldset className="fieldset pb-3">
             <label 
                 htmlFor={htmlfor}
-                className="fieldset-legend text-md pt-0 pb-1"
+                className="fieldset-legend font-normal text-base pt-0 pb-1"
             >{label}</label>
             <div className="relative">
                 <input
                     name={name}
                     type={inputType}
                     required={required}
-                    className={`input input-md w-full ${error ? "input-error" : "input-accent"}`}
+                    className={`input input-md w-full bg-primary ${error ? "input-error" : "input-neutral"}`}
                     placeholder={placeHolder}
                     minLength={minLength}
                     onChange={(e) => onChange(e.target.value)}
