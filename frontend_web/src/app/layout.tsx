@@ -4,9 +4,8 @@ import Footer from "@/app/components/layout/Footer";
 import Navbar from "@/app/components/layout/Navbar";
 import SessionProviderWrapper from "@/app/SessionProviderWrapper";
 import { auth } from "../../auth";
-import fonts from "./utils/fonts";
-import SessionDebug from "@/app/components/layout/SessionDebug";
 import { PWAProvider } from "./PWAContext";
+import fonts from "@/utils/fonts";
 
 export const metadata: Metadata = {
     title: "Etudia",
