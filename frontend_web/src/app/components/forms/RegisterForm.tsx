@@ -6,13 +6,13 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import Input from '../ui/Input';
 import ButtonForm from '../ui/ButtonForm';
 import Alert from '../ui/Alert';
-import fonts from "@/app/utils/fonts";
+import fonts from "@/utils/fonts";
 import Loader from "@/app/components/ui/Loader";
 
 export default function RegisterForm() {
 
     const searchParams = useSearchParams();
-    const callbackUrl = searchParams.get('callbackUrl') || '/dashboard';
+    const callbackUrl = searchParams.get('callbackUrl') || '/dashboard/etudiant/accueil';
     const router = useRouter();
 
     const [errorMessage, setErrorMessage] = useState<string | undefined>(undefined);
@@ -43,20 +43,17 @@ export default function RegisterForm() {
                 throw new Error(responseData?.message || "Une erreur est survenue lors de la création du compte.");
             }
 
-            setSuccessMessage("Votre compte a bien été créé !");
-            const loginError = await authenticate(undefined, formData);
-
-            if (loginError) {
-                throw new Error("Compte créé, mais connexion échouée : " + loginError);
-            }
+            setSuccessMessage("Votre compte a bien été créé ! Redirection vers la connexion...");
 
             setTimeout(() => {
-                router.push(callbackUrl);
-            }, 1500);
+                router.push(`/login?message=${encodeURIComponent("Compte créé avec succès ! Veuillez vous connecter.")}&callbackUrl=${encodeURIComponent(callbackUrl)}`);
+            }, 4000);
 
         } catch (error) {
             const errorMsg = error instanceof Error ? error.message : "Erreur inconnue";
             setErrorMessage(errorMsg);
+        } finally {
+            setIsPending(false);
         }
     }
 
@@ -79,10 +76,10 @@ export default function RegisterForm() {
             <div className="py-4">
                 <div className="w-full">
 
-                    <Input onChange={(value) => {checkIfAllFill(value,0)}} label="Votre pseudo" htmlfor="username" name="username" type="username" placeHolder="john_doe" error={false} required={true}/>
+                    <Input onChange={(value) => {checkIfAllFill(value,0)}} label="Votre pseudo" htmlfor="username" name="username" type="text" placeHolder="john_doe" error={false} required={true}/>
                     <Input onChange={(value) => {checkIfAllFill(value,1)}} label="Votre mot de passe" htmlfor="password" name="password" type="password" placeHolder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;" error={false} required={true} minLength={6} isPassword={true}/>
-                    <Input onChange={(value) => {checkIfAllFill(value,2)}} label="Votre nom" htmlfor="firstname" name="firstname" type="firstname" placeHolder="john" error={false} required={true}/>
-                    <Input onChange={(value) => {checkIfAllFill(value,3)}} label="Votre prénom" htmlfor="lastname" name="lastname" type="lastname" placeHolder="doe" error={false} required={true}/>
+                    <Input onChange={(value) => {checkIfAllFill(value,2)}} label="Votre prénom" htmlfor="firstname" name="firstname" type="text" placeHolder="john" error={false} required={true}/>
+                    <Input onChange={(value) => {checkIfAllFill(value,3)}} label="Votre nom" htmlfor="lastname" name="lastname" type="text" placeHolder="doe" error={false} required={true}/>
                     <Input onChange={(value) => {checkIfAllFill(value,4)}} label="Votre e-mail" htmlfor="email" name="email" type="email" placeHolder="john_doe@mail.com" error={false} required={true}/>
 
                 </div>
