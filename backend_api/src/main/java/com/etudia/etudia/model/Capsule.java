@@ -2,30 +2,46 @@ package com.etudia.etudia.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.OffsetDateTime;
 
-public interface Capsule {
+@MappedSuperclass
+@Getter
+@Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
+@ToString
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+public abstract class Capsule {
 
-    Integer getId();
-    void setId(Integer id);
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    String getName();
-    void setName(String name);
+    private String name;
+    private String themes;
 
-    String getThemes();
-    void setThemes(String themes);
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    @JsonBackReference("user_blocs")
+    @ToString.Exclude
+    private User user;
 
-    User getUser();
-    void setUser(User user);
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "course_id")
+    @JsonBackReference("course_blocs")
+    @ToString.Exclude
+    private Course course;
 
-    Course getCourse();
-    void setCourse(Course course);
+    @Column(name = "created_at", insertable = false, updatable = false)
+    private OffsetDateTime createdAt;
 
-    OffsetDateTime getCreatedAt();
-    void setCreatedAt(OffsetDateTime createdAt); // Add a setter for completeness, though often managed by DB
+    public Capsule(String name, String themes, User user, Course course) {
+        this.name = name;
+        this.themes = themes;
+        this.user = user;
+        this.course = course;
+    }
 
 }
