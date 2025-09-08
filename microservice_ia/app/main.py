@@ -27,22 +27,39 @@ class FlashcardsGenerateRequest(BaseModel):
 # Prompts
 # Comportement de l'IA
 SYSTEM_PROMPT = (
-    "Tu es un générateur de flashcards. Tu ne dois utiliser QUE le contenu fourni. TU DOIS retourner UNIQUEMENT du JSON valide. "
-    "La réponse doit être STRICTEMENT un tableau JSON : "
-    "[{\"question\":\"...\",\"answer\":\"...\"}, ...]. Ne rien ajouter d'autre."
+    "Tu es un générateur de flashcards. UTILISE UNIQUEMENT le contenu fourni. "
+    "RÉPONDS STRICTEMENT et UNIQUEMENT par UN OBJET JSON BRUT, sans préface, sans explication, "
+    "sans code fence (```) et sans guillemets entourant l'objet entier. Ne pas échapper les guillemets internes. "
+    "Format EXACT attendu : "
+    "{\"title\":\"...\",\"themes\":\"thème1, thème2, ...\",\"flashcards\":[{\"question\":\"...\",\"answer\":\"...\"}, ...]}. "
+    "Ne renvoie rien d'autre."
 )
 
 # Tache à faire
 USER_PROMPT_TEMPLATE = (
     "Génère exactement {count} flashcards à partir du texte ci‑dessous. "
-    "Retourne SEULEMENT un tableau JSON comme [{\"question\":\"...\",\"answer\":\"...\"}, ...]. "
-    "Contraintes : question ≤ 200 caractères, answer ≤ 1000 caractères, texte brut, pas de markdown. "
+    "RÉPONDS SEULEMENT avec UN OBJET JSON EXACTEMENT comme indiqué ci‑dessus, rien d'autre. "
+    "Champs obligatoires : "
+    "\"title\" (≤ 100 caractères), "
+    "\"themes\" = chaîne de 1 à 3 thèmes séparés par des virgules, "
+    "\"flashcards\" = tableau de {\"question\":\"...\",\"answer\":\"...\"} (question ≤ 200 caractères, answer ≤ 1000 caractères). "
+    "Ne pas utiliser de markdown, pas de backticks, pas d'explications, pas d'exemples supplémentaires. "
     "Voici le texte du cours :\n\n{course_text}"
 )
 
 # Endpoint pour generer les flashcards
-@app.post("generate/flashcards")
+@app.post("/generate/flashcards")
 async def generate_flashcards(request_payload: FlashcardsGenerateRequest, x_service_key: Optional[str] = Header(None)):
+
+    # headers
+    # "Content-Type: application/json"
+    # "x-service-key: KEY..."
+
+    # body
+    # {
+    #     "course_url": "http...",
+    #     "count": 0...
+    # }
 
     # Check la clé
     if MICROSERVICE_SHARED_KEY and x_service_key != MICROSERVICE_SHARED_KEY:
