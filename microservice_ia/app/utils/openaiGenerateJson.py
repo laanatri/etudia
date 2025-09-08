@@ -22,4 +22,20 @@ async def openai_generate_json(course_text: str, card_count: int, openai_model: 
         resp = await client.post("https://api.openai.com/v1/chat/completions", json=payload, headers=headers)
         resp.raise_for_status()
         data = resp.json()
-        return data["choices"][0]["message"]["content"]
+
+        # {
+        #   "id": "...",
+        #   "model": "...",
+        #   "choices": [
+        #     {
+        #       "message": {
+        #         "role": "assistant",
+        #         "content": "{\"title\":\"Architecture web\",\"themes\":\"réseaux\",\"flashcards\":[...]}"
+        #       },
+        #       "finish_reason": "stop"
+        #     }
+        #   ]
+        # }
+
+        content = data["choices"][0]["message"]["content"]
+        return content
