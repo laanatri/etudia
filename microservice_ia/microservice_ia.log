@@ -1,0 +1,196 @@
+2025-09-12 11:19:01,512 - microservice_ia - INFO - OPENAI_MODEL configuré: gpt-4o-mini
+2025-09-12 11:19:01,512 - microservice_ia - INFO - OPENAI_API_KEY présente: Oui
+2025-09-12 11:19:01,512 - microservice_ia - INFO - MICROSERVICE_SHARED_KEY présente: Oui
+2025-09-12 11:19:05,668 - microservice_ia - INFO - Requête reçue pour générer 10 flashcards depuis l'URL: https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/API%20REST%20SPRING%20BOOT.rtf
+2025-09-12 11:19:05,669 - microservice_ia - INFO - Début du téléchargement du cours depuis: https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/API%20REST%20SPRING%20BOOT.rtf
+2025-09-12 11:19:06,491 - httpx - INFO - HTTP Request: GET https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/API%20REST%20SPRING%20BOOT.rtf "HTTP/1.1 200 OK"
+2025-09-12 11:19:06,502 - microservice_ia - INFO - Téléchargement réussi en 0.83s: 27837 caractères
+2025-09-12 11:19:06,502 - microservice_ia - INFO - Aperçu du contenu: {\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1036{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fnil Calibri;}{\f2\fnil\fcharset1 Segoe UI Symbol;}} {\colortbl ;\red0\green0\blue255;} {\*\generator R...
+2025-09-12 11:19:06,503 - microservice_ia - INFO - Début de la génération OpenAI avec 27837 caractères et le modèle gpt-4o-mini
+2025-09-12 11:19:06,503 - microservice_ia - ERROR - Erreur OpenAI: '"question"'
+Traceback (most recent call last):
+  File "D:\ADA\ETUDIA\microservice_ia\app\main.py", line 131, in generate_flashcards
+    openai_response = await openai_generate_json(course_text, request_payload.count, OPENAI_MODEL , OPENAI_API_KEY, SYSTEM_PROMPT, USER_PROMPT_TEMPLATE)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ADA\ETUDIA\microservice_ia\app\utils\openaiGenerateJson.py", line 9, in openai_generate_json
+    {"role": "user", "content": prompt_user.format(count=card_count, course_text=course_text)}
+                                ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: '"question"'
+2025-09-13 19:27:22,991 - microservice_ia - INFO - OPENAI_MODEL configuré: gpt-4o-mini
+2025-09-13 19:27:22,992 - microservice_ia - INFO - OPENAI_API_KEY présente: Oui
+2025-09-13 19:27:22,992 - microservice_ia - INFO - MICROSERVICE_SHARED_KEY présente: Oui
+2025-09-13 19:28:07,084 - microservice_ia - INFO - Requête reçue pour générer 10 flashcards depuis l'URL: https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/API%20REST%20SPRING%20BOOT.rtf
+2025-09-13 19:28:07,085 - microservice_ia - INFO - Début du téléchargement du cours depuis: https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/API%20REST%20SPRING%20BOOT.rtf
+2025-09-13 19:28:07,085 - microservice_ia - INFO - Téléchargement du contenu depuis https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/API%20REST%20SPRING%20BOOT.rtf
+2025-09-13 19:28:07,852 - httpx - INFO - HTTP Request: GET https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/API%20REST%20SPRING%20BOOT.rtf "HTTP/1.1 200 OK"
+2025-09-13 19:28:07,854 - microservice_ia - INFO - Contenu téléchargé: 27837 caractères
+2025-09-13 19:28:07,855 - microservice_ia - INFO - Format RTF détecté, extraction du texte en cours...
+2025-09-13 19:28:07,863 - microservice_ia - INFO - Texte extrait du RTF: 18767 caractères
+2025-09-13 19:28:07,866 - microservice_ia - INFO - Téléchargement réussi en 0.78s: 18767 caractères
+2025-09-13 19:28:07,866 - microservice_ia - INFO - Aperçu du contenu: Premier pas : API REST avec Spring Boot Spring Spring est un framework complet qui fournit divers modules pour crer diffrents types d applications. C est comme avoir une immense bote outils contenant ...
+2025-09-13 19:28:07,867 - microservice_ia - INFO - Début de la génération OpenAI avec 18767 caractères et le modèle gpt-4o-mini
+2025-09-13 19:28:07,867 - microservice_ia - INFO - Texte du cours échappé pour le formatage
+2025-09-13 19:28:07,868 - microservice_ia - ERROR - Erreur OpenAI: '"question"'
+Traceback (most recent call last):
+  File "D:\ADA\ETUDIA\microservice_ia\app\main.py", line 131, in generate_flashcards
+    openai_response = await openai_generate_json(course_text, request_payload.count, OPENAI_MODEL , OPENAI_API_KEY, SYSTEM_PROMPT, USER_PROMPT_TEMPLATE)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\ADA\ETUDIA\microservice_ia\app\utils\openaiGenerateJson.py", line 15, in openai_generate_json
+    {"role": "user", "content": prompt_user.format(count=card_count, course_text=escaped_course_text)}
+                                ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: '"question"'
+2025-09-13 19:33:13,882 - microservice_ia - INFO - OPENAI_MODEL configuré: gpt-4o-mini
+2025-09-13 19:33:13,882 - microservice_ia - INFO - OPENAI_API_KEY présente: Oui
+2025-09-13 19:33:13,883 - microservice_ia - INFO - MICROSERVICE_SHARED_KEY présente: Oui
+2025-09-13 19:35:28,273 - microservice_ia - INFO - OPENAI_MODEL configuré: gpt-4o-mini
+2025-09-13 19:35:28,274 - microservice_ia - INFO - OPENAI_API_KEY présente: Oui
+2025-09-13 19:35:28,274 - microservice_ia - INFO - MICROSERVICE_SHARED_KEY présente: Oui
+2025-09-13 19:37:22,932 - microservice_ia - INFO - OPENAI_MODEL configuré: gpt-4o-mini
+2025-09-13 19:37:22,932 - microservice_ia - INFO - OPENAI_API_KEY présente: Oui
+2025-09-13 19:37:22,932 - microservice_ia - INFO - MICROSERVICE_SHARED_KEY présente: Oui
+2025-09-13 19:39:11,623 - microservice_ia - INFO - Requête reçue pour générer 10 flashcards depuis l'URL: https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/API%20REST%20SPRING%20BOOT.rtf
+2025-09-13 19:39:11,623 - microservice_ia - INFO - Début du téléchargement du cours depuis: https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/API%20REST%20SPRING%20BOOT.rtf
+2025-09-13 19:39:11,623 - microservice_ia - INFO - Téléchargement du contenu depuis https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/API%20REST%20SPRING%20BOOT.rtf
+2025-09-13 19:39:12,340 - httpx - INFO - HTTP Request: GET https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/API%20REST%20SPRING%20BOOT.rtf "HTTP/1.1 200 OK"
+2025-09-13 19:39:12,346 - microservice_ia - INFO - Contenu téléchargé: 27837 caractères
+2025-09-13 19:39:12,347 - microservice_ia - INFO - Format RTF détecté, extraction du texte en cours...
+2025-09-13 19:39:12,357 - microservice_ia - INFO - Texte extrait du RTF: 18767 caractères
+2025-09-13 19:39:12,358 - microservice_ia - INFO - Téléchargement réussi en 0.73s: 18767 caractères
+2025-09-13 19:39:12,358 - microservice_ia - INFO - Aperçu du contenu: Premier pas : API REST avec Spring Boot Spring Spring est un framework complet qui fournit divers modules pour crer diffrents types d applications. C est comme avoir une immense bote outils contenant ...
+2025-09-13 19:39:12,358 - microservice_ia - INFO - Début de la génération OpenAI avec 18767 caractères et le modèle gpt-4o-mini
+2025-09-13 19:39:12,358 - microservice_ia - ERROR - Erreur OpenAI: openai_generate_json() missing 1 required positional argument: 'prompt_user'
+Traceback (most recent call last):
+  File "D:\ADA\ETUDIA\microservice_ia\app\main.py", line 131, in generate_flashcards
+    openai_response = await openai_generate_json(course_text, request_payload.count, OPENAI_MODEL , OPENAI_API_KEY, SYSTEM_PROMPT)
+                            ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: openai_generate_json() missing 1 required positional argument: 'prompt_user'
+2025-09-13 19:42:37,129 - microservice_ia - INFO - OPENAI_MODEL configuré: gpt-4o-mini
+2025-09-13 19:42:37,129 - microservice_ia - INFO - OPENAI_API_KEY présente: Oui
+2025-09-13 19:42:37,130 - microservice_ia - INFO - MICROSERVICE_SHARED_KEY présente: Oui
+2025-09-13 19:44:10,383 - microservice_ia - INFO - OPENAI_MODEL configuré: gpt-4o-mini
+2025-09-13 19:44:10,383 - microservice_ia - INFO - OPENAI_API_KEY présente: Oui
+2025-09-13 19:44:10,383 - microservice_ia - INFO - MICROSERVICE_SHARED_KEY présente: Oui
+2025-09-13 19:46:33,562 - microservice_ia - INFO - OPENAI_MODEL configuré: gpt-4o-mini
+2025-09-13 19:46:33,563 - microservice_ia - INFO - OPENAI_API_KEY présente: Oui
+2025-09-13 19:46:33,563 - microservice_ia - INFO - MICROSERVICE_SHARED_KEY présente: Oui
+2025-09-13 19:47:34,470 - microservice_ia - INFO - OPENAI_MODEL configuré: gpt-4o-mini
+2025-09-13 19:47:34,470 - microservice_ia - INFO - OPENAI_API_KEY présente: Oui
+2025-09-13 19:47:34,471 - microservice_ia - INFO - MICROSERVICE_SHARED_KEY présente: Oui
+2025-09-13 19:47:55,233 - microservice_ia - INFO - OPENAI_MODEL configuré: gpt-4o-mini
+2025-09-13 19:47:55,233 - microservice_ia - INFO - OPENAI_API_KEY présente: Oui
+2025-09-13 19:47:55,233 - microservice_ia - INFO - MICROSERVICE_SHARED_KEY présente: Oui
+2025-09-13 19:48:12,221 - microservice_ia - INFO - OPENAI_MODEL configuré: gpt-4o-mini
+2025-09-13 19:48:12,221 - microservice_ia - INFO - OPENAI_API_KEY présente: Oui
+2025-09-13 19:48:12,222 - microservice_ia - INFO - MICROSERVICE_SHARED_KEY présente: Oui
+2025-09-13 19:48:46,418 - microservice_ia - INFO - Requête reçue pour générer 10 flashcards depuis l'URL: https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/API%20REST%20SPRING%20BOOT.rtf
+2025-09-13 19:48:46,419 - microservice_ia - INFO - Début du téléchargement du cours depuis: https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/API%20REST%20SPRING%20BOOT.rtf
+2025-09-13 19:48:46,419 - microservice_ia - INFO - Téléchargement du contenu depuis https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/API%20REST%20SPRING%20BOOT.rtf
+2025-09-13 19:48:47,086 - httpx - INFO - HTTP Request: GET https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/API%20REST%20SPRING%20BOOT.rtf "HTTP/1.1 200 OK"
+2025-09-13 19:48:47,094 - microservice_ia - INFO - Contenu téléchargé: 27837 caractères
+2025-09-13 19:48:47,095 - microservice_ia - INFO - Format RTF détecté, extraction du texte en cours...
+2025-09-13 19:48:47,110 - microservice_ia - INFO - Texte extrait du RTF: 18767 caractères
+2025-09-13 19:48:47,111 - microservice_ia - INFO - Téléchargement réussi en 0.69s: 18767 caractères
+2025-09-13 19:48:47,111 - microservice_ia - INFO - Aperçu du contenu: Premier pas : API REST avec Spring Boot Spring Spring est un framework complet qui fournit divers modules pour crer diffrents types d applications. C est comme avoir une immense bote outils contenant ...
+2025-09-13 19:48:47,111 - microservice_ia - INFO - Début de la génération OpenAI avec 18767 caractères et le modèle gpt-4o-mini
+2025-09-13 19:48:47,112 - microservice_ia - INFO - Texte du cours échappé pour le formatage
+2025-09-13 19:48:47,112 - microservice_ia - INFO - Envoi de la requête à OpenAI avec 18767 caractères
+2025-09-13 19:48:54,841 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-13 19:48:54,857 - microservice_ia - INFO - Réponse reçue de OpenAI: 2178 caractères
+2025-09-13 19:48:54,857 - microservice_ia - INFO - Génération OpenAI réussie en 7.75s, réponse de 2178 caractères
+2025-09-13 19:48:54,857 - microservice_ia - INFO - Aperçu de la réponse: {"title":"API REST avec Spring Boot","themes":"Spring, API, Développement","flashcards":[{"question":"Qu'est-ce que Spring ?","answer":"Spring est un framework complet qui fournit divers modules pour ...
+2025-09-13 19:48:54,858 - microservice_ia - INFO - Début de l'extraction et normalisation du JSON
+2025-09-13 19:48:54,858 - microservice_ia - ERROR - Erreur de parsing JSON: cannot access local variable 'parsed_json' where it is not associated with a value
+Traceback (most recent call last):
+  File "D:\ADA\ETUDIA\microservice_ia\app\main.py", line 134, in generate_flashcards
+    flashcards_brut = extract_json(openai_response)
+  File "D:\ADA\ETUDIA\microservice_ia\app\utils\extractJson.py", line 22, in extract_json
+    if isinstance(parsed_json, str):
+                  ^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'parsed_json' where it is not associated with a value
+2025-09-13 19:48:54,860 - microservice_ia - ERROR - JSON problématique: {"title":"API REST avec Spring Boot","themes":"Spring, API, Développement","flashcards":[{"question":"Qu'est-ce que Spring ?","answer":"Spring est un framework complet qui fournit divers modules pour créer différents types d'applications, agissant comme une immense boîte à outils."},{"question":"Quel est le rôle de Spring Boot ?","answer":"Spring Boot simplifie l'utilisation de Spring en incluant des paramètres et dépendances préconfigurés, permettant un démarrage rapide sans configuration manue...
+2025-09-13 20:17:53,223 - microservice_ia - INFO - OPENAI_MODEL configuré: gpt-4o-mini
+2025-09-13 20:17:53,224 - microservice_ia - INFO - OPENAI_API_KEY présente: Oui
+2025-09-13 20:17:53,224 - microservice_ia - INFO - MICROSERVICE_SHARED_KEY présente: Oui
+2025-09-13 20:19:48,597 - microservice_ia - INFO - OPENAI_MODEL configuré: gpt-4o-mini
+2025-09-13 20:19:48,597 - microservice_ia - INFO - OPENAI_API_KEY présente: Oui
+2025-09-13 20:19:48,598 - microservice_ia - INFO - MICROSERVICE_SHARED_KEY présente: Oui
+2025-09-13 20:20:16,324 - microservice_ia - INFO - OPENAI_MODEL configuré: gpt-4o-mini
+2025-09-13 20:20:16,324 - microservice_ia - INFO - OPENAI_API_KEY présente: Oui
+2025-09-13 20:20:16,324 - microservice_ia - INFO - MICROSERVICE_SHARED_KEY présente: Oui
+2025-09-13 20:20:55,958 - microservice_ia - INFO - Requête reçue pour générer 10 flashcards depuis l'URL: https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/API%20REST%20SPRING%20BOOT.rtf
+2025-09-13 20:20:55,958 - microservice_ia - INFO - Début du téléchargement du cours depuis: https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/API%20REST%20SPRING%20BOOT.rtf
+2025-09-13 20:20:55,959 - microservice_ia - INFO - Téléchargement du contenu depuis https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/API%20REST%20SPRING%20BOOT.rtf
+2025-09-13 20:20:56,650 - httpx - INFO - HTTP Request: GET https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/API%20REST%20SPRING%20BOOT.rtf "HTTP/1.1 200 OK"
+2025-09-13 20:20:56,654 - microservice_ia - INFO - Contenu téléchargé: 27837 caractères
+2025-09-13 20:20:56,655 - microservice_ia - INFO - Format RTF détecté, extraction du texte en cours...
+2025-09-13 20:20:56,663 - microservice_ia - INFO - Texte extrait du RTF: 18767 caractères
+2025-09-13 20:20:56,663 - microservice_ia - INFO - Téléchargement réussi en 0.70s: 18767 caractères
+2025-09-13 20:20:56,664 - microservice_ia - INFO - Aperçu du contenu: Premier pas : API REST avec Spring Boot Spring Spring est un framework complet qui fournit divers modules pour crer diffrents types d applications. C est comme avoir une immense bote outils contenant ...
+2025-09-13 20:20:56,664 - microservice_ia - INFO - Début de la génération OpenAI avec 18767 caractères et le modèle gpt-4o-mini
+2025-09-13 20:20:56,664 - microservice_ia - INFO - Texte du cours échappé pour le formatage
+2025-09-13 20:20:56,665 - microservice_ia - INFO - Envoi de la requête à OpenAI avec 18767 caractères
+2025-09-13 20:21:05,261 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-13 20:21:05,265 - microservice_ia - INFO - Réponse reçue de OpenAI: 2249 caractères
+2025-09-13 20:21:05,267 - microservice_ia - INFO - Génération OpenAI réussie en 8.60s, réponse de 2249 caractères
+2025-09-13 20:21:05,268 - microservice_ia - INFO - Aperçu de la réponse: {"title":"API REST avec Spring Boot","themes":"Spring, API, Développement","flashcards":[{"question":"Qu'est-ce que Spring ?","answer":"Spring est un framework complet qui fournit divers modules pour ...
+2025-09-13 20:21:05,269 - microservice_ia - INFO - Début de l'extraction et normalisation du JSON
+2025-09-13 20:21:05,269 - microservice_ia - INFO - Début de l'extraction JSON
+2025-09-13 20:21:05,270 - microservice_ia - INFO - Texte nettoyé: 2249 caractères
+2025-09-13 20:21:05,270 - microservice_ia - INFO - JSON parsé avec succès
+2025-09-13 20:21:05,270 - microservice_ia - INFO - Début de la normalisation des flashcards
+2025-09-13 20:21:05,271 - microservice_ia - INFO - Nombre de flashcards brutes à traiter: 10
+2025-09-13 20:21:05,271 - microservice_ia - INFO - Normalisation terminée: 10 valides, 0 ignorées
+2025-09-13 20:21:05,271 - microservice_ia - INFO - Extraction et normalisation réussies en 0.00s: 10 flashcards
+2025-09-13 20:21:05,272 - microservice_ia - INFO - Traitement total terminé en 9.31s avec 10 flashcards générées
+2025-09-13 20:30:05,569 - microservice_ia - INFO - OPENAI_MODEL configuré: gpt-4o-mini
+2025-09-13 20:30:05,569 - microservice_ia - INFO - OPENAI_API_KEY présente: Oui
+2025-09-13 20:30:05,570 - microservice_ia - INFO - MICROSERVICE_SHARED_KEY présente: Oui
+2025-09-13 20:31:45,964 - microservice_ia - INFO - OPENAI_MODEL configuré: gpt-4o-mini
+2025-09-13 20:31:45,964 - microservice_ia - INFO - OPENAI_API_KEY présente: Oui
+2025-09-13 20:31:45,964 - microservice_ia - INFO - MICROSERVICE_SHARED_KEY présente: Oui
+2025-09-13 20:32:42,607 - microservice_ia - INFO - Requête reçue pour générer 10 flashcards depuis l'URL: https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/API%20REST%20SPRING%20BOOT.rtf
+2025-09-13 20:32:42,608 - microservice_ia - INFO - Début du téléchargement du cours depuis: https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/API%20REST%20SPRING%20BOOT.rtf
+2025-09-13 20:32:42,608 - microservice_ia - INFO - Téléchargement du contenu depuis https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/API%20REST%20SPRING%20BOOT.rtf
+2025-09-13 20:32:43,287 - httpx - INFO - HTTP Request: GET https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/API%20REST%20SPRING%20BOOT.rtf "HTTP/1.1 200 OK"
+2025-09-13 20:32:43,289 - microservice_ia - INFO - Contenu téléchargé: 27837 caractères
+2025-09-13 20:32:43,290 - microservice_ia - INFO - Format RTF détecté, extraction du texte en cours...
+2025-09-13 20:32:43,296 - microservice_ia - INFO - Texte extrait du RTF: 18767 caractères
+2025-09-13 20:32:43,296 - microservice_ia - INFO - Téléchargement réussi en 0.69s: 18767 caractères
+2025-09-13 20:32:43,296 - microservice_ia - INFO - Aperçu du contenu: Premier pas : API REST avec Spring Boot Spring Spring est un framework complet qui fournit divers modules pour crer diffrents types d applications. C est comme avoir une immense bote outils contenant ...
+2025-09-13 20:32:43,297 - microservice_ia - INFO - Début de la génération OpenAI avec 18767 caractères et le modèle gpt-4o-mini
+2025-09-13 20:32:43,297 - microservice_ia - INFO - Texte du cours échappé pour le formatage
+2025-09-13 20:32:43,297 - microservice_ia - INFO - Envoi de la requête à OpenAI avec 18767 caractères
+2025-09-13 20:32:53,878 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-13 20:32:53,882 - microservice_ia - INFO - Réponse reçue de OpenAI: 2227 caractères
+2025-09-13 20:32:53,883 - microservice_ia - INFO - Génération OpenAI réussie en 10.59s, réponse de 2227 caractères
+2025-09-13 20:32:53,883 - microservice_ia - INFO - Aperçu de la réponse: {"title":"API REST avec Spring Boot","themes":"Spring, API, Développement","flashcards":[{"question":"Qu'est-ce que Spring ?","answer":"Spring est un framework complet qui fournit divers modules pour ...
+2025-09-13 20:32:53,884 - microservice_ia - INFO - Début de l'extraction et normalisation du JSON
+2025-09-13 20:32:53,884 - microservice_ia - INFO - Début de l'extraction JSON
+2025-09-13 20:32:53,885 - microservice_ia - INFO - Texte nettoyé: 2227 caractères
+2025-09-13 20:32:53,885 - microservice_ia - INFO - JSON parsé avec succès
+2025-09-13 20:32:53,885 - microservice_ia - INFO - Début de la normalisation des flashcards
+2025-09-13 20:32:53,885 - microservice_ia - INFO - Nombre de flashcards brutes à traiter: 10
+2025-09-13 20:32:53,886 - microservice_ia - INFO - Normalisation terminée: 10 valides, 0 ignorées
+2025-09-13 20:32:53,886 - microservice_ia - INFO - Extraction et normalisation réussies en 0.00s: 10 flashcards
+2025-09-13 20:32:53,886 - microservice_ia - INFO - Traitement total terminé en 11.28s avec 10 flashcards générées
+2025-09-13 20:57:07,280 - microservice_ia - INFO - OPENAI_MODEL configuré: gpt-4o-mini
+2025-09-13 20:57:07,280 - microservice_ia - INFO - OPENAI_API_KEY présente: Oui
+2025-09-13 20:57:07,280 - microservice_ia - INFO - MICROSERVICE_SHARED_KEY présente: Oui
+2025-09-13 22:00:56,281 - microservice_ia - INFO - OPENAI_MODEL configuré: gpt-4o-mini
+2025-09-13 22:00:56,281 - microservice_ia - INFO - OPENAI_API_KEY présente: Oui
+2025-09-13 22:00:56,281 - microservice_ia - INFO - MICROSERVICE_SHARED_KEY présente: Oui
+2025-09-13 22:06:35,059 - microservice_ia - INFO - OPENAI_MODEL configuré: gpt-4o-mini
+2025-09-13 22:06:35,059 - microservice_ia - INFO - OPENAI_API_KEY présente: Oui
+2025-09-13 22:06:35,059 - microservice_ia - INFO - MICROSERVICE_SHARED_KEY présente: Oui
+2025-09-13 22:21:53,828 - microservice_ia - INFO - OPENAI_MODEL configuré: gpt-4o-mini
+2025-09-13 22:21:53,829 - microservice_ia - INFO - OPENAI_API_KEY présente: Oui
+2025-09-13 22:21:53,829 - microservice_ia - INFO - MICROSERVICE_SHARED_KEY présente: Oui
+2025-09-13 22:32:50,794 - microservice_ia - INFO - OPENAI_MODEL configuré: gpt-4o-mini
+2025-09-13 22:32:50,794 - microservice_ia - INFO - OPENAI_API_KEY présente: Oui
+2025-09-13 22:32:50,795 - microservice_ia - INFO - MICROSERVICE_SHARED_KEY présente: Oui
+2025-09-13 22:48:53,618 - microservice_ia - INFO - OPENAI_MODEL configuré: gpt-4o-mini
+2025-09-13 22:48:53,618 - microservice_ia - INFO - OPENAI_API_KEY présente: Oui
+2025-09-13 22:48:53,618 - microservice_ia - INFO - MICROSERVICE_SHARED_KEY présente: Oui
+2025-09-14 09:21:43,485 - microservice_ia - INFO - OPENAI_MODEL configuré: gpt-4o-mini
+2025-09-14 09:21:43,486 - microservice_ia - INFO - OPENAI_API_KEY présente: Oui
+2025-09-14 09:21:43,486 - microservice_ia - INFO - MICROSERVICE_SHARED_KEY présente: Oui
