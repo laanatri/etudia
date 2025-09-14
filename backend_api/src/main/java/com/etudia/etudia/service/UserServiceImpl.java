@@ -30,8 +30,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User readUser(Integer id) {
+        Optional<User> user = userRepository.findById(id);
+        return user.orElse(null);
+    }
+
+    @Override
     public Optional<User> updateUser(Integer id, User user) {
-        return Optional.ofNullable(userRepository.findById(id)
+        return userRepository.findById(id)
         .map(u -> {
             if (user.getUsername() != null && !user.getUsername().isEmpty() ) {
                 u.setUsername(user.getUsername());
@@ -49,7 +55,7 @@ public class UserServiceImpl implements UserService {
                 u.setPassword(passwordEncoder.encode(user.getPassword()));
             }
             return  userRepository.save(u);
-        }).orElseThrow(() -> new RuntimeException("utilisateur non trouvé")));
+        });
     }
 
     @Override

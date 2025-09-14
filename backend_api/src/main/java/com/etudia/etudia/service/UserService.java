@@ -11,6 +11,8 @@ public interface UserService {
 
     List<User> readUsers();
 
+    User readUser(Integer user_id);
+
     Optional<User> updateUser(Integer id, User user);
 
     String deleteUser(Integer id);
