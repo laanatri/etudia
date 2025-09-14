@@ -10,7 +10,7 @@ import lombok.Setter;
 @Table(name = "blocs")
 @Getter
 @Setter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 public class Bloc extends Capsule {
 
     public Bloc(String name, String themes, User user, Course course) {
