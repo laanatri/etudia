@@ -77,11 +77,8 @@ export default function Flashcards() {
                 ) : (
                     <>
                         {blocs.map((bloc: Bloc) => (
-
                             <FlashcardCard key={bloc.id} bloc={bloc} onClick={() => GoFlashcards(bloc)} />
-
                         ))}
-
                         <div className="card bg-base-100 border-4 border-primary border-dashed text-primary-content w-full">
                             <div className="card-body p-5 flex flex-col justify-between">
                                 <div className="card-actions w-full h-full">
@@ -89,7 +86,6 @@ export default function Flashcards() {
                                 </div>
                             </div>
                         </div>
-
                     </>
                 )}
 
