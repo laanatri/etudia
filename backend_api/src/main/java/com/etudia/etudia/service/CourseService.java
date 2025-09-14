@@ -10,4 +10,6 @@ public interface CourseService {
 
     List<Course> getCoursesByUserId(Integer userId);
 
+    Course readCourse(Integer courseId);
+
 }

@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -21,6 +22,12 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public List<Course> getCoursesByUserId(Integer userId) {
         return courseRepository.findByUser_Id(userId);
+    }
+
+    @Override
+    public Course readCourse(Integer courseId) {
+        Optional<Course> course = courseRepository.findById(courseId);
+        return course.orElse(null);
     }
 
 }
