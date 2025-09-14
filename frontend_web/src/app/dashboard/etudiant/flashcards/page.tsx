@@ -3,13 +3,15 @@
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 
-import { Plus } from "lucide-react";
+import { Diamond, FileText, Plus } from "lucide-react";
 import Link from "next/link";
 import Loader from "@/app/components/ui/Loader";
 import ModaleFlashcards from "@/app/components/capsules/ModaleFlashcards";
 import ExtendedSession from "@/types/ExtendedSession";
 import Bloc from "@/types/Bloc";
 import fonts from "@/utils/fonts";
+import ButtonLink from "@/app/components/ui/ButtonLink";
+import FlashcardCard from "@/app/components/capsules/FlashcardCard";
 
 export default function Flashcards() {
     const { data: session, status } = useSession() as { 
@@ -65,28 +67,21 @@ export default function Flashcards() {
 
     return (
         <>
-            <p className="font-fredoka font-medium text-2xl mb-10">Mes flashcards</p>
+            <div className="flex items-baseline justify-between mb-10">
+                <h2 className="flex items-center font-fredoka font-medium text-2xl"><Diamond className="mr-2"/> Mes flashcards</h2>
+                <ButtonLink classSup="w-fit m-0 bg-base-200 hover:bg-base-300" href="/dashboard/etudiant/cours" text="Mes cours" icon={<FileText />} />
+            </div>
             <div className={`relative cards-content grid grid-cols-1 md:grid-cols-3 gap-2 ${fonts.openSans.className}`}>
                 {blocs?.length === 0 ? (
                     <Loader isLoading={loading} classSup="relative"/>
                 ) : (
                     <>
                         {blocs.map((bloc: Bloc) => (
-                            <div key={bloc.id} className="card bg-base-300 border-2 border-black text-primary-content w-full">
-                                <div className="card-body text-black py-10 flex flex-col justify-between">
-                                    <h2 className="card-title mb-5">{bloc.name}</h2>
-                                    <div className="card flex-row flex-wrap gap-2 mb-5">
-                                        {bloc.themes &&
-                                            bloc.themes
-                                                .split(",")
-                                                .map((theme: string, i: number) => (
-                                                    <p key={i} className="badge badge-primary w-1/4 text-black border-2 border-black py-3">{theme.trim()}</p>
-                                                ))}
-                                    </div>
-                                    <button onClick={() => GoFlashcards(bloc)} className="mt-4 mx-auto w-full md:max-w-100 btn btn-accent rounded-full text-xl font-normal text-black border border-black shadow-[4px_4px_0_0_rgba(0,0,0,1)]">go !</button>
-                                </div>
-                            </div>
+
+                            <FlashcardCard key={bloc.id} bloc={bloc} onClick={() => GoFlashcards(bloc)} />
+
                         ))}
+
                         <div className="card bg-base-100 border-4 border-primary border-dashed text-primary-content w-full">
                             <div className="card-body p-5 flex flex-col justify-between">
                                 <div className="card-actions w-full h-full">
@@ -94,6 +89,7 @@ export default function Flashcards() {
                                 </div>
                             </div>
                         </div>
+
                     </>
                 )}
 
