@@ -16,12 +16,10 @@ import java.util.Optional;
 public class UserInfosService implements UserDetailsService {
 
     private final UserRepository repository;
-    private final PasswordEncoder encoder;
 
     @Autowired
-    public UserInfosService(UserRepository repository, PasswordEncoder encoder) {
+    public UserInfosService(UserRepository repository) {
         this.repository = repository;
-        this.encoder = encoder;
     }
 
     @Override
@@ -29,12 +27,6 @@ public class UserInfosService implements UserDetailsService {
         Optional<User> userDetail  = Optional.ofNullable(repository.findByUsername(username));
         return userDetail.map(UserInfosDetails::new)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
-    }
-
-    public String addUser(User user) {
-        user.setPassword(encoder.encode(user.getPassword()));
-        repository.save(user);
-        return "User added successfully!";
     }
 
     public User getUserByUsername(String username) {
