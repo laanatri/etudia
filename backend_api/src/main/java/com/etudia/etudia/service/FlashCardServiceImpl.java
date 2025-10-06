@@ -2,10 +2,9 @@ package com.etudia.etudia.service;
 
 import com.etudia.etudia.model.Bloc;
 import com.etudia.etudia.model.FlashCard;
-import com.etudia.etudia.model.FlashcardGenerateResponse;
+import com.etudia.etudia.dto.FlashcardGenerateResponse;
 import com.etudia.etudia.repository.BlocRepository;
 import com.etudia.etudia.repository.FlashCardRepository;
-import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

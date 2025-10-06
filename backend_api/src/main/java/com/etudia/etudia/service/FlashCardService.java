@@ -2,7 +2,7 @@ package com.etudia.etudia.service;
 
 import com.etudia.etudia.model.Bloc;
 import com.etudia.etudia.model.FlashCard;
-import com.etudia.etudia.model.FlashcardGenerateResponse;
+import com.etudia.etudia.dto.FlashcardGenerateResponse;
 
 import java.util.List;
 
