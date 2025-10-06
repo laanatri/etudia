@@ -6,5 +6,5 @@ CREATE TABLE courses
     user_id    integer            not null,
     created_at timestamptz default CURRENT_TIMESTAMP,
     primary key (id),
-    constraint fk_course_user foreign key (user_id) references users (id) on delete cascade
+    constraint fk_course_user foreign key (user_id) references users (id)
 );
