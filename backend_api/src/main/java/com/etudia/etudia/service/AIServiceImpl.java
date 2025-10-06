@@ -1,14 +1,11 @@
 package com.etudia.etudia.service;
 
-import com.etudia.etudia.model.FlashCard;
-import com.etudia.etudia.model.FlashcardGenerateRequest;
-import com.etudia.etudia.model.FlashcardGenerateResponse;
+import com.etudia.etudia.dto.FlashcardGenerateRequest;
+import com.etudia.etudia.dto.FlashcardGenerateResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
