@@ -11,7 +11,6 @@ import java.util.List;
 @Repository
 public interface BlocRepository extends JpaRepository<Bloc,Integer> {
 
-    @Query("SELECT b FROM Bloc b JOIN b.user u WHERE u.id = :userId")
-    List<Bloc> findByUser_id(@Param("userId") Integer userId);
+    List<Bloc> findByCourseUserId(Integer userId);
 
 }

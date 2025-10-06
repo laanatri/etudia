@@ -3,7 +3,7 @@ package com.etudia.etudia.service;
 import com.etudia.etudia.dto.CapsulesCreateRequest;
 import com.etudia.etudia.model.Bloc;
 import com.etudia.etudia.model.Course;
-import com.etudia.etudia.model.FlashcardGenerateResponse;
+import com.etudia.etudia.dto.FlashcardGenerateResponse;
 import com.etudia.etudia.model.User;
 import com.etudia.etudia.repository.BlocRepository;
 import jakarta.transaction.Transactional;
@@ -27,7 +27,7 @@ public class BlocServiceImpl implements BlocService {
 
     @Override
     public List<Bloc> getBlocByUserId(Integer userId) {
-        return blocRepository.findByUser_id(userId);
+        return blocRepository.findByCourseUserId(userId);
     }
 
     @Override
@@ -49,7 +49,6 @@ public class BlocServiceImpl implements BlocService {
             Bloc newBloc = new Bloc();
             newBloc.setName(aiResponse.getTitle() != null ? aiResponse.getTitle() : "Bloc de flashcards");
             newBloc.setThemes(aiResponse.getThemes() != null ? aiResponse.getThemes() : "");
-            newBloc.setUser(currentUser);
             newBloc.setCourse(course);
 
             Bloc savedBloc = blocRepository.save(newBloc);
