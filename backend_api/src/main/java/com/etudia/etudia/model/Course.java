@@ -1,12 +1,11 @@
 package com.etudia.etudia.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
+import org.hibernate.annotations.CreationTimestamp;
 import java.time.OffsetDateTime;
 
 @Entity
@@ -21,17 +20,18 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(nullable = false, unique = true, length = 60)
     private String name;
 
-    @Column(name = "course_url")
+    @Column(name = "course_url", nullable = false, length = 255)
     private String courseUrl;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    @JsonBackReference("user-courses")
-    private User user;
-
     @Column(name = "created_at", insertable = false, updatable = false)
+    @CreationTimestamp
     private OffsetDateTime createdAt;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
 }

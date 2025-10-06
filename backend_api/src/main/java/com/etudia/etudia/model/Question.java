@@ -7,25 +7,22 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "flashcards")
+@Table(name = "questions")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class FlashCard {
+public class Question {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(nullable = false, length = 255)
-    private String title;
-
     @Column(nullable = false, columnDefinition = "TEXT")
-    private String content;
+    private String text;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "bloc_id", nullable = false)
-    private Bloc bloc;
+    @JoinColumn(name = "quiz_id", nullable = false)
+    private Quiz quiz;
 
 }

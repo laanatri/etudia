@@ -1,24 +1,19 @@
 package com.etudia.etudia.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Table(name = "summaries")
 @Getter
 @Setter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
+@AllArgsConstructor
 public class Summary extends Capsule {
 
+    @Column(name = "summary_url", nullable = false, length = 255)
     private String summaryUrl;
-
-    public Summary(String name, String themes, User user, Course course, String summaryUrl) {
-        super(name, themes, user, course);
-        this.summaryUrl = summaryUrl;
-    }
 
 }
