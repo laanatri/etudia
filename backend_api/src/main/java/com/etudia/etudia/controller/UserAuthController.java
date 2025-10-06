@@ -1,7 +1,7 @@
 package com.etudia.etudia.controller;
 
 import com.etudia.etudia.dto.AuthResponse;
-import com.etudia.etudia.model.AuthRequest;
+import com.etudia.etudia.dto.AuthRequest;
 import com.etudia.etudia.model.User;
 import com.etudia.etudia.service.JwtService;
 import com.etudia.etudia.service.UserInfosService;
