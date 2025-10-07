@@ -46,10 +46,11 @@ public class BlocServiceImpl implements BlocService {
             User currentUser = userServiceImpl.readUser(capsulesCreateRequest.user_id);
             Course course = courseServiceImpl.readCourse(capsulesCreateRequest.course_id);
 
-            Bloc newBloc = new Bloc();
-            newBloc.setName(aiResponse.getTitle() != null ? aiResponse.getTitle() : "Bloc de flashcards");
-            newBloc.setThemes(aiResponse.getThemes() != null ? aiResponse.getThemes() : "");
-            newBloc.setCourse(course);
+            Bloc newBloc = Bloc.builder()
+                            .name(aiResponse.getTitle() != null ? aiResponse.getTitle() : "Bloc de flashcards")
+                            .themes(aiResponse.getThemes() != null ? aiResponse.getThemes() : "")
+                            .course(course)
+                            .build();
 
             Bloc savedBloc = blocRepository.save(newBloc);
 
