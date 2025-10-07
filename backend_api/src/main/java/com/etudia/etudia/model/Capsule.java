@@ -2,6 +2,7 @@ package com.etudia.etudia.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.CreationTimestamp;
 import java.time.OffsetDateTime;
 
@@ -9,7 +10,7 @@ import java.time.OffsetDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@SuperBuilder
 public abstract class Capsule {
 
     @Id
