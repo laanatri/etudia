@@ -1,12 +1,15 @@
 import json
 import re
-from typing import Dict, Any
 import logging
+
+from typing import Dict, Any
+from validateCapsulesJson import validate_capsules_json
+from ..models.capsules_request_models import CapsulesGenerateRequest
 
 logger = logging.getLogger("microservice_ia")
 
 
-def extract_json(text: str) -> Dict[str, Any]:
+def extract_json(text: str, payload: CapsulesGenerateRequest) -> Dict[str, Any]:
 
     logger.info("Début de l'extraction du JSON")
 
@@ -45,13 +48,6 @@ def extract_json(text: str) -> Dict[str, Any]:
             raise ValueError(f"JSON double-encodé est invalide : {err}")
         
     # lever des erreurs si ça ne correspond pas à la demande
-    if not isinstance(parsed_json, dict):
-        raise ValueError("Format invalide : attendu un objet JSON {\"title\",\"themes\",\"flashcards\"}.")
-    
-    if "title" not in parsed_json or "themes" not in parsed_json or "flashcards" not in parsed_json:
-        raise ValueError("Objet JSON manquant 'title', 'themes' ou 'flashcards'.")
-    
-    if not isinstance(parsed_json["flashcards"], list):
-        raise ValueError("Format inattendu")
+    capsules = validate_capsules_json(parsed_json, payload)
         
-    return parsed_json
+    return capsules
