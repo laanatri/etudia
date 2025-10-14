@@ -194,3 +194,478 @@ UnboundLocalError: cannot access local variable 'parsed_json' where it is not as
 2025-09-14 09:21:43,485 - microservice_ia - INFO - OPENAI_MODEL configuré: gpt-4o-mini
 2025-09-14 09:21:43,486 - microservice_ia - INFO - OPENAI_API_KEY présente: Oui
 2025-09-14 09:21:43,486 - microservice_ia - INFO - MICROSERVICE_SHARED_KEY présente: Oui
+2025-09-14 09:23:48,415 - microservice_ia - INFO - OPENAI_MODEL configuré: gpt-4o-mini
+2025-09-14 09:23:48,415 - microservice_ia - INFO - OPENAI_API_KEY présente: Oui
+2025-09-14 09:23:48,415 - microservice_ia - INFO - MICROSERVICE_SHARED_KEY présente: Oui
+2025-09-14 10:55:53,315 - microservice_ia - INFO - OPENAI_MODEL configuré: gpt-4o-mini
+2025-09-14 10:55:53,315 - microservice_ia - INFO - OPENAI_API_KEY présente: Oui
+2025-09-14 10:55:53,316 - microservice_ia - INFO - MICROSERVICE_SHARED_KEY présente: Oui
+2025-09-14 16:20:24,849 - microservice_ia - INFO - OPENAI_MODEL configuré: gpt-4o-mini
+2025-09-14 16:20:24,850 - microservice_ia - INFO - OPENAI_API_KEY présente: Oui
+2025-09-14 16:20:24,850 - microservice_ia - INFO - MICROSERVICE_SHARED_KEY présente: Oui
+2025-09-14 17:02:01,485 - microservice_ia - INFO - Requête pour générer 30 flashcards depuis le cours : https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1757862120094-MERISE.txt
+2025-09-14 17:02:01,485 - microservice_ia - INFO - Téléchargement du cours depuis: https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1757862120094-MERISE.txt
+2025-09-14 17:02:01,485 - microservice_ia - INFO - Téléchargement du cours depuis https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1757862120094-MERISE.txt
+2025-09-14 17:02:02,516 - httpx - INFO - HTTP Request: GET https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1757862120094-MERISE.txt "HTTP/1.1 200 OK"
+2025-09-14 17:02:02,521 - microservice_ia - INFO - le cours fait 62465 caractères
+2025-09-14 17:02:02,522 - microservice_ia - INFO - Téléchargement réussi en 1.04s : 62465 caractères
+2025-09-14 17:02:02,522 - microservice_ia - INFO - Aperçu du contenu :  INSIA – MERISE – SIGL 2 – Cours 02 – page 1/39 - Bertrand LIAUDET INSIA – SIGL 2 La méthode MERISE MCD - 1 Bertrand LIAUDET SOMMAIRE SOMMAIRE 1 MCD : MODELE CONCEPTUEL DES DONNEES 3 1. Rappel...
+2025-09-14 17:02:02,522 - microservice_ia - INFO - Génération des flashcards avec un cours de 62465 caractères et le modèle ia gpt-4o-mini
+2025-09-14 17:02:02,523 - microservice_ia - INFO - Envoi de la requête à OpenAI d'un texte de 62465 caractères
+2025-09-14 17:03:22,996 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 17:03:23,002 - microservice_ia - INFO - La réponse de GPT est de 6851 caractères
+2025-09-14 17:03:23,003 - microservice_ia - INFO - Génération OpenAI réussie en 80.48s, réponse de 6851 caractères
+2025-09-14 17:03:23,003 - microservice_ia - INFO - Aperçu de la réponse: {"title":"Méthode MERISE et Modélisation des Données","themes":"MERISE, Modélisation, Bases de données","flashcards":[{"question":"Qu'est-ce que le MCD ?","answer":"Le MCD, ou Modèle Conceptuel des Do...
+2025-09-14 17:03:23,003 - microservice_ia - INFO - Début de l'extraction et normalisation du JSON
+2025-09-14 17:03:23,003 - microservice_ia - INFO - Début de l'extraction du JSON
+2025-09-14 17:03:23,004 - microservice_ia - INFO - Le texte nettoyé fait 6851 caractères
+2025-09-14 17:03:23,004 - microservice_ia - INFO - JSON parsé avec succès
+2025-09-14 17:03:23,004 - microservice_ia - INFO - Nomalisation des flashcards
+2025-09-14 17:03:23,005 - microservice_ia - INFO - Nombre de flashcards: 33
+2025-09-14 17:03:23,005 - microservice_ia - INFO - Normalisation terminée: 33 cards valides, 0 cards ignorées
+2025-09-14 17:03:23,005 - microservice_ia - INFO - Extraction et normalisation réussies en 0.00s: 33 flashcards
+2025-09-14 17:03:23,005 - microservice_ia - INFO - Génération des flashcards terminée en 81.52s avec 33 flashcards générées
+2025-09-14 19:05:38,628 - microservice_ia - INFO - Requête pour générer 20 flashcards depuis le cours : https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1757869538174-MERISE.txt
+2025-09-14 19:05:38,630 - microservice_ia - INFO - Téléchargement du cours depuis: https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1757869538174-MERISE.txt
+2025-09-14 19:05:38,630 - microservice_ia - INFO - Téléchargement du cours depuis https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1757869538174-MERISE.txt
+2025-09-14 19:05:39,505 - httpx - INFO - HTTP Request: GET https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1757869538174-MERISE.txt "HTTP/1.1 200 OK"
+2025-09-14 19:05:39,508 - microservice_ia - INFO - le cours fait 62465 caractères
+2025-09-14 19:05:39,509 - microservice_ia - INFO - Téléchargement réussi en 0.88s : 62465 caractères
+2025-09-14 19:05:39,509 - microservice_ia - INFO - Aperçu du contenu :  INSIA – MERISE – SIGL 2 – Cours 02 – page 1/39 - Bertrand LIAUDET INSIA – SIGL 2 La méthode MERISE MCD - 1 Bertrand LIAUDET SOMMAIRE SOMMAIRE 1 MCD : MODELE CONCEPTUEL DES DONNEES 3 1. Rappel...
+2025-09-14 19:05:39,509 - microservice_ia - INFO - Génération des flashcards avec un cours de 62465 caractères et le modèle ia gpt-4o-mini
+2025-09-14 19:05:39,509 - microservice_ia - INFO - Envoi de la requête à OpenAI d'un texte de 62465 caractères
+2025-09-14 19:05:54,712 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 19:05:54,713 - microservice_ia - INFO - La réponse de GPT est de 4663 caractères
+2025-09-14 19:05:54,714 - microservice_ia - INFO - Génération OpenAI réussie en 15.20s, réponse de 4663 caractères
+2025-09-14 19:05:54,714 - microservice_ia - INFO - Aperçu de la réponse: {"title":"Méthode MERISE et Modélisation des Données","themes":"MERISE, Modélisation, Bases de données","flashcards":[{"question":"Qu'est-ce que le MCD ?","answer":"Le MCD, ou Modèle Conceptuel des Do...
+2025-09-14 19:05:54,714 - microservice_ia - INFO - Début de l'extraction et normalisation du JSON
+2025-09-14 19:05:54,714 - microservice_ia - INFO - Début de l'extraction du JSON
+2025-09-14 19:05:54,715 - microservice_ia - INFO - Le texte nettoyé fait 4663 caractères
+2025-09-14 19:05:54,715 - microservice_ia - INFO - JSON parsé avec succès
+2025-09-14 19:05:54,715 - microservice_ia - INFO - Nomalisation des flashcards
+2025-09-14 19:05:54,716 - microservice_ia - INFO - Nombre de flashcards: 21
+2025-09-14 19:05:54,716 - microservice_ia - INFO - Normalisation terminée: 21 cards valides, 0 cards ignorées
+2025-09-14 19:05:54,716 - microservice_ia - INFO - Extraction et normalisation réussies en 0.00s: 21 flashcards
+2025-09-14 19:05:54,716 - microservice_ia - INFO - Génération des flashcards terminée en 16.09s avec 21 flashcards générées
+2025-09-14 19:09:37,061 - microservice_ia - INFO - Requête pour générer 20 flashcards depuis le cours : https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1757869776452-MERISE.txt
+2025-09-14 19:09:37,062 - microservice_ia - INFO - Téléchargement du cours depuis: https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1757869776452-MERISE.txt
+2025-09-14 19:09:37,062 - microservice_ia - INFO - Téléchargement du cours depuis https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1757869776452-MERISE.txt
+2025-09-14 19:09:37,788 - httpx - INFO - HTTP Request: GET https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1757869776452-MERISE.txt "HTTP/1.1 200 OK"
+2025-09-14 19:09:37,795 - microservice_ia - INFO - le cours fait 62465 caractères
+2025-09-14 19:09:37,796 - microservice_ia - INFO - Téléchargement réussi en 0.73s : 62465 caractères
+2025-09-14 19:09:37,797 - microservice_ia - INFO - Aperçu du contenu :  INSIA – MERISE – SIGL 2 – Cours 02 – page 1/39 - Bertrand LIAUDET INSIA – SIGL 2 La méthode MERISE MCD - 1 Bertrand LIAUDET SOMMAIRE SOMMAIRE 1 MCD : MODELE CONCEPTUEL DES DONNEES 3 1. Rappel...
+2025-09-14 19:09:37,798 - microservice_ia - INFO - Génération des flashcards avec un cours de 62465 caractères et le modèle ia gpt-4o-mini
+2025-09-14 19:09:37,798 - microservice_ia - INFO - Envoi de la requête à OpenAI d'un texte de 62465 caractères
+2025-09-14 19:09:54,863 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 19:09:54,871 - microservice_ia - INFO - La réponse de GPT est de 4593 caractères
+2025-09-14 19:09:54,872 - microservice_ia - INFO - Génération OpenAI réussie en 17.07s, réponse de 4593 caractères
+2025-09-14 19:09:54,872 - microservice_ia - INFO - Aperçu de la réponse: {"title":"Méthode MERISE et Modélisation des Données","themes":"MERISE, Modélisation, Bases de données","flashcards":[{"question":"Qu'est-ce que le MCD ?","answer":"Le MCD, ou Modèle Conceptuel des Do...
+2025-09-14 19:09:54,873 - microservice_ia - INFO - Début de l'extraction et normalisation du JSON
+2025-09-14 19:09:54,873 - microservice_ia - INFO - Début de l'extraction du JSON
+2025-09-14 19:09:54,873 - microservice_ia - INFO - Le texte nettoyé fait 4593 caractères
+2025-09-14 19:09:54,874 - microservice_ia - INFO - JSON parsé avec succès
+2025-09-14 19:09:54,874 - microservice_ia - INFO - Nomalisation des flashcards
+2025-09-14 19:09:54,874 - microservice_ia - INFO - Nombre de flashcards: 21
+2025-09-14 19:09:54,875 - microservice_ia - INFO - Normalisation terminée: 21 cards valides, 0 cards ignorées
+2025-09-14 19:09:54,875 - microservice_ia - INFO - Extraction et normalisation réussies en 0.00s: 21 flashcards
+2025-09-14 19:09:54,875 - microservice_ia - INFO - Génération des flashcards terminée en 17.81s avec 21 flashcards générées
+2025-09-15 09:49:31,405 - microservice_ia - INFO - OPENAI_MODEL configuré: gpt-4o-mini
+2025-09-15 09:49:31,406 - microservice_ia - INFO - OPENAI_API_KEY présente: Oui
+2025-09-15 09:49:31,406 - microservice_ia - INFO - MICROSERVICE_SHARED_KEY présente: Oui
+2025-09-15 09:56:06,390 - microservice_ia - INFO - Requête pour générer 10 flashcards depuis le cours : https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1757922964523-Passage-du-MCD-au-MLD.pdf
+2025-09-15 09:56:06,390 - microservice_ia - INFO - Téléchargement du cours depuis: https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1757922964523-Passage-du-MCD-au-MLD.pdf
+2025-09-15 09:56:06,391 - microservice_ia - INFO - Téléchargement du cours depuis https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1757922964523-Passage-du-MCD-au-MLD.pdf
+2025-09-15 09:56:09,357 - httpx - INFO - HTTP Request: GET https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1757922964523-Passage-du-MCD-au-MLD.pdf "HTTP/1.1 200 OK"
+2025-09-15 09:56:09,370 - microservice_ia - INFO - le cours fait 77914 caractères
+2025-09-15 09:56:09,372 - microservice_ia - INFO - Téléchargement réussi en 2.98s : 77914 caractères
+2025-09-15 09:56:10,357 - microservice_ia - INFO - Génération des flashcards avec un cours de 77914 caractères et le modèle ia gpt-4o-mini
+2025-09-15 09:56:10,358 - microservice_ia - INFO - Envoi de la requête à OpenAI d'un texte de 77914 caractères
+2025-09-15 09:56:34,855 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-15 09:56:34,863 - microservice_ia - INFO - La réponse de GPT est de 1209 caractères
+2025-09-15 09:56:34,865 - microservice_ia - INFO - Génération OpenAI réussie en 24.51s, réponse de 1209 caractères
+2025-09-15 09:56:34,866 - microservice_ia - INFO - Aperçu de la réponse: {"title":"Cours ML D","themes":"PDF, Document, Cours","flashcards":[{"question":"Quel est le type de document décrit dans le texte ?","answer":"Il s'agit d'un document PDF."},{"question":"Quel est le ...
+2025-09-15 09:56:34,867 - microservice_ia - INFO - Début de l'extraction et normalisation du JSON
+2025-09-15 09:56:34,868 - microservice_ia - INFO - Début de l'extraction du JSON
+2025-09-15 09:56:34,869 - microservice_ia - INFO - Le texte nettoyé fait 1209 caractères
+2025-09-15 09:56:34,870 - microservice_ia - INFO - JSON parsé avec succès
+2025-09-15 09:56:34,870 - microservice_ia - INFO - Nomalisation des flashcards
+2025-09-15 09:56:34,871 - microservice_ia - INFO - Nombre de flashcards: 10
+2025-09-15 09:56:34,872 - microservice_ia - INFO - Normalisation terminée: 10 cards valides, 0 cards ignorées
+2025-09-15 09:56:34,873 - microservice_ia - INFO - Extraction et normalisation réussies en 0.01s: 10 flashcards
+2025-09-15 09:56:34,874 - microservice_ia - INFO - Génération des flashcards terminée en 28.48s avec 10 flashcards générées
+2025-09-15 10:01:18,142 - microservice_ia - INFO - Requête pour générer 10 flashcards depuis le cours : https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1757923277618-Passage%20du%20MCD%20au.txt
+2025-09-15 10:01:18,143 - microservice_ia - INFO - Téléchargement du cours depuis: https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1757923277618-Passage%20du%20MCD%20au.txt
+2025-09-15 10:01:18,143 - microservice_ia - INFO - Téléchargement du cours depuis https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1757923277618-Passage%20du%20MCD%20au.txt
+2025-09-15 10:01:19,987 - httpx - INFO - HTTP Request: GET https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1757923277618-Passage%20du%20MCD%20au.txt "HTTP/1.1 200 OK"
+2025-09-15 10:01:19,992 - microservice_ia - INFO - le cours fait 6558 caractères
+2025-09-15 10:01:19,994 - microservice_ia - INFO - Téléchargement réussi en 1.85s : 6558 caractères
+2025-09-15 10:01:19,995 - microservice_ia - INFO - Aperçu du contenu : Base de données : Passage du MCD au MLD  Le modèle logique des données   Il est aussi appelé modèle relationnel.  On emploie souvent l’abréviation suivante : MLD : Modèle logique des données  Et q...
+2025-09-15 10:01:19,997 - microservice_ia - INFO - Génération des flashcards avec un cours de 6558 caractères et le modèle ia gpt-4o-mini
+2025-09-15 10:01:19,998 - microservice_ia - INFO - Envoi de la requête à OpenAI d'un texte de 6558 caractères
+2025-09-15 10:01:36,217 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-15 10:01:36,220 - microservice_ia - INFO - La réponse de GPT est de 2259 caractères
+2025-09-15 10:01:36,221 - microservice_ia - INFO - Génération OpenAI réussie en 16.22s, réponse de 2259 caractères
+2025-09-15 10:01:36,221 - microservice_ia - INFO - Aperçu de la réponse: {"title":"Passage du MCD au MLD","themes":"Base de données, Modèle logique, Modèle relationnel","flashcards":[{"question":"Qu'est-ce que le MLD ?","answer":"Le MLD, ou Modèle logique des données, est ...
+2025-09-15 10:01:36,222 - microservice_ia - INFO - Début de l'extraction et normalisation du JSON
+2025-09-15 10:01:36,223 - microservice_ia - INFO - Début de l'extraction du JSON
+2025-09-15 10:01:36,224 - microservice_ia - INFO - Le texte nettoyé fait 2259 caractères
+2025-09-15 10:01:36,224 - microservice_ia - INFO - JSON parsé avec succès
+2025-09-15 10:01:36,225 - microservice_ia - INFO - Nomalisation des flashcards
+2025-09-15 10:01:36,225 - microservice_ia - INFO - Nombre de flashcards: 10
+2025-09-15 10:01:36,226 - microservice_ia - INFO - Normalisation terminée: 10 cards valides, 0 cards ignorées
+2025-09-15 10:01:36,227 - microservice_ia - INFO - Extraction et normalisation réussies en 0.00s: 10 flashcards
+2025-09-15 10:01:36,227 - microservice_ia - INFO - Génération des flashcards terminée en 18.08s avec 10 flashcards générées
+2025-09-15 10:20:20,100 - microservice_ia - INFO - Requête pour générer 10 flashcards depuis le cours : https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1757924419562-Passage%20du%20MCD%20au.txt
+2025-09-15 10:20:20,101 - microservice_ia - INFO - Téléchargement du cours depuis: https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1757924419562-Passage%20du%20MCD%20au.txt
+2025-09-15 10:20:20,102 - microservice_ia - INFO - Téléchargement du cours depuis https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1757924419562-Passage%20du%20MCD%20au.txt
+2025-09-15 10:20:21,700 - httpx - INFO - HTTP Request: GET https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1757924419562-Passage%20du%20MCD%20au.txt "HTTP/1.1 200 OK"
+2025-09-15 10:20:21,703 - microservice_ia - INFO - le cours fait 6558 caractères
+2025-09-15 10:20:21,704 - microservice_ia - INFO - Téléchargement réussi en 1.60s : 6558 caractères
+2025-09-15 10:20:21,705 - microservice_ia - INFO - Aperçu du contenu : Base de données : Passage du MCD au MLD  Le modèle logique des données   Il est aussi appelé modèle relationnel.  On emploie souvent l’abréviation suivante : MLD : Modèle logique des données  Et q...
+2025-09-15 10:20:21,706 - microservice_ia - INFO - Génération des flashcards avec un cours de 6558 caractères et le modèle ia gpt-4o-mini
+2025-09-15 10:20:21,707 - microservice_ia - INFO - Envoi de la requête à OpenAI d'un texte de 6558 caractères
+2025-09-15 10:20:32,034 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-15 10:20:32,039 - microservice_ia - INFO - La réponse de GPT est de 2226 caractères
+2025-09-15 10:20:32,041 - microservice_ia - INFO - Génération OpenAI réussie en 10.33s, réponse de 2226 caractères
+2025-09-15 10:20:32,042 - microservice_ia - INFO - Aperçu de la réponse: {"title":"Passage du MCD au MLD","themes":"Base de données, Modèle logique, Modèle relationnel","flashcards":[{"question":"Qu'est-ce que le MLD ?","answer":"Le MLD, ou Modèle logique des données, est ...
+2025-09-15 10:20:32,043 - microservice_ia - INFO - Début de l'extraction et normalisation du JSON
+2025-09-15 10:20:32,045 - microservice_ia - INFO - Début de l'extraction du JSON
+2025-09-15 10:20:32,046 - microservice_ia - INFO - Le texte nettoyé fait 2226 caractères
+2025-09-15 10:20:32,047 - microservice_ia - INFO - JSON parsé avec succès
+2025-09-15 10:20:32,049 - microservice_ia - INFO - Nomalisation des flashcards
+2025-09-15 10:20:32,050 - microservice_ia - INFO - Nombre de flashcards: 10
+2025-09-15 10:20:32,051 - microservice_ia - INFO - Normalisation terminée: 10 cards valides, 0 cards ignorées
+2025-09-15 10:20:32,053 - microservice_ia - INFO - Extraction et normalisation réussies en 0.01s: 10 flashcards
+2025-09-15 10:20:32,054 - microservice_ia - INFO - Génération des flashcards terminée en 11.95s avec 10 flashcards générées
+2025-09-15 10:44:07,406 - microservice_ia - INFO - Requête pour générer 10 flashcards depuis le cours : https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1757925846961-Passage-du-MCD-au-MLD.pdf
+2025-09-15 10:44:07,406 - microservice_ia - INFO - Téléchargement du cours depuis: https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1757925846961-Passage-du-MCD-au-MLD.pdf
+2025-09-15 10:44:07,406 - microservice_ia - INFO - Téléchargement du cours depuis https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1757925846961-Passage-du-MCD-au-MLD.pdf
+2025-09-15 10:44:08,208 - httpx - INFO - HTTP Request: GET https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1757925846961-Passage-du-MCD-au-MLD.pdf "HTTP/1.1 200 OK"
+2025-09-15 10:44:08,221 - microservice_ia - INFO - le cours fait 77914 caractères
+2025-09-15 10:44:08,222 - microservice_ia - INFO - Téléchargement réussi en 0.82s : 77914 caractères
+2025-09-15 10:44:08,289 - microservice_ia - INFO - Génération des flashcards avec un cours de 77914 caractères et le modèle ia gpt-4o-mini
+2025-09-15 10:44:08,289 - microservice_ia - INFO - Envoi de la requête à OpenAI d'un texte de 77914 caractères
+2025-09-15 10:44:32,396 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-15 10:44:32,402 - microservice_ia - INFO - La réponse de GPT est de 1218 caractères
+2025-09-15 10:44:32,402 - microservice_ia - INFO - Génération OpenAI réussie en 24.11s, réponse de 1218 caractères
+2025-09-15 10:44:32,402 - microservice_ia - INFO - Aperçu de la réponse: {"title":"Cours ML D","themes":"PDF, Document, Cours","flashcards":[{"question":"Quel est le type de document mentionné dans le texte ?","answer":"Il s'agit d'un document PDF."},{"question":"Quel est ...
+2025-09-15 10:44:32,403 - microservice_ia - INFO - Début de l'extraction et normalisation du JSON
+2025-09-15 10:44:32,403 - microservice_ia - INFO - Début de l'extraction du JSON
+2025-09-15 10:44:32,403 - microservice_ia - INFO - Le texte nettoyé fait 1218 caractères
+2025-09-15 10:44:32,403 - microservice_ia - INFO - JSON parsé avec succès
+2025-09-15 10:44:32,404 - microservice_ia - INFO - Nomalisation des flashcards
+2025-09-15 10:44:32,404 - microservice_ia - INFO - Nombre de flashcards: 10
+2025-09-15 10:44:32,404 - microservice_ia - INFO - Normalisation terminée: 10 cards valides, 0 cards ignorées
+2025-09-15 10:44:32,404 - microservice_ia - INFO - Extraction et normalisation réussies en 0.00s: 10 flashcards
+2025-09-15 10:44:32,405 - microservice_ia - INFO - Génération des flashcards terminée en 25.00s avec 10 flashcards générées
+2025-09-15 10:45:13,855 - microservice_ia - INFO - Requête pour générer 10 flashcards depuis le cours : https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1757925913472-Passage-du-MCD-au-MLD.pdf
+2025-09-15 10:45:13,856 - microservice_ia - INFO - Téléchargement du cours depuis: https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1757925913472-Passage-du-MCD-au-MLD.pdf
+2025-09-15 10:45:13,856 - microservice_ia - INFO - Téléchargement du cours depuis https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1757925913472-Passage-du-MCD-au-MLD.pdf
+2025-09-15 10:45:14,586 - httpx - INFO - HTTP Request: GET https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1757925913472-Passage-du-MCD-au-MLD.pdf "HTTP/1.1 200 OK"
+2025-09-15 10:45:14,600 - microservice_ia - INFO - le cours fait 77914 caractères
+2025-09-15 10:45:14,600 - microservice_ia - INFO - Téléchargement réussi en 0.74s : 77914 caractères
+2025-09-15 10:45:14,608 - microservice_ia - INFO - Génération des flashcards avec un cours de 77914 caractères et le modèle ia gpt-4o-mini
+2025-09-15 10:45:14,608 - microservice_ia - INFO - Envoi de la requête à OpenAI d'un texte de 77914 caractères
+2025-09-15 10:45:37,082 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-15 10:45:37,084 - microservice_ia - INFO - La réponse de GPT est de 1196 caractères
+2025-09-15 10:45:37,085 - microservice_ia - INFO - Génération OpenAI réussie en 22.48s, réponse de 1196 caractères
+2025-09-15 10:45:37,085 - microservice_ia - INFO - Aperçu de la réponse: {"title":"Cours ML D","themes":"PDF, Document, Cours","flashcards":[{"question":"Quel est le type de document mentionné dans le texte ?","answer":"Il s'agit d'un document PDF."},{"question":"Quel est ...
+2025-09-15 10:45:37,085 - microservice_ia - INFO - Début de l'extraction et normalisation du JSON
+2025-09-15 10:45:37,085 - microservice_ia - INFO - Début de l'extraction du JSON
+2025-09-15 10:45:37,086 - microservice_ia - INFO - Le texte nettoyé fait 1196 caractères
+2025-09-15 10:45:37,086 - microservice_ia - INFO - JSON parsé avec succès
+2025-09-15 10:45:37,086 - microservice_ia - INFO - Nomalisation des flashcards
+2025-09-15 10:45:37,086 - microservice_ia - INFO - Nombre de flashcards: 10
+2025-09-15 10:45:37,086 - microservice_ia - INFO - Normalisation terminée: 10 cards valides, 0 cards ignorées
+2025-09-15 10:45:37,087 - microservice_ia - INFO - Extraction et normalisation réussies en 0.00s: 10 flashcards
+2025-09-15 10:45:37,087 - microservice_ia - INFO - Génération des flashcards terminée en 23.23s avec 10 flashcards générées
+2025-09-15 10:47:57,504 - microservice_ia - INFO - Requête pour générer 10 flashcards depuis le cours : https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1757926077157-Passage-du-MCD-au-MLD.pdf
+2025-09-15 10:47:57,504 - microservice_ia - INFO - Téléchargement du cours depuis: https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1757926077157-Passage-du-MCD-au-MLD.pdf
+2025-09-15 10:47:57,504 - microservice_ia - INFO - Téléchargement du cours depuis https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1757926077157-Passage-du-MCD-au-MLD.pdf
+2025-09-15 10:47:58,277 - httpx - INFO - HTTP Request: GET https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1757926077157-Passage-du-MCD-au-MLD.pdf "HTTP/1.1 200 OK"
+2025-09-15 10:47:58,282 - microservice_ia - INFO - le cours fait 77914 caractères
+2025-09-15 10:47:58,282 - microservice_ia - INFO - Téléchargement réussi en 0.78s : 77914 caractères
+2025-09-15 10:47:58,292 - microservice_ia - INFO - Génération des flashcards avec un cours de 77914 caractères et le modèle ia gpt-4o-mini
+2025-09-15 10:47:58,292 - microservice_ia - INFO - Envoi de la requête à OpenAI d'un texte de 77914 caractères
+2025-09-15 10:48:17,394 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-15 10:48:17,395 - microservice_ia - INFO - La réponse de GPT est de 1124 caractères
+2025-09-15 10:48:17,395 - microservice_ia - INFO - Génération OpenAI réussie en 19.10s, réponse de 1124 caractères
+2025-09-15 10:48:17,396 - microservice_ia - INFO - Aperçu de la réponse: {"title":"Cours ML D","themes":"PDF, Document","flashcards":[{"question":"Quel est le type de document ?","answer":"C'est un document PDF."},{"question":"Quel est le producteur du document ?","answer"...
+2025-09-15 10:48:17,396 - microservice_ia - INFO - Début de l'extraction et normalisation du JSON
+2025-09-15 10:48:17,396 - microservice_ia - INFO - Début de l'extraction du JSON
+2025-09-15 10:48:17,397 - microservice_ia - INFO - Le texte nettoyé fait 1124 caractères
+2025-09-15 10:48:17,397 - microservice_ia - INFO - JSON parsé avec succès
+2025-09-15 10:48:17,397 - microservice_ia - INFO - Nomalisation des flashcards
+2025-09-15 10:48:17,397 - microservice_ia - INFO - Nombre de flashcards: 10
+2025-09-15 10:48:17,397 - microservice_ia - INFO - Normalisation terminée: 10 cards valides, 0 cards ignorées
+2025-09-15 10:48:17,398 - microservice_ia - INFO - Extraction et normalisation réussies en 0.00s: 10 flashcards
+2025-09-15 10:48:17,398 - microservice_ia - INFO - Génération des flashcards terminée en 19.89s avec 10 flashcards générées
+2025-09-15 10:50:54,268 - microservice_ia - INFO - OPENAI_MODEL configuré: gpt-4o-mini
+2025-09-15 10:50:54,268 - microservice_ia - INFO - OPENAI_API_KEY présente: Oui
+2025-09-15 10:50:54,268 - microservice_ia - INFO - MICROSERVICE_SHARED_KEY présente: Oui
+2025-09-15 12:06:20,579 - microservice_ia - INFO - Requête pour générer 10 flashcards depuis le cours : https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1757930779570-Passage%20du%20MCD%20au%20MLD.txt
+2025-09-15 12:06:20,586 - microservice_ia - INFO - Téléchargement du cours depuis: https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1757930779570-Passage%20du%20MCD%20au%20MLD.txt
+2025-09-15 12:06:20,588 - microservice_ia - INFO - Téléchargement du cours depuis https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1757930779570-Passage%20du%20MCD%20au%20MLD.txt
+2025-09-15 12:06:22,353 - httpx - INFO - HTTP Request: GET https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1757930779570-Passage%20du%20MCD%20au%20MLD.txt "HTTP/1.1 200 OK"
+2025-09-15 12:06:22,362 - microservice_ia - INFO - le cours fait 6558 caractères
+2025-09-15 12:06:22,364 - microservice_ia - INFO - Téléchargement réussi en 1.78s : 6558 caractères
+2025-09-15 12:06:22,365 - microservice_ia - INFO - Aperçu du contenu : Base de données : Passage du MCD au MLD  Le modèle logique des données   Il est aussi appelé modèle relationnel.  On emploie souvent l’abréviation suivante : MLD : Modèle logique des données  Et q...
+2025-09-15 12:06:22,366 - microservice_ia - INFO - Génération des flashcards avec un cours de 6558 caractères et le modèle ia gpt-4o-mini
+2025-09-15 12:06:22,367 - microservice_ia - INFO - Envoi de la requête à OpenAI d'un texte de 6558 caractères
+2025-09-15 12:06:33,247 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-15 12:06:33,250 - microservice_ia - INFO - La réponse de GPT est de 2248 caractères
+2025-09-15 12:06:33,251 - microservice_ia - INFO - Génération OpenAI réussie en 10.88s, réponse de 2248 caractères
+2025-09-15 12:06:33,252 - microservice_ia - INFO - Aperçu de la réponse: {"title":"Passage du MCD au MLD","themes":"Base de données, Modèle logique, Modèle relationnel","flashcards":[{"question":"Qu'est-ce que le MLD ?","answer":"Le MLD, ou Modèle logique des données, est ...
+2025-09-15 12:06:33,252 - microservice_ia - INFO - Début de l'extraction et normalisation du JSON
+2025-09-15 12:06:33,253 - microservice_ia - INFO - Début de l'extraction du JSON
+2025-09-15 12:06:33,254 - microservice_ia - INFO - Le texte nettoyé fait 2248 caractères
+2025-09-15 12:06:33,255 - microservice_ia - INFO - JSON parsé avec succès
+2025-09-15 12:06:33,255 - microservice_ia - INFO - Nomalisation des flashcards
+2025-09-15 12:06:33,255 - microservice_ia - INFO - Nombre de flashcards: 10
+2025-09-15 12:06:33,256 - microservice_ia - INFO - Normalisation terminée: 10 cards valides, 0 cards ignorées
+2025-09-15 12:06:33,257 - microservice_ia - INFO - Extraction et normalisation réussies en 0.00s: 10 flashcards
+2025-09-15 12:06:33,257 - microservice_ia - INFO - Génération des flashcards terminée en 12.67s avec 10 flashcards générées
+2025-09-16 10:58:14,492 - microservice_ia - INFO - OPENAI_MODEL configuré: gpt-4o-mini
+2025-09-16 10:58:14,493 - microservice_ia - INFO - OPENAI_API_KEY présente: Oui
+2025-09-16 10:58:14,493 - microservice_ia - INFO - MICROSERVICE_SHARED_KEY présente: Oui
+2025-09-16 10:58:31,513 - microservice_ia - INFO - OPENAI_MODEL configuré: gpt-4o-mini
+2025-09-16 10:58:31,514 - microservice_ia - INFO - OPENAI_API_KEY présente: Oui
+2025-09-16 10:58:31,514 - microservice_ia - INFO - MICROSERVICE_SHARED_KEY présente: Oui
+2025-09-16 11:41:27,570 - microservice_ia - INFO - Requête pour générer 10 flashcards depuis le cours : https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1758015686567-Passage%20du%20MCD%20au%20MLD.txt
+2025-09-16 11:41:27,573 - microservice_ia - INFO - Téléchargement du cours depuis: https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1758015686567-Passage%20du%20MCD%20au%20MLD.txt
+2025-09-16 11:41:27,573 - microservice_ia - INFO - Téléchargement du cours depuis https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1758015686567-Passage%20du%20MCD%20au%20MLD.txt
+2025-09-16 11:41:28,455 - httpx - INFO - HTTP Request: GET https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1758015686567-Passage%20du%20MCD%20au%20MLD.txt "HTTP/1.1 200 OK"
+2025-09-16 11:41:28,461 - microservice_ia - INFO - le cours fait 6558 caractères
+2025-09-16 11:41:28,461 - microservice_ia - INFO - Téléchargement réussi en 0.89s : 6558 caractères
+2025-09-16 11:41:28,462 - microservice_ia - INFO - Aperçu du contenu : Base de données : Passage du MCD au MLD  Le modèle logique des données   Il est aussi appelé modèle relationnel.  On emploie souvent l’abréviation suivante : MLD : Modèle logique des données  Et q...
+2025-09-16 11:41:28,462 - microservice_ia - INFO - Génération des flashcards avec un cours de 6558 caractères et le modèle ia gpt-4o-mini
+2025-09-16 11:41:28,462 - microservice_ia - INFO - Envoi de la requête à OpenAI d'un texte de 6558 caractères
+2025-09-16 11:41:38,871 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-16 11:41:38,879 - microservice_ia - INFO - La réponse de GPT est de 2231 caractères
+2025-09-16 11:41:38,879 - microservice_ia - INFO - Génération OpenAI réussie en 10.42s, réponse de 2231 caractères
+2025-09-16 11:41:38,880 - microservice_ia - INFO - Aperçu de la réponse: {"title":"Passage du MCD au MLD","themes":"Base de données, Modèle logique, Modèle relationnel","flashcards":[{"question":"Qu'est-ce que le MLD ?","answer":"Le MLD, ou Modèle logique des données, est ...
+2025-09-16 11:41:38,880 - microservice_ia - INFO - Début de l'extraction et normalisation du JSON
+2025-09-16 11:41:38,880 - microservice_ia - INFO - Début de l'extraction du JSON
+2025-09-16 11:41:38,881 - microservice_ia - INFO - Le texte nettoyé fait 2231 caractères
+2025-09-16 11:41:38,881 - microservice_ia - INFO - JSON parsé avec succès
+2025-09-16 11:41:38,881 - microservice_ia - INFO - Nomalisation des flashcards
+2025-09-16 11:41:38,882 - microservice_ia - INFO - Nombre de flashcards: 10
+2025-09-16 11:41:38,882 - microservice_ia - INFO - Normalisation terminée: 10 cards valides, 0 cards ignorées
+2025-09-16 11:41:38,882 - microservice_ia - INFO - Extraction et normalisation réussies en 0.00s: 10 flashcards
+2025-09-16 11:41:38,882 - microservice_ia - INFO - Génération des flashcards terminée en 11.31s avec 10 flashcards générées
+2025-09-16 11:52:40,964 - microservice_ia - INFO - Requête pour générer 10 flashcards depuis le cours : https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1758016360558-Passage%20du%20MCD%20au%20MLD.txt
+2025-09-16 11:52:40,965 - microservice_ia - INFO - Téléchargement du cours depuis: https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1758016360558-Passage%20du%20MCD%20au%20MLD.txt
+2025-09-16 11:52:40,965 - microservice_ia - INFO - Téléchargement du cours depuis https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1758016360558-Passage%20du%20MCD%20au%20MLD.txt
+2025-09-16 11:52:41,628 - httpx - INFO - HTTP Request: GET https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1758016360558-Passage%20du%20MCD%20au%20MLD.txt "HTTP/1.1 200 OK"
+2025-09-16 11:52:41,629 - microservice_ia - INFO - le cours fait 6558 caractères
+2025-09-16 11:52:41,630 - microservice_ia - INFO - Téléchargement réussi en 0.66s : 6558 caractères
+2025-09-16 11:52:41,630 - microservice_ia - INFO - Aperçu du contenu : Base de données : Passage du MCD au MLD  Le modèle logique des données   Il est aussi appelé modèle relationnel.  On emploie souvent l’abréviation suivante : MLD : Modèle logique des données  Et q...
+2025-09-16 11:52:41,630 - microservice_ia - INFO - Génération des flashcards avec un cours de 6558 caractères et le modèle ia gpt-4o-mini
+2025-09-16 11:52:41,630 - microservice_ia - INFO - Envoi de la requête à OpenAI d'un texte de 6558 caractères
+2025-09-16 11:52:52,204 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-16 11:52:52,211 - microservice_ia - INFO - La réponse de GPT est de 2116 caractères
+2025-09-16 11:52:52,211 - microservice_ia - INFO - Génération OpenAI réussie en 10.58s, réponse de 2116 caractères
+2025-09-16 11:52:52,212 - microservice_ia - INFO - Aperçu de la réponse: {"title":"Passage du MCD au MLD","themes":"Base de données, Modèle logique, Modèle relationnel","flashcards":[{"question":"Qu'est-ce que le MLD ?","answer":"Le MLD, ou Modèle logique des données, est ...
+2025-09-16 11:52:52,212 - microservice_ia - INFO - Début de l'extraction et normalisation du JSON
+2025-09-16 11:52:52,212 - microservice_ia - INFO - Début de l'extraction du JSON
+2025-09-16 11:52:52,212 - microservice_ia - INFO - Le texte nettoyé fait 2116 caractères
+2025-09-16 11:52:52,213 - microservice_ia - INFO - JSON parsé avec succès
+2025-09-16 11:52:52,213 - microservice_ia - INFO - Nomalisation des flashcards
+2025-09-16 11:52:52,213 - microservice_ia - INFO - Nombre de flashcards: 10
+2025-09-16 11:52:52,213 - microservice_ia - INFO - Normalisation terminée: 10 cards valides, 0 cards ignorées
+2025-09-16 11:52:52,213 - microservice_ia - INFO - Extraction et normalisation réussies en 0.00s: 10 flashcards
+2025-09-16 11:52:52,214 - microservice_ia - INFO - Génération des flashcards terminée en 11.25s avec 10 flashcards générées
+2025-09-16 12:17:24,621 - microservice_ia - INFO - Requête pour générer 10 flashcards depuis le cours : https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1758017844199-Passage%20du%20MCD%20au%20MLD.txt
+2025-09-16 12:17:24,622 - microservice_ia - INFO - Téléchargement du cours depuis: https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1758017844199-Passage%20du%20MCD%20au%20MLD.txt
+2025-09-16 12:17:24,623 - microservice_ia - INFO - Téléchargement du cours depuis https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1758017844199-Passage%20du%20MCD%20au%20MLD.txt
+2025-09-16 12:17:26,210 - httpx - INFO - HTTP Request: GET https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1758017844199-Passage%20du%20MCD%20au%20MLD.txt "HTTP/1.1 200 OK"
+2025-09-16 12:17:26,215 - microservice_ia - INFO - le cours fait 6558 caractères
+2025-09-16 12:17:26,216 - microservice_ia - INFO - Téléchargement réussi en 1.59s : 6558 caractères
+2025-09-16 12:17:26,217 - microservice_ia - INFO - Aperçu du contenu : Base de données : Passage du MCD au MLD  Le modèle logique des données   Il est aussi appelé modèle relationnel.  On emploie souvent l’abréviation suivante : MLD : Modèle logique des données  Et q...
+2025-09-16 12:17:26,218 - microservice_ia - INFO - Génération des flashcards avec un cours de 6558 caractères et le modèle ia gpt-4o-mini
+2025-09-16 12:17:26,219 - microservice_ia - INFO - Envoi de la requête à OpenAI d'un texte de 6558 caractères
+2025-09-16 12:17:36,311 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-16 12:17:36,321 - microservice_ia - INFO - La réponse de GPT est de 2202 caractères
+2025-09-16 12:17:36,323 - microservice_ia - INFO - Génération OpenAI réussie en 10.10s, réponse de 2202 caractères
+2025-09-16 12:17:36,324 - microservice_ia - INFO - Aperçu de la réponse: {"title":"Passage du MCD au MLD","themes":"Base de données, Modèle logique, Modèle relationnel","flashcards":[{"question":"Qu'est-ce que le MLD ?","answer":"Le MLD, ou Modèle logique des données, est ...
+2025-09-16 12:17:36,326 - microservice_ia - INFO - Début de l'extraction et normalisation du JSON
+2025-09-16 12:17:36,327 - microservice_ia - INFO - Début de l'extraction du JSON
+2025-09-16 12:17:36,329 - microservice_ia - INFO - Le texte nettoyé fait 2202 caractères
+2025-09-16 12:17:36,330 - microservice_ia - INFO - JSON parsé avec succès
+2025-09-16 12:17:36,331 - microservice_ia - INFO - Nomalisation des flashcards
+2025-09-16 12:17:36,332 - microservice_ia - INFO - Nombre de flashcards: 10
+2025-09-16 12:17:36,333 - microservice_ia - INFO - Normalisation terminée: 10 cards valides, 0 cards ignorées
+2025-09-16 12:17:36,334 - microservice_ia - INFO - Extraction et normalisation réussies en 0.01s: 10 flashcards
+2025-09-16 12:17:36,334 - microservice_ia - INFO - Génération des flashcards terminée en 11.71s avec 10 flashcards générées
+2025-09-16 13:50:57,616 - microservice_ia - INFO - Requête pour générer 10 flashcards depuis le cours : https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1758023457092-Passage%20du%20MCD%20au%20MLD.txt
+2025-09-16 13:50:57,617 - microservice_ia - INFO - Téléchargement du cours depuis: https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1758023457092-Passage%20du%20MCD%20au%20MLD.txt
+2025-09-16 13:50:57,618 - microservice_ia - INFO - Téléchargement du cours depuis https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1758023457092-Passage%20du%20MCD%20au%20MLD.txt
+2025-09-16 13:50:58,937 - httpx - INFO - HTTP Request: GET https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1758023457092-Passage%20du%20MCD%20au%20MLD.txt "HTTP/1.1 200 OK"
+2025-09-16 13:50:58,941 - microservice_ia - INFO - le cours fait 6558 caractères
+2025-09-16 13:50:58,942 - microservice_ia - INFO - Téléchargement réussi en 1.32s : 6558 caractères
+2025-09-16 13:50:58,943 - microservice_ia - INFO - Aperçu du contenu : Base de données : Passage du MCD au MLD  Le modèle logique des données   Il est aussi appelé modèle relationnel.  On emploie souvent l’abréviation suivante : MLD : Modèle logique des données  Et q...
+2025-09-16 13:50:58,944 - microservice_ia - INFO - Génération des flashcards avec un cours de 6558 caractères et le modèle ia gpt-4o-mini
+2025-09-16 13:50:58,945 - microservice_ia - INFO - Envoi de la requête à OpenAI d'un texte de 6558 caractères
+2025-09-16 13:51:08,887 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-16 13:51:08,890 - microservice_ia - INFO - La réponse de GPT est de 2228 caractères
+2025-09-16 13:51:08,892 - microservice_ia - INFO - Génération OpenAI réussie en 9.95s, réponse de 2228 caractères
+2025-09-16 13:51:08,892 - microservice_ia - INFO - Aperçu de la réponse: {"title":"Passage du MCD au MLD","themes":"Base de données, Modèle logique, SGBD","flashcards":[{"question":"Qu'est-ce que le MLD ?","answer":"Le MLD, ou Modèle logique des données, est également appe...
+2025-09-16 13:51:08,893 - microservice_ia - INFO - Début de l'extraction et normalisation du JSON
+2025-09-16 13:51:08,894 - microservice_ia - INFO - Début de l'extraction du JSON
+2025-09-16 13:51:08,895 - microservice_ia - INFO - Le texte nettoyé fait 2228 caractères
+2025-09-16 13:51:08,896 - microservice_ia - INFO - JSON parsé avec succès
+2025-09-16 13:51:08,897 - microservice_ia - INFO - Nomalisation des flashcards
+2025-09-16 13:51:08,897 - microservice_ia - INFO - Nombre de flashcards: 10
+2025-09-16 13:51:08,898 - microservice_ia - INFO - Normalisation terminée: 10 cards valides, 0 cards ignorées
+2025-09-16 13:51:08,899 - microservice_ia - INFO - Extraction et normalisation réussies en 0.00s: 10 flashcards
+2025-09-16 13:51:08,900 - microservice_ia - INFO - Génération des flashcards terminée en 11.28s avec 10 flashcards générées
+2025-09-16 14:02:06,516 - microservice_ia - INFO - Requête pour générer 10 flashcards depuis le cours : https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1758024126110-Passage%20du%20MCD%20au%20MLD.txt
+2025-09-16 14:02:06,517 - microservice_ia - INFO - Téléchargement du cours depuis: https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1758024126110-Passage%20du%20MCD%20au%20MLD.txt
+2025-09-16 14:02:06,518 - microservice_ia - INFO - Téléchargement du cours depuis https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1758024126110-Passage%20du%20MCD%20au%20MLD.txt
+2025-09-16 14:02:07,915 - httpx - INFO - HTTP Request: GET https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1758024126110-Passage%20du%20MCD%20au%20MLD.txt "HTTP/1.1 200 OK"
+2025-09-16 14:02:07,922 - microservice_ia - INFO - le cours fait 6558 caractères
+2025-09-16 14:02:07,924 - microservice_ia - INFO - Téléchargement réussi en 1.41s : 6558 caractères
+2025-09-16 14:02:07,926 - microservice_ia - INFO - Aperçu du contenu : Base de données : Passage du MCD au MLD  Le modèle logique des données   Il est aussi appelé modèle relationnel.  On emploie souvent l’abréviation suivante : MLD : Modèle logique des données  Et q...
+2025-09-16 14:02:07,927 - microservice_ia - INFO - Génération des flashcards avec un cours de 6558 caractères et le modèle ia gpt-4o-mini
+2025-09-16 14:02:07,928 - microservice_ia - INFO - Envoi de la requête à OpenAI d'un texte de 6558 caractères
+2025-09-16 14:02:18,575 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-16 14:02:18,577 - microservice_ia - INFO - La réponse de GPT est de 2215 caractères
+2025-09-16 14:02:18,578 - microservice_ia - INFO - Génération OpenAI réussie en 10.65s, réponse de 2215 caractères
+2025-09-16 14:02:18,579 - microservice_ia - INFO - Aperçu de la réponse: {"title":"Passage du MCD au MLD","themes":"Base de données, Modèle logique, Modèle relationnel","flashcards":[{"question":"Qu'est-ce que le MLD ?","answer":"Le MLD, ou Modèle logique des données, est ...
+2025-09-16 14:02:18,580 - microservice_ia - INFO - Début de l'extraction et normalisation du JSON
+2025-09-16 14:02:18,581 - microservice_ia - INFO - Début de l'extraction du JSON
+2025-09-16 14:02:18,582 - microservice_ia - INFO - Le texte nettoyé fait 2215 caractères
+2025-09-16 14:02:18,582 - microservice_ia - INFO - JSON parsé avec succès
+2025-09-16 14:02:18,583 - microservice_ia - INFO - Nomalisation des flashcards
+2025-09-16 14:02:18,584 - microservice_ia - INFO - Nombre de flashcards: 10
+2025-09-16 14:02:18,584 - microservice_ia - INFO - Normalisation terminée: 10 cards valides, 0 cards ignorées
+2025-09-16 14:02:18,585 - microservice_ia - INFO - Extraction et normalisation réussies en 0.00s: 10 flashcards
+2025-09-16 14:02:18,585 - microservice_ia - INFO - Génération des flashcards terminée en 12.07s avec 10 flashcards générées
+2025-09-16 14:18:52,005 - microservice_ia - INFO - Requête pour générer 10 flashcards depuis le cours : https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1758025131512-Passage%20du%20MCD%20au%20MLD.txt
+2025-09-16 14:18:52,007 - microservice_ia - INFO - Téléchargement du cours depuis: https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1758025131512-Passage%20du%20MCD%20au%20MLD.txt
+2025-09-16 14:18:52,008 - microservice_ia - INFO - Téléchargement du cours depuis https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1758025131512-Passage%20du%20MCD%20au%20MLD.txt
+2025-09-16 14:18:53,375 - httpx - INFO - HTTP Request: GET https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1758025131512-Passage%20du%20MCD%20au%20MLD.txt "HTTP/1.1 200 OK"
+2025-09-16 14:18:53,378 - microservice_ia - INFO - le cours fait 6558 caractères
+2025-09-16 14:18:53,380 - microservice_ia - INFO - Téléchargement réussi en 1.37s : 6558 caractères
+2025-09-16 14:18:53,381 - microservice_ia - INFO - Aperçu du contenu : Base de données : Passage du MCD au MLD  Le modèle logique des données   Il est aussi appelé modèle relationnel.  On emploie souvent l’abréviation suivante : MLD : Modèle logique des données  Et q...
+2025-09-16 14:18:53,382 - microservice_ia - INFO - Génération des flashcards avec un cours de 6558 caractères et le modèle ia gpt-4o-mini
+2025-09-16 14:18:53,383 - microservice_ia - INFO - Envoi de la requête à OpenAI d'un texte de 6558 caractères
+2025-09-16 14:19:02,916 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-16 14:19:02,919 - microservice_ia - INFO - La réponse de GPT est de 2254 caractères
+2025-09-16 14:19:02,920 - microservice_ia - INFO - Génération OpenAI réussie en 9.54s, réponse de 2254 caractères
+2025-09-16 14:19:02,921 - microservice_ia - INFO - Aperçu de la réponse: {"title":"Passage du MCD au MLD","themes":"Base de données, Modèle logique, Modèle relationnel","flashcards":[{"question":"Qu'est-ce que le MLD ?","answer":"Le MLD, ou Modèle logique des données, est ...
+2025-09-16 14:19:02,922 - microservice_ia - INFO - Début de l'extraction et normalisation du JSON
+2025-09-16 14:19:02,923 - microservice_ia - INFO - Début de l'extraction du JSON
+2025-09-16 14:19:02,923 - microservice_ia - INFO - Le texte nettoyé fait 2254 caractères
+2025-09-16 14:19:02,924 - microservice_ia - INFO - JSON parsé avec succès
+2025-09-16 14:19:02,925 - microservice_ia - INFO - Nomalisation des flashcards
+2025-09-16 14:19:02,926 - microservice_ia - INFO - Nombre de flashcards: 10
+2025-09-16 14:19:02,926 - microservice_ia - INFO - Normalisation terminée: 10 cards valides, 0 cards ignorées
+2025-09-16 14:19:02,927 - microservice_ia - INFO - Extraction et normalisation réussies en 0.00s: 10 flashcards
+2025-09-16 14:19:02,928 - microservice_ia - INFO - Génération des flashcards terminée en 10.92s avec 10 flashcards générées
+2025-09-16 14:25:13,816 - microservice_ia - INFO - Requête pour générer 10 flashcards depuis le cours : https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1758025513375-Passage%20du%20MCD%20au%20MLD.txt
+2025-09-16 14:25:13,817 - microservice_ia - INFO - Téléchargement du cours depuis: https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1758025513375-Passage%20du%20MCD%20au%20MLD.txt
+2025-09-16 14:25:13,818 - microservice_ia - INFO - Téléchargement du cours depuis https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1758025513375-Passage%20du%20MCD%20au%20MLD.txt
+2025-09-16 14:25:15,425 - httpx - INFO - HTTP Request: GET https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1758025513375-Passage%20du%20MCD%20au%20MLD.txt "HTTP/1.1 200 OK"
+2025-09-16 14:25:15,428 - microservice_ia - INFO - le cours fait 6558 caractères
+2025-09-16 14:25:15,428 - microservice_ia - INFO - Téléchargement réussi en 1.61s : 6558 caractères
+2025-09-16 14:25:15,429 - microservice_ia - INFO - Aperçu du contenu : Base de données : Passage du MCD au MLD  Le modèle logique des données   Il est aussi appelé modèle relationnel.  On emploie souvent l’abréviation suivante : MLD : Modèle logique des données  Et q...
+2025-09-16 14:25:15,429 - microservice_ia - INFO - Génération des flashcards avec un cours de 6558 caractères et le modèle ia gpt-4o-mini
+2025-09-16 14:25:15,430 - microservice_ia - INFO - Envoi de la requête à OpenAI d'un texte de 6558 caractères
+2025-09-16 14:25:27,925 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-16 14:25:27,928 - microservice_ia - INFO - La réponse de GPT est de 2327 caractères
+2025-09-16 14:25:27,929 - microservice_ia - INFO - Génération OpenAI réussie en 12.50s, réponse de 2327 caractères
+2025-09-16 14:25:27,930 - microservice_ia - INFO - Aperçu de la réponse: {"title":"Passage du MCD au MLD","themes":"Base de données, Modèle logique, Modèle relationnel","flashcards":[{"question":"Qu'est-ce que le MLD ?","answer":"Le MLD, ou Modèle logique des données, est ...
+2025-09-16 14:25:27,931 - microservice_ia - INFO - Début de l'extraction et normalisation du JSON
+2025-09-16 14:25:27,932 - microservice_ia - INFO - Début de l'extraction du JSON
+2025-09-16 14:25:27,933 - microservice_ia - INFO - Le texte nettoyé fait 2327 caractères
+2025-09-16 14:25:27,933 - microservice_ia - INFO - JSON parsé avec succès
+2025-09-16 14:25:27,934 - microservice_ia - INFO - Nomalisation des flashcards
+2025-09-16 14:25:27,934 - microservice_ia - INFO - Nombre de flashcards: 10
+2025-09-16 14:25:27,935 - microservice_ia - INFO - Normalisation terminée: 10 cards valides, 0 cards ignorées
+2025-09-16 14:25:27,936 - microservice_ia - INFO - Extraction et normalisation réussies en 0.00s: 10 flashcards
+2025-09-16 14:25:27,937 - microservice_ia - INFO - Génération des flashcards terminée en 14.12s avec 10 flashcards générées
+2025-09-16 14:36:48,672 - microservice_ia - INFO - Requête pour générer 10 flashcards depuis le cours : https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1758026207964-Passage%20du%20MCD%20au%20MLD.txt
+2025-09-16 14:36:48,673 - microservice_ia - INFO - Téléchargement du cours depuis: https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1758026207964-Passage%20du%20MCD%20au%20MLD.txt
+2025-09-16 14:36:48,673 - microservice_ia - INFO - Téléchargement du cours depuis https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1758026207964-Passage%20du%20MCD%20au%20MLD.txt
+2025-09-16 14:36:50,099 - httpx - INFO - HTTP Request: GET https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1758026207964-Passage%20du%20MCD%20au%20MLD.txt "HTTP/1.1 200 OK"
+2025-09-16 14:36:50,105 - microservice_ia - INFO - le cours fait 6558 caractères
+2025-09-16 14:36:50,107 - microservice_ia - INFO - Téléchargement réussi en 1.43s : 6558 caractères
+2025-09-16 14:36:50,108 - microservice_ia - INFO - Aperçu du contenu : Base de données : Passage du MCD au MLD  Le modèle logique des données   Il est aussi appelé modèle relationnel.  On emploie souvent l’abréviation suivante : MLD : Modèle logique des données  Et q...
+2025-09-16 14:36:50,109 - microservice_ia - INFO - Génération des flashcards avec un cours de 6558 caractères et le modèle ia gpt-4o-mini
+2025-09-16 14:36:50,110 - microservice_ia - INFO - Envoi de la requête à OpenAI d'un texte de 6558 caractères
+2025-09-16 14:37:01,413 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-16 14:37:01,422 - microservice_ia - INFO - La réponse de GPT est de 2103 caractères
+2025-09-16 14:37:01,423 - microservice_ia - INFO - Génération OpenAI réussie en 11.31s, réponse de 2103 caractères
+2025-09-16 14:37:01,424 - microservice_ia - INFO - Aperçu de la réponse: {"title":"Passage du MCD au MLD","themes":"Base de données, Modèle logique, Modèle relationnel","flashcards":[{"question":"Qu'est-ce que le MLD ?","answer":"Le MLD, ou Modèle logique des données, est ...
+2025-09-16 14:37:01,425 - microservice_ia - INFO - Début de l'extraction et normalisation du JSON
+2025-09-16 14:37:01,425 - microservice_ia - INFO - Début de l'extraction du JSON
+2025-09-16 14:37:01,426 - microservice_ia - INFO - Le texte nettoyé fait 2103 caractères
+2025-09-16 14:37:01,427 - microservice_ia - INFO - JSON parsé avec succès
+2025-09-16 14:37:01,427 - microservice_ia - INFO - Nomalisation des flashcards
+2025-09-16 14:37:01,428 - microservice_ia - INFO - Nombre de flashcards: 10
+2025-09-16 14:37:01,428 - microservice_ia - INFO - Normalisation terminée: 10 cards valides, 0 cards ignorées
+2025-09-16 14:37:01,429 - microservice_ia - INFO - Extraction et normalisation réussies en 0.00s: 10 flashcards
+2025-09-16 14:37:01,430 - microservice_ia - INFO - Génération des flashcards terminée en 12.76s avec 10 flashcards générées
+2025-09-16 17:37:21,852 - microservice_ia - INFO - Requête pour générer 10 flashcards depuis le cours : https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1758037041286-Passage%20du%20MCD%20au%20MLD.txt
+2025-09-16 17:37:21,853 - microservice_ia - INFO - Téléchargement du cours depuis: https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1758037041286-Passage%20du%20MCD%20au%20MLD.txt
+2025-09-16 17:37:21,854 - microservice_ia - INFO - Téléchargement du cours depuis https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1758037041286-Passage%20du%20MCD%20au%20MLD.txt
+2025-09-16 17:37:23,178 - httpx - INFO - HTTP Request: GET https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1758037041286-Passage%20du%20MCD%20au%20MLD.txt "HTTP/1.1 200 OK"
+2025-09-16 17:37:23,183 - microservice_ia - INFO - le cours fait 6558 caractères
+2025-09-16 17:37:23,185 - microservice_ia - INFO - Téléchargement réussi en 1.33s : 6558 caractères
+2025-09-16 17:37:23,187 - microservice_ia - INFO - Aperçu du contenu : Base de données : Passage du MCD au MLD  Le modèle logique des données   Il est aussi appelé modèle relationnel.  On emploie souvent l’abréviation suivante : MLD : Modèle logique des données  Et q...
+2025-09-16 17:37:23,188 - microservice_ia - INFO - Génération des flashcards avec un cours de 6558 caractères et le modèle ia gpt-4o-mini
+2025-09-16 17:37:23,189 - microservice_ia - INFO - Envoi de la requête à OpenAI d'un texte de 6558 caractères
+2025-09-16 17:37:35,297 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-16 17:37:35,317 - microservice_ia - INFO - La réponse de GPT est de 2202 caractères
+2025-09-16 17:37:35,318 - microservice_ia - INFO - Génération OpenAI réussie en 12.13s, réponse de 2202 caractères
+2025-09-16 17:37:35,318 - microservice_ia - INFO - Aperçu de la réponse: {"title":"Passage du MCD au MLD","themes":"Base de données, Modèle logique, Modèle relationnel","flashcards":[{"question":"Qu'est-ce que le MLD ?","answer":"Le MLD, ou Modèle logique des données, est ...
+2025-09-16 17:37:35,318 - microservice_ia - INFO - Début de l'extraction et normalisation du JSON
+2025-09-16 17:37:35,319 - microservice_ia - INFO - Début de l'extraction du JSON
+2025-09-16 17:37:35,319 - microservice_ia - INFO - Le texte nettoyé fait 2202 caractères
+2025-09-16 17:37:35,319 - microservice_ia - INFO - JSON parsé avec succès
+2025-09-16 17:37:35,320 - microservice_ia - INFO - Nomalisation des flashcards
+2025-09-16 17:37:35,320 - microservice_ia - INFO - Nombre de flashcards: 10
+2025-09-16 17:37:35,320 - microservice_ia - INFO - Normalisation terminée: 10 cards valides, 0 cards ignorées
+2025-09-16 17:37:35,321 - microservice_ia - INFO - Extraction et normalisation réussies en 0.00s: 10 flashcards
+2025-09-16 17:37:35,321 - microservice_ia - INFO - Génération des flashcards terminée en 13.47s avec 10 flashcards générées
+2025-09-16 18:23:25,726 - microservice_ia - INFO - Requête pour générer 10 flashcards depuis le cours : https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1758039805169-Passage%20du%20MCD%20au%20MLD.txt
+2025-09-16 18:23:25,726 - microservice_ia - INFO - Téléchargement du cours depuis: https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1758039805169-Passage%20du%20MCD%20au%20MLD.txt
+2025-09-16 18:23:25,727 - microservice_ia - INFO - Téléchargement du cours depuis https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1758039805169-Passage%20du%20MCD%20au%20MLD.txt
+2025-09-16 18:23:27,048 - httpx - INFO - HTTP Request: GET https://yydyzkwmmyhlvhlrhsbx.supabase.co/storage/v1/object/public/courses/1758039805169-Passage%20du%20MCD%20au%20MLD.txt "HTTP/1.1 200 OK"
+2025-09-16 18:23:27,053 - microservice_ia - INFO - le cours fait 6558 caractères
+2025-09-16 18:23:27,054 - microservice_ia - INFO - Téléchargement réussi en 1.33s : 6558 caractères
+2025-09-16 18:23:27,055 - microservice_ia - INFO - Aperçu du contenu : Base de données : Passage du MCD au MLD  Le modèle logique des données   Il est aussi appelé modèle relationnel.  On emploie souvent l’abréviation suivante : MLD : Modèle logique des données  Et q...
+2025-09-16 18:23:27,056 - microservice_ia - INFO - Génération des flashcards avec un cours de 6558 caractères et le modèle ia gpt-4o-mini
+2025-09-16 18:23:27,057 - microservice_ia - INFO - Envoi de la requête à OpenAI d'un texte de 6558 caractères
+2025-09-16 18:23:41,437 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-16 18:23:41,442 - microservice_ia - INFO - La réponse de GPT est de 2278 caractères
+2025-09-16 18:23:41,443 - microservice_ia - INFO - Génération OpenAI réussie en 14.39s, réponse de 2278 caractères
+2025-09-16 18:23:41,444 - microservice_ia - INFO - Aperçu de la réponse: {"title":"Passage du MCD au MLD","themes":"Base de données, Modèle logique, Modèle relationnel","flashcards":[{"question":"Qu'est-ce que le MLD ?","answer":"Le MLD, ou Modèle logique des données, est ...
+2025-09-16 18:23:41,445 - microservice_ia - INFO - Début de l'extraction et normalisation du JSON
+2025-09-16 18:23:41,446 - microservice_ia - INFO - Début de l'extraction du JSON
+2025-09-16 18:23:41,447 - microservice_ia - INFO - Le texte nettoyé fait 2278 caractères
+2025-09-16 18:23:41,448 - microservice_ia - INFO - JSON parsé avec succès
+2025-09-16 18:23:41,448 - microservice_ia - INFO - Nomalisation des flashcards
+2025-09-16 18:23:41,449 - microservice_ia - INFO - Nombre de flashcards: 10
+2025-09-16 18:23:41,450 - microservice_ia - INFO - Normalisation terminée: 10 cards valides, 0 cards ignorées
+2025-09-16 18:23:41,450 - microservice_ia - INFO - Extraction et normalisation réussies en 0.00s: 10 flashcards
+2025-09-16 18:23:41,451 - microservice_ia - INFO - Génération des flashcards terminée en 15.72s avec 10 flashcards générées
+2025-09-23 10:56:51,567 - microservice_ia - INFO - OPENAI_MODEL configuré: gpt-4o-mini
+2025-09-23 10:56:51,568 - microservice_ia - INFO - OPENAI_API_KEY présente: Oui
+2025-09-23 10:56:51,568 - microservice_ia - INFO - MICROSERVICE_SHARED_KEY présente: Oui
+2025-09-25 13:37:12,515 - microservice_ia - INFO - OPENAI_MODEL configuré: gpt-4o-mini
+2025-09-25 13:37:12,516 - microservice_ia - INFO - OPENAI_API_KEY présente: Oui
+2025-09-25 13:37:12,516 - microservice_ia - INFO - MICROSERVICE_SHARED_KEY présente: Oui
+2025-10-09 20:36:47,979 - microservice_ia - INFO - OPENAI_MODEL configuré: gpt-4o-mini
+2025-10-09 20:36:47,979 - microservice_ia - INFO - OPENAI_API_KEY présente: Oui
+2025-10-09 20:36:47,979 - microservice_ia - INFO - MICROSERVICE_SHARED_KEY présente: Oui
+2025-10-14 14:50:04,937 - microservice_ia - INFO - OPENAI_MODEL configuré: gpt-4o-mini
+2025-10-14 14:50:04,938 - microservice_ia - INFO - OPENAI_API_KEY présente: Oui
+2025-10-14 14:50:04,938 - microservice_ia - INFO - MICROSERVICE_SHARED_KEY présente: Oui
+2025-10-14 14:52:11,297 - microservice_ia - INFO - OPENAI_MODEL configuré: gpt-4o-mini
+2025-10-14 14:52:11,298 - microservice_ia - INFO - OPENAI_API_KEY présente: Oui
+2025-10-14 14:52:11,298 - microservice_ia - INFO - MICROSERVICE_SHARED_KEY présente: Oui
+2025-10-14 14:53:37,431 - microservice_ia - INFO - OPENAI_MODEL configuré: gpt-4o-mini
+2025-10-14 14:53:37,431 - microservice_ia - INFO - OPENAI_API_KEY présente: Oui
+2025-10-14 14:53:37,432 - microservice_ia - INFO - MICROSERVICE_SHARED_KEY présente: Oui
