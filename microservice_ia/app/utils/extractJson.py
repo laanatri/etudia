@@ -3,13 +3,14 @@ import re
 import logging
 
 from typing import Dict, Any
-from validateCapsulesJson import validate_capsules_json
+from .validateCapsulesJson import validate_capsules_json
 from ..models.capsules_request_models import CapsulesGenerateRequest
+from ..models.capsules_output_models import CapsulesOutput
 
 logger = logging.getLogger("microservice_ia")
 
 
-def extract_json(text: str, payload: CapsulesGenerateRequest) -> Dict[str, Any]:
+def extract_json(text: str, payload: CapsulesGenerateRequest) -> CapsulesOutput:
 
     logger.info("Début de l'extraction du JSON")
 
