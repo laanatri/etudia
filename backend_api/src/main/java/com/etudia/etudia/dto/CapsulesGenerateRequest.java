@@ -1,28 +1,35 @@
 package com.etudia.etudia.dto;
 
+import lombok.Data;
+
+@Data
 public class CapsulesGenerateRequest {
 
     private String course_url;
     private CapsulesConfig capsules;
 
+    @Data
     public static class CapsulesConfig {
         private BlocConfig bloc;
         private SummaryConfig summary;
         private QuizConfig quiz;
     }
 
+    @Data
     public static class BlocConfig {
-        public boolean create;
-        public Integer number;
+        private boolean create;
+        private Integer number;
     }
 
+    @Data
     public static class SummaryConfig {
-        public boolean create;
+        private boolean create;
     }
 
+    @Data
     public static class QuizConfig {
-        public boolean create;
-        public Integer number;
+        private boolean create;
+        private Integer number;
     }
 
 }
