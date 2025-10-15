@@ -31,6 +31,11 @@ public class BlocServiceImpl implements BlocService {
     }
 
     @Override
+    List<Bloc> getFavoriteBlocsByUserId(Integer userId) {
+        return blocRepository.findByCourseUserIdAndFavoriteTrue(userId);
+    };
+
+    @Override
     @Transactional
     public Boolean saveBloc(CapsulesCreateRequest capsulesCreateRequest) {
         if (!capsulesCreateRequest.capsules.flashcard.create) {

@@ -1,35 +1,43 @@
 package com.etudia.etudia.dto;
 
+import lombok.Data;
+
+@Data
 public class CapsulesCreateRequest {
 
-    public CourseInfos course;
-    public CapsulesInfos capsules;
-    public Integer user_id;
-    public Integer course_id;
+    private CourseInfos course;
+    private CapsulesInfos capsules;
+    private Integer user_id;
+    private Integer course_id;
 
+    @Data
     public static class CourseInfos {
-        public String name;
-        public String courseUrl;
+        private String name;
+        private String courseUrl;
     }
 
+    @Data
     public static class CapsulesInfos {
-        public FlashcardCapsule flashcard;
-        public SummaryCapsule summary;
-        public QuizzCapsule quizz;
+        private FlashcardCapsule flashcard;
+        private SummaryCapsule summary;
+        private QuizCapsule quiz;
     }
 
+    @Data
     public static class FlashcardCapsule {
-        public boolean create;
-        public Integer number;
+        private boolean create;
+        private Integer number;
     }
 
+    @Data
     public static class SummaryCapsule {
-        public boolean create;
+        private boolean create;
     }
 
-    public static class QuizzCapsule {
-        public boolean create;
-        public Integer number;
+    @Data
+    public static class QuizCapsule {
+        private boolean create;
+        private Integer number;
     }
 
 }

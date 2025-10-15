@@ -9,6 +9,8 @@ public interface BlocService {
 
     List<Bloc> getBlocByUserId(Integer userId);
 
+    List<Bloc> getFavoriteBlocsByUserId(Integer userId);
+
     Boolean saveBloc(CapsulesCreateRequest capsulesCreateRequest);
 
 }
