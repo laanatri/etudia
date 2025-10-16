@@ -46,7 +46,7 @@ async def openai_generate_capsules(course_text: str, request: CapsulesGenerateRe
             resp.raise_for_status()
             data = resp.json()
 
-            generation_time = time.ime() - start_time
+            generation_time = time.time() - start_time
 
             # {
             #   "id": "...",
