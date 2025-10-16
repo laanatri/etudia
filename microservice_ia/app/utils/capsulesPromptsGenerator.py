@@ -49,20 +49,23 @@ def user_prompt_generator(course_text: str, payload: CapsulesGenerateRequest) ->
         specs_capsules.append(f"\"flashcards\" = tableau de {payload.capsules.bloc.number} objets {{\"question\":\"...\",\"answer\":\"...\"}} (question ≤ 150 caractères, answer ≤ 500 caractères)")
     if payload.capsules.summary.create:
         specs_capsules.append("""
-                                \"summary\" = résumé structuré adapté à la longueur du cours en JSX avec classes CSS :
+                                \"summary\" = résumé DÉTAILLÉ du cours (MINIMUM 1000 caractères, MAXIMUM 5000 caractères).
+                                Le résumé doit couvrir les points principaux du cours de manière claire et structurée.
+                                Adapte le contenu selon le type de cours (concepts, définitions, méthodes, exemples, etc.).
+                                Format JSX avec classes CSS :
                                 <span className="bold">texte gras</span>, 
                                 <span className="italic">texte italique</span>, 
                                 <span className="highlight">texte surligné</span>, 
                                 <span className="underline">texte souligné</span>, 
                                 <ul className="bullet-list"><li>points importants</li></ul>, 
                                 <span className="keyword">mots-clés</span>
-                                (≤ 5000 caractères)
                             """)
     if payload.capsules.quiz.create:
         specs_capsules.append(f"\"quiz\" = tableau de {payload.capsules.quiz.number} objets {{\"question\":\"...\",\"answers\":[\"...\",\"...\",\"...\",\"...\"],\"correct_answer\":...}} (question ≤ 120 caractères, answers ≤ 80 caractères chacune)")
 
     user_prompt = f"""
         Génère exactement {', '.join(list_capsules)} à partir du texte ci‑dessous. 
+        Pour le résumé : sois complet et informatif, couvre les éléments importants du cours.
         RÉPONDS SEULEMENT avec UN OBJET JSON EXACTEMENT comme indiqué ci‑dessus, rien d'autre. 
         Champs obligatoires : 
         "title" (≤ 100 caractères), 
