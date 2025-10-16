@@ -1,20 +1,40 @@
-from pydantic import BaseModel, Field, HttpUrl, field_validator
-from typing import Annotated
+from pydantic import BaseModel, Field, HttpUrl, field_validator, model_validator
+from typing import Annotated, Optional
 
 # BaseModel : modéle de donnée avec validation auto
 # lève une Exception si non conforme
 
 class BlocConfig(BaseModel):
     create: bool
-    number: Annotated[int, Field(ge=1, le=50)] = 20
+    number: Optional[int] = Field(default=20, ge=0, le=50)
 
+    @model_validator(mode='after')
+    def validate_create_and_number(self):
+        if self.create is True and (self.number is None or self.number <= 0):
+            raise ValueError("Si create=True, number doit être > 0")
+        
+        if self.create is False and self.number is not None and self.number > 0:
+            raise ValueError("Si create=False, number doit être 0 ou None")
+        
+        return self
+    
 class SummaryConfig(BaseModel):
     create: bool
 
 class QuizConfig(BaseModel):
     create: bool
-    number: Annotated[int, Field(ge=1, le=50)] = 20
+    number: Optional[int] = Field(default=20, ge=0, le=50)
 
+    @model_validator(mode='after')
+    def validate_create_and_number(self):
+        if self.create is True and (self.number is None or self.number <= 0):
+            raise ValueError("Si create=True, number doit être > 0")
+        
+        if self.create is False and self.number is not None and self.number > 0:
+            raise ValueError("Si create=False, number doit être 0 ou None")
+        
+        return self
+    
 class CapsulesConfig(BaseModel):
     bloc: BlocConfig
     summary: SummaryConfig
