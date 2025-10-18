@@ -3,7 +3,7 @@ CREATE TABLE summaries
     id         serial,
     name       varchar(255) not null,
     themes     varchar(255),
-    summaryUrl varchar(255) not null,
+    summary_url varchar(255) not null,
     course_id  integer      not null,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     primary key (id),
