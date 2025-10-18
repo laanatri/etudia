@@ -1,41 +1,43 @@
 package com.etudia.etudia.service;
 
-import com.etudia.etudia.dto.FlashcardGenerateRequest;
-import com.etudia.etudia.dto.FlashcardGenerateResponse;
+import com.etudia.etudia.dto.CapsulesGenerateRequest;
+import com.etudia.etudia.dto.CapsulesGenerateResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
 @Service
-@RequiredArgsConstructor
 @Slf4j
 public class AIServiceImpl implements AIService {
 
     private final WebClient webClient;
 
-    @Override
-    public FlashcardGenerateResponse generateFlashcards(String courseUrl, int count) {
+    public AIServiceImpl(@Qualifier("capsulesWebClient") WebClient webClient) {
+        this.webClient = webClient;
+    }
 
-        FlashcardGenerateRequest request = new FlashcardGenerateRequest(courseUrl, count);
+    @Override
+    public CapsulesGenerateResponse generateCapsules(CapsulesGenerateRequest capsulesGenerateRequest) {
 
         try  {
 
-            FlashcardGenerateResponse response = webClient.post()
-                    .uri("/generate/flashcards")
-                    .bodyValue(request)
+            CapsulesGenerateResponse capsulesGenerateResponse = webClient.post()
+                    .uri("/generate/capsules")
+                    .bodyValue(capsulesGenerateRequest)
                     .retrieve()
-                    .bodyToMono(FlashcardGenerateResponse.class)
+                    .bodyToMono(CapsulesGenerateResponse.class)
                     .block();
 
-            if (response != null) {
-                return response;
+            if (capsulesGenerateResponse != null) {
+                return capsulesGenerateResponse;
             } else {
-                throw new RuntimeException("Échec de la génération des flashcards");
+                throw new RuntimeException("Échec de la génération des capsules");
             }
 
         } catch (Exception e) {
-            throw new RuntimeException("Échec de la génération des flashcards", e);
+            throw new RuntimeException("Échec de la génération des capsules", e);
         }
     }
 }
