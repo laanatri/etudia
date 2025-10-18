@@ -27,7 +27,8 @@ public abstract class Capsule {
     @CreationTimestamp
     private OffsetDateTime createdAt;
 
-    @Column(nullable = false)
+    @Column(name = "is_favorite",nullable = false)
+    @Builder.Default
     private Boolean isFavorite = false;
 
     @ManyToOne(fetch = FetchType.LAZY)

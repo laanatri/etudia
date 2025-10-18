@@ -1,32 +1,24 @@
 import httpx
 import logging
+import time
+
+from typing import List
+
+from ..models.capsules_request_models import CapsulesGenerateRequest
+from .capsulesPromptsGenerator import system_prompt_generator, user_prompt_generator
 
 logger = logging.getLogger("microservice_ia")
 
-async def openai_generate_json(course_text: str, card_count: int, openai_model: str, openai_api_key: str, max_tokens: int = 1500, temperature: float = 0) -> str:
+async def openai_generate_capsules(course_text: str, request: CapsulesGenerateRequest, openai_model: str, openai_api_key: str, max_tokens: int = 1500, temperature: float = 0) -> dict:
     
     # Prompts
+
     # Comportement de l'IA
-    system_prompt = (
-        "Tu es un générateur de flashcards. UTILISE UNIQUEMENT le contenu fourni. "
-        "RÉPONDS STRICTEMENT et UNIQUEMENT par UN OBJET JSON BRUT, sans préface, sans explication, "
-        "sans code fence (```) et sans guillemets entourant l'objet entier. Ne pas échapper les guillemets internes. "
-        "Format EXACT attendu : "
-        "{\"title\":\"...\",\"themes\":\"thème1, thème2, ...\",\"flashcards\":[{\"question\":\"...\",\"answer\":\"...\"}, ...]}. "
-        "Ne renvoie rien d'autre."
-    )
+
+    system_prompt: str = system_prompt_generator(request)
 
     # Tache à faire
-    user_prompt = f"""Génère exactement {card_count} flashcards à partir du texte ci‑dessous. 
-        RÉPONDS SEULEMENT avec UN OBJET JSON EXACTEMENT comme indiqué ci‑dessus, rien d'autre. 
-        Champs obligatoires : 
-        "title" (≤ 100 caractères), 
-        "themes" = chaîne de 1 à 3 thèmes séparés par des virgules, 
-        "flashcards" = tableau de {{"question":"...","answer":"..."}} (question ≤ 200 caractères, answer ≤ 1000 caractères). 
-        Ne pas utiliser de markdown, pas de backticks, pas d'explications, pas d'exemples supplémentaires. 
-        Voici le texte du cours :
-
-        {course_text}"""
+    user_prompt: str = user_prompt_generator(course_text, request)
 
     payload = {
         "model": openai_model,
@@ -46,11 +38,15 @@ async def openai_generate_json(course_text: str, card_count: int, openai_model: 
     try :
         logger.info(f"Envoi de la requête à OpenAI d'un texte de {len(course_text)} caractères")
 
+        start_time = time.time()
+
         # Requete vers OpenAI
         async with httpx.AsyncClient(timeout=120) as client:
             resp = await client.post("https://api.openai.com/v1/chat/completions", json=payload, headers=headers)
             resp.raise_for_status()
             data = resp.json()
+
+            generation_time = time.time() - start_time
 
             # {
             #   "id": "...",
@@ -69,7 +65,14 @@ async def openai_generate_json(course_text: str, card_count: int, openai_model: 
             content = data["choices"][0]["message"]["content"]
             logger.info(f"La réponse de GPT est de {len(content)} caractères")
 
-            return content
+            meta = data["usage"]
+
+            return {
+                "content": content,
+                "prompt_tokens": meta["prompt_tokens"],
+                "completion_tokens": meta["completion_tokens"],
+                "generation_time": generation_time
+            }
         
     # Status erreur de GPT
     except httpx.HTTPStatusError as error:

@@ -1,8 +1,10 @@
 package com.etudia.etudia.service;
 
-import com.etudia.etudia.dto.FlashcardGenerateResponse;
+import com.etudia.etudia.dto.CapsulesGenerateRequest;
+import com.etudia.etudia.dto.CapsulesGenerateResponse;
 
 public interface AIService {
 
-    public FlashcardGenerateResponse generateFlashcards(String courseUrl, int count);
+    public CapsulesGenerateResponse generateCapsules(CapsulesGenerateRequest capsulesGenerateRequest);
+
 }
