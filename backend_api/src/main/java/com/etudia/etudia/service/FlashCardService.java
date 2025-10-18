@@ -1,8 +1,8 @@
 package com.etudia.etudia.service;
 
+import com.etudia.etudia.dto.CapsulesGenerateResponse;
 import com.etudia.etudia.model.Bloc;
 import com.etudia.etudia.model.FlashCard;
-import com.etudia.etudia.dto.FlashcardGenerateResponse;
 
 import java.util.List;
 
@@ -10,6 +10,6 @@ public interface FlashCardService {
 
     List<FlashCard> getFlashCardsByBlocId(Integer blocId);
 
-    boolean saveFlashCards(FlashcardGenerateResponse response, Bloc bloc);
+    boolean saveFlashCards(List<CapsulesGenerateResponse.FlashcardDto> flashcards, Bloc bloc);
 
 }

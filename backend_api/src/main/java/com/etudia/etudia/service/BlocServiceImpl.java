@@ -1,9 +1,8 @@
 package com.etudia.etudia.service;
 
-import com.etudia.etudia.dto.CapsulesCreateRequest;
+import com.etudia.etudia.dto.CapsulesGenerateResponse;
 import com.etudia.etudia.model.Bloc;
 import com.etudia.etudia.model.Course;
-import com.etudia.etudia.dto.FlashcardGenerateResponse;
 import com.etudia.etudia.model.User;
 import com.etudia.etudia.repository.BlocRepository;
 import jakarta.transaction.Transactional;
@@ -18,12 +17,8 @@ import java.util.List;
 @Slf4j
 public class BlocServiceImpl implements BlocService {
 
-    private final AIService aIService;
     private final BlocRepository blocRepository;
-    private final UserServiceImpl userServiceImpl;
-    private final CourseServiceImpl courseServiceImpl;
     private final FlashCardService flashCardService;
-
 
     @Override
     public List<Bloc> getBlocByUserId(Integer userId) {
@@ -31,25 +26,15 @@ public class BlocServiceImpl implements BlocService {
     }
 
     @Override
-    List<Bloc> getFavoriteBlocsByUserId(Integer userId) {
+    public List<Bloc> getFavoriteBlocsByUserId(Integer userId) {
         return blocRepository.findByCourseUserIdAndFavoriteTrue(userId);
     };
 
     @Override
     @Transactional
-    public Boolean saveBloc(CapsulesCreateRequest capsulesCreateRequest) {
-        if (!capsulesCreateRequest.capsules.flashcard.create) {
-            return false;
-        }
+    public Boolean saveBloc(User user, Course course, CapsulesGenerateResponse aiResponse) {
 
         try {
-            FlashcardGenerateResponse aiResponse = aIService.generateFlashcards(capsulesCreateRequest.course.courseUrl, capsulesCreateRequest.capsules.flashcard.number);
-            if (aiResponse.getFlashcards() == null || aiResponse.getFlashcards().isEmpty()) {
-                return false;
-            }
-
-            User currentUser = userServiceImpl.readUser(capsulesCreateRequest.user_id);
-            Course course = courseServiceImpl.readCourse(capsulesCreateRequest.course_id);
 
             Bloc newBloc = Bloc.builder()
                             .name(aiResponse.getTitle() != null ? aiResponse.getTitle() : "Bloc de flashcards")
@@ -59,10 +44,11 @@ public class BlocServiceImpl implements BlocService {
 
             Bloc savedBloc = blocRepository.save(newBloc);
 
-            boolean flashcardsSuccess = flashCardService.saveFlashCards(aiResponse, savedBloc);
+            boolean flashcardsSuccess = flashCardService.saveFlashCards(aiResponse.getCapsules().getFlashcards(), savedBloc);
 
             if (!flashcardsSuccess) {
                 log.error("La sauvegarde des flashcards a échoué.");
+                throw new RuntimeException("Erreur lors de la sauvegarde des flashcards");
             }
 
             return true;
@@ -70,6 +56,7 @@ public class BlocServiceImpl implements BlocService {
             log.error("Erreur à la création des flashcards :{}", e.getMessage());
             return false;
         }
+
     }
 
 }

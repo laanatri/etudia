@@ -1,9 +1,8 @@
 package com.etudia.etudia.service;
 
+import com.etudia.etudia.dto.CapsulesGenerateResponse;
 import com.etudia.etudia.model.Bloc;
 import com.etudia.etudia.model.FlashCard;
-import com.etudia.etudia.dto.FlashcardGenerateResponse;
-import com.etudia.etudia.repository.BlocRepository;
 import com.etudia.etudia.repository.FlashCardRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
@@ -12,14 +11,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @Service
 @AllArgsConstructor
 @Slf4j
 public class FlashCardServiceImpl implements FlashCardService {
 
-    private final BlocRepository blocRepository;
     private FlashCardRepository flashCardRepository;
 
     @Override
@@ -29,28 +26,32 @@ public class FlashCardServiceImpl implements FlashCardService {
 
     @Override
     @Transactional
-    public boolean saveFlashCards(FlashcardGenerateResponse response, Bloc bloc) {
-        if (response == null || response.getFlashcards() == null || response.getFlashcards().isEmpty()) {
+    public boolean saveFlashCards(List<CapsulesGenerateResponse.FlashcardDto> flashcards, Bloc bloc) {
+
+        if (flashcards == null || flashcards.isEmpty() || bloc == null) {
+            log.warn("pas de flashcards à sauvegarder ou bloc est null");
             return false;
         }
 
         try {
 
-            List<FlashCard> flashCards = new ArrayList<>();
+            List<FlashCard> flashCardsToSave = new ArrayList<>();
 
-            for (Map<String, String> cardData : response.getFlashcards()) {
+            for (CapsulesGenerateResponse.FlashcardDto cardData : flashcards) {
                 FlashCard flashCard = new FlashCard();
-                flashCard.setTitle(cardData.get("question"));
-                flashCard.setContent(cardData.get("answer"));
+                flashCard.setTitle(cardData.getQuestion());
+                flashCard.setContent(cardData.getAnswer());
                 flashCard.setBloc(bloc);
-                flashCards.add(flashCard);
+                flashCardsToSave.add(flashCard);
             }
 
-            flashCardRepository.saveAll(flashCards);
+            flashCardRepository.saveAll(flashCardsToSave);
+            log.info("flashcards bien sauvegardées");
             return true;
         } catch (Exception e) {
+            log.error("Erreur lors de la sauvegarde des flashcards", e.getMessage());
             return false;
         }
-    };
+    }
 
 }
