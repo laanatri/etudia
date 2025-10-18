@@ -1,5 +1,6 @@
 package com.etudia.etudia.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import java.util.List;
@@ -33,10 +34,12 @@ public class CapsulesGenerateResponse {
 
         private String question;
         private List<String> answers;
+        @JsonProperty("correct_answer")
         private Integer correctAnswer;
 
     }
 
+    @Data
     public static class MetaDatas {
 
         private Double processTime;
