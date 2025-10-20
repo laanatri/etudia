@@ -1,0 +1,31 @@
+name: CI Microservice IA Python
+
+on:
+  push:
+    paths:
+      - 'microservice_ia/**'
+      - '.github/workflows/ci-microservice-ia.yml'
+  pull_request:
+    paths:
+      - 'microservice_ia/**'
+      - '.github/workflows/ci-microservice-ia.yml'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: microservice_ia
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.13'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run pytest
+        run: |
+          pytest --maxfail=1 --disable-warnings -v
