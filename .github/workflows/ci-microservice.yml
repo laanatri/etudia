@@ -4,11 +4,11 @@ on:
   push:
     paths:
       - 'microservice_ia/**'
-      - '.github/workflows/ci-microservice-ia.yml'
+      - '.github/workflows/ci-microservice.yml'
   pull_request:
     paths:
       - 'microservice_ia/**'
-      - '.github/workflows/ci-microservice-ia.yml'
+      - '.github/workflows/ci-microservice.yml'
 
 jobs:
   test:
