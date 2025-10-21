@@ -28,7 +28,7 @@ logger = logging.getLogger("microservice_ia")
 
 load_dotenv()
 
-# Variables d'env
+# Variables d'environnement
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 MICROSERVICE_SHARED_KEY = os.getenv("MICROSERVICE_SHARED_KEY")
 OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")

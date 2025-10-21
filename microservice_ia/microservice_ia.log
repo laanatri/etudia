@@ -222,3 +222,6 @@ UnboundLocalError: cannot access local variable 'parsed_json' where it is not as
 2025-10-18 20:22:05,744 - microservice_ia - INFO - Extraction et normalisation réussies en 0.01s
 2025-10-18 20:22:05,745 - microservice_ia - INFO - Génération des capsules terminée en 16.51s
 2025-10-18 20:22:05,745 - microservice_ia - INFO - Générées : 10 flashcards, 10 questions quiz et résumé de 1573 charactères
+2025-10-21 11:51:52,432 - microservice_ia - INFO - OPENAI_MODEL configuré: gpt-4o-mini
+2025-10-21 11:51:52,433 - microservice_ia - INFO - OPENAI_API_KEY présente: Oui
+2025-10-21 11:51:52,433 - microservice_ia - INFO - MICROSERVICE_SHARED_KEY présente: Oui
