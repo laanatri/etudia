@@ -1,6 +1,6 @@
 package com.etudia.etudia.controller;
 
-import com.etudia.etudia.model.FlashCard;
+import com.etudia.etudia.dto.FlashCardDto;
 import com.etudia.etudia.service.FlashCardService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,10 +15,10 @@ import java.util.List;
 @AllArgsConstructor
 public class FlashCardController {
 
-    private FlashCardService flashCardService;
+    private final FlashCardService flashCardService;
 
-    @GetMapping("/read/{bloc_id}")
-    public List<FlashCard> findByBloc_id(@PathVariable("bloc_id") Integer bloc_id) {
+    @GetMapping("/bloc/{bloc_id}")
+    public List<FlashCardDto> findByBloc_id(@PathVariable("bloc_id") Integer bloc_id) {
         return flashCardService.getFlashCardsByBlocId(bloc_id);
     }
 
