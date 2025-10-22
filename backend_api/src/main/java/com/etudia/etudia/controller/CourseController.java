@@ -1,5 +1,6 @@
 package com.etudia.etudia.controller;
 
+import com.etudia.etudia.dto.CourseDto;
 import com.etudia.etudia.model.Course;
 import com.etudia.etudia.service.CourseService;
 import lombok.AllArgsConstructor;
@@ -19,9 +20,14 @@ public class CourseController {
         return courseService.saveCourse(course);
     }
 
-    @GetMapping("/read/{user_id}")
-    public List<Course> getCourses(@PathVariable Integer user_id) {
+    @GetMapping("/user/{user_id}")
+    public List<CourseDto> getCourses(@PathVariable Integer user_id) {
         return courseService.getCoursesByUserId(user_id);
+    }
+
+    @GetMapping("/read/{course_id}")
+    public CourseDto getCourse(@PathVariable Integer course_id) {
+        return courseService.readCourse(course_id);
     }
 
 }
