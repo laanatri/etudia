@@ -1,13 +1,14 @@
 package com.etudia.etudia.service;
 
 import com.etudia.etudia.dto.CapsulesGenerateResponse;
+import com.etudia.etudia.dto.FlashCardDto;
 import com.etudia.etudia.model.Bloc;
 import com.etudia.etudia.model.FlashCard;
 import com.etudia.etudia.repository.FlashCardRepository;
-import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,11 +18,24 @@ import java.util.List;
 @Slf4j
 public class FlashCardServiceImpl implements FlashCardService {
 
-    private FlashCardRepository flashCardRepository;
+    private final FlashCardRepository flashCardRepository;
 
     @Override
-    public List<FlashCard> getFlashCardsByBlocId(Integer blocId) {
-        return flashCardRepository.findByBlocId(blocId);
+    @Transactional(readOnly = true)
+    public List<FlashCardDto> getFlashCardsByBlocId(Integer blocId) {
+        List<FlashCard> flashcards = flashCardRepository.findByBlocId(blocId);
+        if (flashcards == null || flashcards.isEmpty()) {
+            log.info("Aucune flashcard trouvée pour le bloc id: {}", blocId);
+            return new ArrayList<>();
+        }
+        return flashcards.stream().map(flashcard -> {
+            FlashCardDto dto = new FlashCardDto();
+            dto.setId(flashcard.getId());
+            dto.setQuestion(flashcard.getTitle());
+            dto.setAnswer(flashcard.getContent());
+            dto.setBlocId(flashcard.getBloc() != null ? flashcard.getBloc().getId() : null);
+            return dto;
+        }).toList();
     }
 
     @Override

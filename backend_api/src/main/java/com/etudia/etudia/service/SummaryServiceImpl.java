@@ -1,6 +1,7 @@
 package com.etudia.etudia.service;
 
 import com.etudia.etudia.dto.CapsulesGenerateResponse;
+import com.etudia.etudia.dto.SummaryDto;
 import com.etudia.etudia.model.Course;
 import com.etudia.etudia.model.Summary;
 import com.etudia.etudia.model.User;
@@ -21,13 +22,23 @@ public class SummaryServiceImpl implements SummaryService {
     private final SupabaseStorageService supabaseStorageService;
 
     @Override
-    public List<Summary> getSummaryByUserId(Integer userId) {
-        return summaryRepository.findByCourseUserId(userId);
-    }
-
-    @Override
-    public List<Summary> getFavoritesummariesByUserId(Integer userId) {
-        return summaryRepository.findByCourseUserIdAndFavoriteTrue(userId);
+    public List<SummaryDto> getSummaryByUserId(Integer userId, boolean favorite) {
+        List<Summary> summaries;
+        if (favorite) {
+            summaries = summaryRepository.findByCourseUserIdAndFavoriteTrue(userId);
+        } else {
+            summaries = summaryRepository.findByCourseUserId(userId);
+        }
+        return summaries.stream().map(summary -> {
+            SummaryDto dto = new SummaryDto();
+            dto.setId(summary.getId());
+            dto.setName(summary.getName());
+            dto.setThemes(summary.getThemes());
+            dto.setSummaryUrl(summary.getSummaryUrl());
+            dto.setCreatedAt(summary.getCreatedAt());
+            dto.setIsFavorite(summary.getIsFavorite());
+            return dto;
+        }).toList();
     }
 
     @Override

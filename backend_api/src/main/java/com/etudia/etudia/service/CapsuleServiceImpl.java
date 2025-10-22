@@ -59,7 +59,7 @@ public class CapsuleServiceImpl implements CapsuleService {
             }
 
             User currentUser = userServiceImpl.readUser(capsulesCreateRequest.getUser_id());
-            Course course = courseServiceImpl.readCourse(capsulesCreateRequest.getCourse_id());
+            Course course = courseServiceImpl.getCourseById(capsulesCreateRequest.getCourse_id());
 
             // Flashcards
             if (capsulesCreateRequest.getCapsules().getFlashcard().isCreate()) {

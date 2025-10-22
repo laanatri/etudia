@@ -1,6 +1,9 @@
 package com.etudia.etudia.service;
 
+import com.etudia.etudia.dto.AnswerDto;
 import com.etudia.etudia.dto.CapsulesGenerateResponse;
+import com.etudia.etudia.dto.QuestionDto;
+import com.etudia.etudia.model.Answer;
 import com.etudia.etudia.model.Question;
 import com.etudia.etudia.model.Quiz;
 import com.etudia.etudia.repository.QuestionRepository;
@@ -20,8 +23,33 @@ public class QuestionServiceImpl implements QuestionService {
     private final AnswerService answerService;
 
     @Override
-    public List<Question> getQuestionsByQuizId(Integer quizId) {
-        return questionRepository.findByQuizId(quizId);
+    public List<QuestionDto> getQuestionsByQuizId(Integer quizId) {
+        List<Question> questions = questionRepository.findByQuizId(quizId);
+        if (questions == null || questions.isEmpty()) {
+            log.info("Aucune question trouvée pour le quiz id: {}", quizId);
+            return List.of();
+        }
+
+        return questions.stream().map(question -> {
+            List<Answer> answers = answerService.getAnswersByQuestionId(question.getId());
+
+            List<AnswerDto> answerDtos = (answers == null || answers.isEmpty())
+                ? List.of()
+                : answers.stream().map(answer -> {
+                    AnswerDto answerDto = new AnswerDto();
+                    answerDto.setId(answer.getId());
+                    answerDto.setText(answer.getText());
+                    answerDto.setIsCorrect(answer.getIsCorrect());
+                    return answerDto;
+            }).toList();
+
+            QuestionDto dto = new QuestionDto();
+            dto.setId(question.getId());
+            dto.setText(question.getText());
+            dto.setQuizId(question.getQuiz() != null ? question.getQuiz().getId() : null);
+            dto.setAnswers(answerDtos);
+            return dto;
+        }).toList();
     }
 
     @Override
