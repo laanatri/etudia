@@ -1,9 +1,11 @@
 package com.etudia.etudia.service;
 
 import com.etudia.etudia.dto.CapsulesGenerateResponse;
+import com.etudia.etudia.dto.QuizDto;
 import com.etudia.etudia.model.Course;
 import com.etudia.etudia.model.Quiz;
 import com.etudia.etudia.model.User;
+import com.etudia.etudia.repository.GameRepository;
 import com.etudia.etudia.repository.QuizRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
@@ -19,15 +21,30 @@ public class QuizServiceImpl implements QuizService {
 
     private final QuizRepository quizRepository;
     private final QuestionService questionService;
+    private final GameRepository gameRepository;
 
     @Override
-    public List<Quiz> getQuizByUserId(Integer userId) {
-        return quizRepository.findByCourseUserId(userId);
-    };
-
-    @Override
-    public List<Quiz> getFavoriteQuizzesByUserId(Integer userId) {
-        return quizRepository.findByCourseUserIdAndFavoriteTrue(userId);
+    public List<QuizDto> getQuizByUserId(Integer userId, Boolean favorite) {
+        List<Quiz> quizzes;
+        if (favorite) {
+            quizzes = quizRepository.findByCourseUserIdAndFavoriteTrue(userId);
+        } else {
+            quizzes = quizRepository.findByCourseUserId(userId);
+        }
+        return quizzes.stream().map(quiz -> {
+            Integer bestScore = gameRepository.findBestScoreByQuizId(quiz.getId());
+            if (bestScore == null) {
+                bestScore = 0;
+            }
+            QuizDto dto = new QuizDto();
+            dto.setId(quiz.getId());
+            dto.setName(quiz.getName());
+            dto.setThemes(quiz.getThemes());
+            dto.setCreatedAt(quiz.getCreatedAt());
+            dto.setIsFavorite(quiz.getIsFavorite());
+            dto.setBestScore(bestScore);
+            return dto;
+        }).toList();
     };
 
     @Override

@@ -1,6 +1,6 @@
 package com.etudia.etudia.controller;
 
-import com.etudia.etudia.model.Question;
+import com.etudia.etudia.dto.QuestionDto;
 import com.etudia.etudia.service.QuestionService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,8 +17,8 @@ public class QuestionController {
 
     private QuestionService questionService;
 
-    @GetMapping("/read/{quiz_id}")
-    public List<Question> getQuestions(@PathVariable Integer quiz_id) {
+    @GetMapping("/quiz/{quiz_id}")
+    public List<QuestionDto> findByQuiz_id(@PathVariable Integer quiz_id) {
         return questionService.getQuestionsByQuizId(quiz_id);
     }
 
