@@ -1,5 +1,6 @@
 package com.etudia.etudia.controller;
 
+import com.etudia.etudia.dto.SummaryDto;
 import com.etudia.etudia.model.Summary;
 import com.etudia.etudia.service.SummaryService;
 import lombok.AllArgsConstructor;
@@ -18,12 +19,9 @@ public class SummaryController {
 
     private SummaryService summaryService;
 
-    @GetMapping("/read/{user_id}")
-    public List<Summary> getSummary(@PathVariable Integer user_id, @RequestParam(required = false) boolean favorite) {
-        if (favorite) {
-            return summaryService.getFavoritesummariesByUserId(user_id);
-        }
-        return summaryService.getSummaryByUserId(user_id);
+    @GetMapping("/user/{user_id}")
+    public List<SummaryDto> getSummary(@PathVariable Integer user_id, @RequestParam(required = false) boolean favorite) {
+        return summaryService.getSummaryByUserId(user_id, favorite);
     }
 
 }
