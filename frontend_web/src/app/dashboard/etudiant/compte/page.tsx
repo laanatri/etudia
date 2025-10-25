@@ -1,13 +1,12 @@
 "use client";
 
-import { signOut, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import fonts from "@/utils/fonts";
 import Input from "@/app/components/ui/Input";
 import ButtonForm from "@/app/components/ui/ButtonForm";
 import Alert from "@/app/components/ui/Alert";
 import Loader from "@/app/components/ui/Loader";
 import { useEffect, useState } from "react";
-import { LogOut } from "lucide-react";
 
 interface ExtendedSession {
     user: {
@@ -171,10 +170,10 @@ export default function Compte() {
     }
 
     return (
-        <>
+        <div className="card bg-white w-full max-w-[350] p-5 mx-auto">
             <p className="font-fredoka font-medium text-2xl mb-5">Mon compte</p>
 
-            <div className="max-w-105">
+            <div className="w-full">
                 <form
                     onSubmit={(e) => {
                         e.preventDefault();
@@ -291,18 +290,10 @@ export default function Compte() {
                             />
                         )}
 
-                        <button
-                            onClick={() =>
-                                signOut({ callbackUrl: "/login" })
-                            }
-                            className="btn btn-secondary rounded-full text-xl font-normal text-black border border-black shadow-[4px_4px_0_0_rgba(0,0,0,1)] text-left cursor-pointer hover:text-gray-400 mt-10 w-full"
-                        >
-                            <LogOut /> Déconnexion
-                        </button>
                     </div>
                     <Loader isLoading={isPending} />
                 </form>
             </div>
-        </>
+        </div>
     );
 }
