@@ -1,16 +1,21 @@
 export default interface CapsuleDatas {
-    selectedFile: File | null;
+    course: {
+        name: string;
+        courseUrl: string;
+    },
     capsules: {
-        flashCard: {
+        flashcard: {
             create: boolean;
             number: number;
         },
-        resume: {
+        summary: {
             create: boolean;
         },
-        quizz: {
+        quiz: {
             create: boolean;
             number: number;
-        };
-    };
+        },
+    },
+    user_id: number;
+    course_id: number;
 };

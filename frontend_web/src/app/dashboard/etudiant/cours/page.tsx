@@ -7,7 +7,7 @@ import {CircleQuestionMark, Diamond, Download, Plus, ReceiptText} from "lucide-r
 import Link from "next/link";
 import Loader from "@/app/components/ui/Loader";
 import ExtendedSession from "@/types/ExtendedSession";
-import Course from "@/types/course";
+import Course from "@/types/Course";
 import fonts from "@/utils/fonts";
 
 export default function Cours() {
@@ -24,8 +24,7 @@ export default function Cours() {
             try {
                 if (!session?.user?.id) return;
                 setLoading(true);
-                const response = await fetch(
-                    `${process.env.NEXT_PUBLIC_API_URL}/course/read/${session.user.id}`,
+                const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/course/user/${session.user.id}`,
                     {
                         method: "GET",
                         headers: {
@@ -40,9 +39,7 @@ export default function Cours() {
                 const datas = await response.json();
                 setCourses(datas);
             } catch (error) {
-
-
-
+                console.error("Erreur lors du chargement des cours :", error);
             } finally {
                 setLoading(false);
             }

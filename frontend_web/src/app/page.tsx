@@ -1,206 +1,95 @@
 'use client';
 
 import Image from "next/image";
-import imageLanding from "../../public/image_1.png";
 import fonts from "./utils/fonts";
 import ButtonLink from "@/app/components/ui/ButtonLink";
-import { usePWA } from "./PWAContext";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import Link from "next/link";
 
 export default function Home() {
-    const isPWA = usePWA();
-    const router = useRouter();
-
-    useEffect(() => {
-        if (isPWA) {
-            router.push("/login");
-        }
-    }, [isPWA, router])
-
-    if (isPWA) {
-        return null;
-    }
 
     return (
 
-        <main
-            className={`${fonts.openSans.className} ${fonts.fredoka.className} pt-17 max-w-360 mx-auto`}
-        >
-            <section className="hero py-5 md:py-10 px-2.5 md:px-10">
-                <div className="hero-content flex-col lg:flex-row-reverse">
-                    <div className="w-full md:w-3/8">
-                        <Image
-                            src={imageLanding}
-                            alt="Picture of the author"
-                            width={400}
-                            height={400}
-                        />
+        <main className={`${fonts.openSans.className} ${fonts.fredoka.className} flex flex-col items-center justify-center w-full h-dvh mx-auto bg-primary overflow-hidden`} >
+            <div className="relative flex flex-col items-center w-4/5 max-w-96">
+                <div className="flex flex-col items-center p-5 pt-7 mb-10 bg-white w-full rounded-xl text-black border border-black shadow-[4px_4px_0_0_rgba(0,0,0,1)]">
+                    <div className="flex justify-center mb-3">
+                            <Image
+                            src="/logo_etudia.png"
+                            width={300}
+                            height={300}
+                            alt="logo Etud ia"
+                            className="w-1/2 max-w-60"
+                            />
                     </div>
-                    <div className="w-full md:w-5/8">
-                        <h1 className="text-5xl font-bold mb-6">
-                            Étudie mieux, plus vite, sans t’épuiser
-                        </h1>
-                        <p className={`${fonts.openSans.className}`}>
-                            EtudIA transforme tes cours en contenus interactifs
-                            pour t’aider à réviser plus efficacement.
-                        </p>
-                        <ButtonLink
-                            href="/register"
-                            text="Créer ta première capsule"
-                        />
-                    </div>
+                    <p className="text-center text-xl font-medium mb-2">Bienvenue sur Etud IA</p>
+                    <p className="text-center text-sm leading-4.5">Etud IA est une plateforme innovante 
+                        qui transforme vos cours en contenus interactifs 
+                        pour vous aider à réviser plus efficacement.</p>
                 </div>
-            </section>
 
-            <section className="hero py-5 md:py-10 px-2.5 md:px-10">
-                <div className="hero-content flex-col lg:flex-row">
-                    <div className="w-full md:w-1/2 flex justify-center">
-                        <Image
-                            src={imageLanding}
-                            alt="Picture of the author"
-                            width={400}
-                            height={400}
-                        />
-                    </div>
-                    <div className="w-full md:w-1/2">
-                        <h2 className="text-4xl font-bold mb-6">
-                            C’est quoi Etud IA ?
-                        </h2>
-                        <p className={`${fonts.openSans.className}`}>
-                            Etud IA est une plateforme qui t’aide à transformer
-                            tes cours en supports de révision intelligents.{" "}
-                            <br />
-                            Tu peux importer ton cours (texte ou PDF), et l’IA
-                            te propose une capsule : un résumé, un quiz ou des
-                            flashcards. Tu choisis ce que tu veux créer. <br />
-                            Les capsules sont personnelles, mais tu peux aussi
-                            découvrir celles d'autres étudiants et les ajouter à
-                            ton propre espace.
-                        </p>
-                    </div>
-                </div>
-            </section>
+                <p className="text-center leading-5">Inscrivez-vous dès maintenant pour commencer 
+                    à créer vos premières capsules et révolutionner
+                    votre apprentissage !</p>
+                <ButtonLink href="/register" classSup="bg-accent w-60 mb-10" text="S'inscrire" />
+                <p className="text-sm">Déjà inscrit ?</p>
+                <Link href="/dashboard" className="underline">Connectez-vous !</Link>
 
-            <section className="py-5 md:py-10 px-2.5 md:px-10">
-                <h2 className="text-4xl font-bold mb-6 text-center">
-                    Comment ça marche ?
-                </h2>
-                <div className="flex flex-col md:flex-row w-full text-center">
-                    <div className="card bg-base-200 rounded-box place-items-center p-5 md:w-1/4">
-                        <p>Étape 1</p>
-                        <h3>Importe ton cours</h3>
-                        <p className={`${fonts.openSans.className}`}>
-                            Upload ton cours en format PDF ou texte.
-                        </p>
-                    </div>
-                    <div className="divider divider-vertical md:divider-horizontal divider-accent"></div>
-                    <div className="card bg-base-200 rounded-box place-items-center p-5 md:w-1/4">
-                        <p>Étape 2</p>
-                        <h3>Choisis tes capsules</h3>
-                        <p className={`${fonts.openSans.className}`}>
-                            Résumé synthétique, flashcards pour t'entraîner,
-                            quiz pour te tester.
-                        </p>
-                    </div>
-                    <div className="divider divider-vertical md:divider-horizontal divider-accent"></div>
-                    <div className="card bg-base-200 rounded-box place-items-center p-5 md:w-1/4">
-                        <p>Étape 3</p>
-                        <h3>L’IA génère tes capsules</h3>
-                        <p className={`${fonts.openSans.className}`}>
-                            En quelques secondes, tu obtiens un contenu
-                            structuré et clair.
-                        </p>
-                    </div>
-                    <div className="divider divider-vertical md:divider-horizontal divider-accent"></div>
-                    <div className="card bg-base-200 rounded-box place-items-center p-5 md:w-1/4">
-                        <p>Étape 4</p>
-                        <h3>Révise et organise tes capsules</h3>
-                        <p className={`${fonts.openSans.className}`}>
-                            Tu peux les mettre en favoris, les retrouver
-                            facilement et les partager si tu veux.
-                        </p>
-                    </div>
+                <div className="absolute top-55 -left-13 -rotate-8 flex flex-col items-center w-15 h-15 p-2 bg-white rounded-md text-black border border-black shadow-[4px_4px_0_0_rgba(0,0,0,1)]">
+                    <Image
+                    src="/ai.png"
+                    width={300}
+                    height={300}
+                    alt="ai"
+                    className="w-auto h-auto max-w-full max-h-full"
+                    />
                 </div>
-            </section>
+                <div className="absolute -top-10 -right-5 -rotate-8 flex flex-col items-center w-15 h-15 p-2 bg-white rounded-md text-black border border-black shadow-[4px_4px_0_0_rgba(0,0,0,1)]">
+                    <Image
+                    src="/files.png"
+                    width={300}
+                    height={300}
+                    alt="files"
+                    className="w-auto h-auto max-w-full max-h-full"
+                    />
+                </div>
+                <div className="absolute bottom-25 -right-13 -rotate-6 flex flex-col items-center w-15 h-15 p-2 bg-white rounded-md text-black border border-black shadow-[4px_4px_0_0_rgba(0,0,0,1)]">
+                    <Image
+                    src="/quiz.png"
+                    width={300}
+                    height={300}
+                    alt="quiz"
+                    className="w-auto h-auto max-w-full max-h-full"
+                    />
+                </div>
+                <div className="absolute bottom-10 -left-18 rotate-8 flex flex-col items-center w-15 h-15 p-2 bg-white rounded-md text-black border border-black shadow-[4px_4px_0_0_rgba(0,0,0,1)]">
+                    <Image
+                    src="/resumes.png"
+                    width={300}
+                    height={300}
+                    alt="resumes"
+                    className="w-auto h-auto max-w-full max-h-full"
+                    />
+                </div>
+                <div className="absolute -bottom-20 right-15 rotate-6 flex flex-col items-center w-15 h-15 p-2 bg-white rounded-md text-black border border-black shadow-[4px_4px_0_0_rgba(0,0,0,1)]">
+                    <Image
+                    src="/flashcards.png"
+                    width={300}
+                    height={300}
+                    alt="flashcards"
+                    className="w-auto h-auto max-w-full max-h-full"
+                    />
+                </div>
+                <div className="absolute -top-30 -left-1 rotate-10 flex flex-col items-center w-15 h-15 p-2 bg-white rounded-md text-black border border-black shadow-[4px_4px_0_0_rgba(0,0,0,1)]">
+                    <Image
+                    src="/flashcards.png"
+                    width={300}
+                    height={300}
+                    alt="flashcards"
+                    className="w-auto h-auto max-w-full max-h-full"
+                    />
+                </div>
 
-            <section className="hero py-5 md:py-10 px-2.5 md:px-10">
-                <div className="hero-content flex-col lg:flex-row-reverse">
-                    <div className="w-full md:w-1/2 flex justify-center">
-                        <Image
-                            src={imageLanding}
-                            alt="Picture of the author"
-                            width={400}
-                            height={400}
-                        />
-                    </div>
-                    <div className="w-full md:w-1/2">
-                        <h2 className="text-4xl font-bold mb-6">
-                            La méthode de répétition espacée
-                        </h2>
-                        <p className={`${fonts.openSans.className}`}>
-                            Pour mieux retenir, EtudIA t’aide à revoir tes
-                            flashcards au bon moment grâce à la méthode de
-                            répétition espacée. <br />
-                            Ce système te propose automatiquement les capsules
-                            que tu dois revoir selon ton historique. <br />
-                            Résultat ? Tu oublies moins et tu révise plus
-                            intelligemment, sans surcharge. Des rappels doux
-                            t’aident à rester régulier·ère.
-                        </p>
-                        <ButtonLink
-                            href="/register"
-                            text="Créer ta première capsule"
-                        />
-                    </div>
-                </div>
-            </section>
-
-            <section className="hero py-5 md:py-10 px-2.5 md:px-10">
-                <div className="hero-content flex-col lg:flex-row">
-                    <div className="w-full md:w-1/2 flex justify-center">
-                        <Image
-                            src={imageLanding}
-                            alt="Picture of the author"
-                            width={400}
-                            height={400}
-                        />
-                    </div>
-                    <div className="w-full md:w-1/2">
-                        <h2 className="text-4xl font-bold mb-6">
-                            Des capsules communautaires
-                        </h2>
-                        <p className={`${fonts.openSans.className}`}>
-                            En plus de tes propres capsules, tu peux ajouter à
-                            ton espace celles partagées par d’autres
-                            étudiant·es.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <section className="hero py-5 md:py-10 px-2.5 md:px-10">
-                <div className="hero-content flex-col lg:flex-row-reverse">
-                    <div className="w-full md:w-1/2 flex justify-center">
-                        <Image
-                            src={imageLanding}
-                            alt="Picture of the author"
-                            width={400}
-                            height={400}
-                        />
-                    </div>
-                    <div className="w-full md:w-1/2">
-                        <h2 className="text-4xl font-bold mb-6">
-                            Une application mobile
-                        </h2>
-                        <p className={`${fonts.openSans.className}`}>
-                            Emporte EtudIA partout avec toi. <br />
-                            L’app mobile EtudIA te permet de consulter et
-                            réviser tes capsules à tout moment, même hors ligne.
-                        </p>
-                    </div>
-                </div>
-            </section>
+            </div>
         </main>
     );
 }

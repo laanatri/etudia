@@ -16,15 +16,16 @@ interface InputProps {
     onChange: (value: string) => void;
     value?: string | number;
     isPassword?: boolean;
+    classSup?: string;
 }
 
-export default function Input({label, htmlfor, name, type, placeHolder, legend, error, required, minLength, onChange, value, isPassword}: InputProps) {
+export default function Input({label, htmlfor, name, type, placeHolder, legend, error, required, minLength, onChange, value, isPassword, classSup}: InputProps) {
 
     const [showPassword, setShowPassword] = useState(false);
     const inputType = isPassword ? (showPassword ? 'text' : 'password') : type;
 
     return (
-        <fieldset className="fieldset pb-3">
+        <fieldset className={`fieldset pb-3 ${classSup}`}>
             <label 
                 htmlFor={htmlfor}
                 className="fieldset-legend font-normal text-base pt-0 pb-1"

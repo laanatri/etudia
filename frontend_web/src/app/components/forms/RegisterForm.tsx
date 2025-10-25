@@ -103,11 +103,11 @@ export default function RegisterForm() {
                         onChange={(value) => {
                             checkIfAllFill(value, 0);
                         }}
-                        label="Votre pseudo"
+                        label="Votre pseudo *"
                         htmlfor="username"
                         name="username"
                         type="text"
-                        placeHolder="john_doe"
+                        placeHolder="john_d"
                         error={false}
                         required={true}
                     />
@@ -115,7 +115,7 @@ export default function RegisterForm() {
                         onChange={(value) => {
                             checkIfAllFill(value, 1);
                         }}
-                        label="Votre mot de passe"
+                        label="Votre mot de passe *"
                         htmlfor="password"
                         name="password"
                         type="password"
@@ -129,7 +129,7 @@ export default function RegisterForm() {
                         onChange={(value) => {
                             checkIfAllFill(value, 2);
                         }}
-                        label="Votre prénom"
+                        label="Votre prénom *"
                         htmlfor="firstname"
                         name="firstname"
                         type="text"
@@ -141,7 +141,7 @@ export default function RegisterForm() {
                         onChange={(value) => {
                             checkIfAllFill(value, 3);
                         }}
-                        label="Votre nom"
+                        label="Votre nom *"
                         htmlfor="lastname"
                         name="lastname"
                         type="text"
@@ -153,7 +153,7 @@ export default function RegisterForm() {
                         onChange={(value) => {
                             checkIfAllFill(value, 4);
                         }}
-                        label="Votre e-mail"
+                        label="Votre e-mail *"
                         htmlfor="email"
                         name="email"
                         type="email"
@@ -164,10 +164,13 @@ export default function RegisterForm() {
                 </div>
                 <input type="hidden" name="redirectTo" value={callbackUrl} />
 
+                <p className="text-xs">* Champs obligatoires</p>
+
                 <ButtonForm
                     disabled={isPending || !isFill.every((b) => b)}
                     text="s'inscrire"
                 />
+
 
                 {errorMessage && (
                     <Alert

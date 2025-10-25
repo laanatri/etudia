@@ -4,11 +4,11 @@ export default async function etudiant({children,}: Readonly<{ children: React.R
 
     return (
         <>
-            <div className="card bg-base-300 w-full h-screen md:pt-25">
-                <div className="relative flex f-full h-full">
+            <div className="bg-base-300 w-full min-h-screen">
+                <div className="relative flex f-full min-h-full">
                     <NavBarDashboardEtudiant/>
                     <div className="w-full max-w-300 px-5 pt-5 md:px-26 mx-auto">
-                        <div className="card bg-base-300 w-full">
+                        <div className="bg-base-300 w-full">
                             {children}
                         </div>
                     </div>
