@@ -1,5 +1,2 @@
-[build-system]
-requires = ["setuptools", "wheel"]
-
-[tool.python]
-version = "3.11"
+[project]
+requires-python = ">=3.11,<3.12"
