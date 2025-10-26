@@ -57,7 +57,7 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
             // Remplacer la fonction authorize par cette version avec plus de logs:
 
             async authorize(credentials) {
-                console.log('🔑 authorize: début de la fonction', credentials?.username);
+                // console.log('🔑 authorize: début de la fonction', credentials?.username);
                 
                 const parsedCredentials = z
                     .object({username: z.string(), password: z.string().min(6)})
@@ -82,8 +82,8 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
                     
                     // Lire le body en texte d'abord pour le logger
                     const responseText = await response.text();
-                    console.log('🔑 Backend response status:', response.status);
-                    console.log('🔑 Backend response body:', responseText);
+                    // console.log('🔑 Backend response status:', response.status);
+                    // console.log('🔑 Backend response body:', responseText);
                     
                     if (!response.ok) {
                         console.warn(`🔑 Backend error: ${response.status} - ${responseText}`);
@@ -100,7 +100,7 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
                         const authResponse = JSON.parse(responseText);
                         
                         // Vérifier que toutes les propriétés attendues sont présentes
-                        console.log('🔑 Auth response parsed:', authResponse);
+                        // console.log('🔑 Auth response parsed:', authResponse);
                         if (!authResponse.id || !authResponse.username || !authResponse.jwtToken) {
                             console.error('🔑 Réponse backend incomplète:', authResponse);
                             return null;
@@ -116,7 +116,7 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
                             jwtToken: authResponse.jwtToken
                         };
                         
-                        console.log('🔑 User object created:', currentUser);
+                        // console.log('🔑 User object created:', currentUser);
                         return currentUser;
                     } catch (parseError) {
                         console.error('🔑 JSON parse error:', parseError);
@@ -128,56 +128,6 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
                 }
             }
 
-
-
-
-            // async authorize(credentials) {
-
-            //     const parsedCredentials = z
-            //         .object({username: z.string(), password: z.string().min(6)})
-            //         .safeParse(credentials);
-
-            //     if (!parsedCredentials.success) {
-            //         console.log('🔍 Validation des credentials échouée');
-            //         return null;
-            //     }
-
-            //     const { username, password } = parsedCredentials.data;
-
-
-
-            //     try {
-            //         const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/generateToken`, {
-            //             method: 'POST',
-            //             headers: {
-            //                 'content-type': 'application/json'
-            //             },
-            //             body: JSON.stringify({username: username, password: password})
-            //         })
-
-            //         if (!response.ok) {
-            //             // const error = await response.json();
-            //             return null;
-            //         }
-
-            //         const authResponse: BackendAuthResponse = await response.json();
-
-            //         const currentUser = {
-            //             id: String(authResponse.id),
-            //             username: authResponse.username,
-            //             email: authResponse.email,
-            //             firstname: authResponse.firstname,
-            //             lastname: authResponse.lastname,
-            //             role: authResponse.role,
-            //             jwtToken: authResponse.jwtToken
-            //         }
-
-            //         return currentUser;
-            //     } catch (error) {
-            //         console.error("Erreur connexion backend:", error);
-            //         return null;
-            //     }
-            // }
         })
     ]
 });
