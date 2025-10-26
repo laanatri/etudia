@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import { Diamond, FileText, Plus } from "lucide-react";
 import Link from "next/link";
 import Loader from "@/app/components/ui/Loader";
-import ModaleFlashcards from "@/app/components/capsules/ModaleFlashcards";
 import ExtendedSession from "@/types/ExtendedSession";
 import Bloc from "@/types/Bloc";
 import fonts from "@/utils/fonts";
