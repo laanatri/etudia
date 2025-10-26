@@ -3,6 +3,7 @@ package com.etudia.etudia.security;
 import com.etudia.etudia.filter.JwtAuthFilter;
 import com.etudia.etudia.service.UserInfosService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
@@ -43,6 +44,9 @@ public class SecurityConfig {
     @Autowired
     private UserInfosService userInfosService;
 
+    @Value("${front.url}")
+    private String frontUrl;
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -70,13 +74,7 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList(
-                "http://localhost:3000",
-                "https://localhost:3000",
-                "https://192.168.6.55:3000/*"
-        ));
-//        configuration.setAllowedOriginPatterns(Collections.singletonList("*"));
-
+        configuration.setAllowedOriginPatterns(Collections.singletonList(frontUrl));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PATCH", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(Collections.singletonList("*"));
         configuration.setAllowCredentials(true);
