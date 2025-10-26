@@ -1,17 +1,15 @@
 {
+  "buildCommand": "cd microservice_ia && pip install -r requirements.txt",
   "builds": [
     {
-      "src": "main.py",
-      "use": "@vercel/python",
-      "config": {
-        "runtime": "python3.11"
-      }
+      "src": "microservice_ia/main.py",
+      "use": "@vercel/python"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "main.py"
+      "dest": "microservice_ia/main.py"
     }
   ]
 }
