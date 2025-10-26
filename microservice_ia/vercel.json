@@ -1,5 +1,4 @@
 {
-  "buildCommand": "cd microservice_ia && pip install -r requirements.txt",
   "builds": [
     {
       "src": "microservice_ia/main.py",
@@ -9,7 +8,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "microservice_ia/main.py"
+      "dest": "/microservice_ia/main.py"
     }
   ]
 }
