@@ -14,10 +14,9 @@ import {
     Share2,
     User,
 } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
-import { motion } from "motion/react";
 
 export default function NavBarDashboardEtudiant() {
     const { data: session, status, update } = useSession();
