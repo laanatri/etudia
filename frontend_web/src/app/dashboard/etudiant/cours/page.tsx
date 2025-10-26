@@ -7,7 +7,7 @@ import {CircleQuestionMark, Diamond, Download, Plus, ReceiptText} from "lucide-r
 import Link from "next/link";
 import Loader from "@/app/components/ui/Loader";
 import ExtendedSession from "@/types/ExtendedSession";
-import Course from "../../../../types/Course";
+import Course from "../../../../types/Course_type";
 import fonts from "@/utils/fonts";
 
 export default function Cours() {
