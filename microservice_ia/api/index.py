@@ -7,12 +7,12 @@ from pydantic import HttpUrl, BaseModel, Field
 from typing import Annotated, Optional
 from dotenv import load_dotenv
 
-from .utils.downloadCourseText import download_course_text
-from .utils.openaiGenerateCapsules import openai_generate_capsules
-from .utils.extractJson import extract_json
+from app.utils.downloadCourseText import download_course_text
+from app.utils.openaiGenerateCapsules import openai_generate_capsules
+from app.utils.extractJson import extract_json
 
-from .models.capsules_request_models import CapsulesGenerateRequest
-from .models.capsules_response_models import CapsulesResponse, CapsulesDatas, MetaDatas
+from app.models.capsules_request_models import CapsulesGenerateRequest
+from app.models.capsules_response_models import CapsulesResponse, CapsulesDatas, MetaDatas
 
 # Configuration du logging
 logging.basicConfig(
@@ -40,6 +40,9 @@ logger.info(f"MICROSERVICE_SHARED_KEY présente: {'Oui' if MICROSERVICE_SHARED_K
 
 app = FastAPI()
 
+@app.get("/")
+def root():
+    return {"status": "ok"}
 
 # Endpoint pour generer les capsules
 @app.post("/generate/capsules", response_model=CapsulesResponse)

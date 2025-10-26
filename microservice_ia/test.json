@@ -1,0 +1,176 @@
+{
+  "title": "Passage du MCD au MLD",
+  "themes": "base de données, MCD, MLD",
+  "capsules": {
+    "flashcards": [
+      {
+        "question": "Qu'est-ce que le MLD ?",
+        "answer": "Le MLD, ou Modèle Logique des Données, est une représentation des données qui peut être implantée dans une base de données relationnelle."
+      },
+      {
+        "question": "Quelle est la première règle de passage du MCD au MLD ?",
+        "answer": "Une entité du MCD devient une relation, c'est-à-dire une table dans le MLD."
+      },
+      {
+        "question": "Que représente une ligne dans une table ?",
+        "answer": "Une ligne dans une table correspond à un enregistrement, c'est-à-dire aux données d'un objet enregistré."
+      },
+      {
+        "question": "Qu'est-ce qu'une clé primaire ?",
+        "answer": "La clé primaire est un identifiant unique pour chaque enregistrement dans une table, et ses valeurs sont non nulles."
+      },
+      {
+        "question": "Comment se traduit une association 1:N dans le MLD ?",
+        "answer": "Une association 1:N se traduit par la création d'une clé étrangère dans la relation correspondant à l'entité côté '1'."
+      },
+      {
+        "question": "Que devient une propriété d'une entité dans le MLD ?",
+        "answer": "Les propriétés d'une entité deviennent les attributs de la relation dans le MLD."
+      },
+      {
+        "question": "Comment se traduit une association N:N dans le MLD ?",
+        "answer": "Une association N:N se traduit par la création d'une relation dont la clé primaire est composée des clés étrangères des entités liées."
+      },
+      {
+        "question": "Que se passe-t-il si le nom du MCD n'est pas significatif ?",
+        "answer": "On peut renommer le nom de la table pour qu'il soit plus significatif."
+      },
+      {
+        "question": "Quelles sont les associations réflexives ?",
+        "answer": "Les associations réflexives sont celles où une entité est liée à elle-même, et les règles de passage s'appliquent également."
+      },
+      {
+        "question": "Comment se représente une association 1,1 ?",
+        "answer": "Une association 1,1 se représente par une clé primaire dans chaque entité, avec des cardinalités maximales à 1."
+      },
+      {
+        "question": "Quel est un exemple d'association 1,1 ?",
+        "answer": "Un exemple est la relation entre un marin et un voilier, où chaque marin a un voilier et vice versa."
+      },
+      {
+        "question": "Comment se représente une association entre un appartement et une place de parking ?",
+        "answer": "L'appartement a une clé primaire, et la place de parking a une clé étrangère qui référence l'appartement."
+      },
+      {
+        "question": "Qu'est-ce qu'une association ternaire ?",
+        "answer": "Une association ternaire implique trois entités, et les règles de passage s'appliquent de la même manière."
+      },
+      {
+        "question": "Quel est le rôle d'une clé étrangère ?",
+        "answer": "Une clé étrangère référence la clé primaire d'une autre table, établissant une relation entre les deux."
+      },
+      {
+        "question": "Comment se représente une activité culturelle et un animateur ?",
+        "answer": "Une activité culturelle peut avoir un animateur, et les clés étrangères référencent les entités correspondantes."
+      }
+    ],
+    "summary": "<span className=\"bold\">Le passage du MCD au MLD</span> est une étape cruciale dans la conception des bases de données. Le <span className=\"keyword\">Modèle Conceptuel de Données (MCD)</span> doit être transformé en <span className=\"keyword\">Modèle Logique de Données (MLD)</span> pour être implanté dans une base de données relationnelle. <ul className=\"bullet-list\"><li>Le MLD est également connu sous d'autres abréviations comme MLDR, MRD, et MLRD.</li><li>Le MCD ne peut pas être directement implanté sans modifications.</li><li>Les règles de passage sont essentielles pour garantir l'intégrité des données.</li></ul> <span className=\"underline\">Règle numéro 1</span>: Une entité du MCD devient une relation, c'est-à-dire une table. Chaque table est composée de lignes (enregistrements) et de colonnes (attributs). La clé primaire est définie pour identifier de manière unique chaque enregistrement. <span className=\"underline\">Règle numéro 2</span>: Une association de type 1:N se traduit par une clé étrangère dans la relation de l'entité côté '1'. <span className=\"underline\">Règle numéro 3</span>: Une association de type N:N nécessite la création d'une nouvelle relation avec des clés étrangères. Les propriétés de l'association deviennent des attributs de cette nouvelle relation. <span className=\"italic\">Exemples pratiques</span> illustrent ces règles, comme la relation entre un marin et un voilier, ou entre un appartement et une place de parking. Les associations réflexives et ternaires suivent également ces règles. En résumé, le passage du MCD au MLD est un processus structuré qui permet de préparer les données pour leur stockage efficace dans une base de données relationnelle.",
+    "quiz": [
+      {
+        "question": "Qu'est-ce que le MCD ?",
+        "answers": [
+          "Modèle Conceptuel de Données",
+          "Modèle de Commande de Données",
+          "Modèle de Clé de Données",
+          "Modèle de Relation de Données"
+        ],
+        "correct_answer": 0
+      },
+      {
+        "question": "Quelle est la clé primaire ?",
+        "answers": [
+          "Identifiant unique",
+          "Identifiant non unique",
+          "Identifiant optionnel",
+          "Identifiant secondaire"
+        ],
+        "correct_answer": 0
+      },
+      {
+        "question": "Comment se traduit une association 1:N ?",
+        "answers": [
+          "Clé primaire",
+          "Clé étrangère",
+          "Table intermédiaire",
+          "Aucune de ces réponses"
+        ],
+        "correct_answer": 1
+      },
+      {
+        "question": "Que devient une propriété dans le MLD ?",
+        "answers": [
+          "Attribut",
+          "Relation",
+          "Clé primaire",
+          "Clé étrangère"
+        ],
+        "correct_answer": 0
+      },
+      {
+        "question": "Qu'est-ce qu'une association N:N ?",
+        "answers": [
+          "Relation avec une clé primaire",
+          "Relation avec une clé étrangère",
+          "Relation avec une table intermédiaire",
+          "Relation avec un attribut"
+        ],
+        "correct_answer": 2
+      },
+      {
+        "question": "Que se passe-t-il si le nom du MCD n'est pas significatif ?",
+        "answers": [
+          "On le garde",
+          "On le renomme",
+          "On l'ignore",
+          "On le supprime"
+        ],
+        "correct_answer": 1
+      },
+      {
+        "question": "Qu'est-ce qu'une association réflexive ?",
+        "answers": [
+          "Entité liée à elle-même",
+          "Entité liée à une autre",
+          "Entité sans relation",
+          "Entité avec plusieurs relations"
+        ],
+        "correct_answer": 0
+      },
+      {
+        "question": "Quel est un exemple d'association 1,1 ?",
+        "answers": [
+          "Marin et voilier",
+          "Client et commande",
+          "Produit et catégorie",
+          "Aucune de ces réponses"
+        ],
+        "correct_answer": 0
+      },
+      {
+        "question": "Quel est le rôle d'une clé étrangère ?",
+        "answers": [
+          "Identifier un enregistrement",
+          "Référencer une autre table",
+          "Créer une nouvelle table",
+          "Aucune de ces réponses"
+        ],
+        "correct_answer": 1
+      },
+      {
+        "question": "Comment se représente une activité culturelle ?",
+        "answers": [
+          "Avec plusieurs animateurs",
+          "Avec un animateur",
+          "Sans animateur",
+          "Avec plusieurs activités"
+        ],
+        "correct_answer": 1
+      }
+    ]
+  },
+  "meta": {
+    "process_time": 2270.0,
+    "prompt_tokens": 2270,
+    "tokens_used": 2270
+  }
+}
