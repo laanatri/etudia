@@ -159,5 +159,3 @@ async def generate_capsules(request_payload: CapsulesGenerateRequest, x_service_
             tokens_used=gpt_response.get("prompt_tokens")
         )
     )
-
-handler = app

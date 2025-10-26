@@ -1,11 +1,9 @@
 import sys
 from pathlib import Path
 
-# Ajouter microservice_ia au Python path
-sys.path.insert(0, str(Path(__file__).parent.parent / "microservice_ia"))
+# Le parent est maintenant microservice_ia (la racine configurée dans Vercel)
+parent_path = Path(__file__).parent.parent
+sys.path.insert(0, str(parent_path))
 
-# Importer l'app FastAPI
+# Importer l'app depuis main.py qui est au même niveau que api/
 from main import app
-
-# Vercel cherche automatiquement cette variable
-handler = app
