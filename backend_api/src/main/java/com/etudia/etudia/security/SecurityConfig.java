@@ -47,6 +47,9 @@ public class SecurityConfig {
     @Value("${front.url}")
     private String frontUrl;
 
+    @Value("${AI_SERVICE_URL_DEV}")
+    private String aiServiceUrl;
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -74,7 +77,7 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOriginPatterns(Collections.singletonList(frontUrl));
+        configuration.setAllowedOrigins(List.of(frontUrl, aiServiceUrl));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PATCH", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(Collections.singletonList("*"));
         configuration.setAllowCredentials(true);
