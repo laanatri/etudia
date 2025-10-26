@@ -47,7 +47,7 @@ public class SecurityConfig {
     @Value("${front.url}")
     private String frontUrl;
 
-    @Value("${AI_SERVICE_URL_DEV}")
+    @Value("${ai.service.url}")
     private String aiServiceUrl;
 
     @Bean
