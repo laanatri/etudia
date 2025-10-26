@@ -813,3 +813,6 @@ ValueError: Réponse de GPT n'est pas un json : Expecting ',' delimiter: line 1 c
 2025-10-26 17:26:59,723 - microservice_ia - INFO - OPENAI_MODEL configuré: gpt-4o-mini
 2025-10-26 17:26:59,723 - microservice_ia - INFO - OPENAI_API_KEY présente: Oui
 2025-10-26 17:26:59,724 - microservice_ia - INFO - MICROSERVICE_SHARED_KEY présente: Oui
+2025-10-26 17:28:23,029 - microservice_ia - INFO - OPENAI_MODEL configuré: gpt-4o-mini
+2025-10-26 17:28:23,029 - microservice_ia - INFO - OPENAI_API_KEY présente: Oui
+2025-10-26 17:28:23,029 - microservice_ia - INFO - MICROSERVICE_SHARED_KEY présente: Oui
