@@ -193,6 +193,10 @@ export default function CapsuleFormModale({datasFile, onClose, onStartCreate, on
         newDatasCreateCapsule.course.name = cleanedFileName;
         newDatasCreateCapsule.course.courseUrl = fileUrl;
 
+        if (!session) {
+            onCreateResult(false);
+            return;
+        }
         // Save en BDD le cours
         const savedCourse = await saveCourse(newDatasCreateCapsule.course?.name, fileUrl, session);
 

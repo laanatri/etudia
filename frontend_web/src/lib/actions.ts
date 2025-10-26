@@ -10,7 +10,7 @@ export async function authenticate(prevState: string | undefined, formData: Form
             redirect: false
         });
         return undefined;
-    } catch (error: any) {
+    } catch (error: unknown) {
         if (error instanceof AuthError) {
             switch (error.type) {
                 case 'CredentialsSignin':

@@ -1,6 +1,7 @@
 import CourseReponse from "@/types/CourseResponse";
+import ExtendedSession from "@/types/ExtendedSession";
 
-const saveCourse = async (nameCourse: string, courseUrl: string, session: any): Promise<CourseReponse | null> => {
+const saveCourse = async (nameCourse: string, courseUrl: string, session: ExtendedSession): Promise<CourseReponse | null> => {
 
     try {
         const response = await fetch(

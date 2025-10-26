@@ -1,6 +1,7 @@
 import CapsuleDatas from "@/types/CapsulesDatas";
+import ExtendedSession from "@/types/ExtendedSession";
 
-const saveCapsules = async (datasCreateCapsule: CapsuleDatas, session: any): Promise<any | null> => {
+const saveCapsules = async (datasCreateCapsule: CapsuleDatas, session: ExtendedSession | null): Promise<boolean | null> => {
 
     try {
         const response = await fetch(
