@@ -3,6 +3,8 @@ export default interface Bloc {
     name: string;
     themes: string;
     createdAt: string;
+    bestScore: number;
+    isFavorite: boolean;
     user?: {
         id: number;
         username: string;

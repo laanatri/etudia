@@ -6,6 +6,7 @@ import com.etudia.etudia.model.Course;
 import com.etudia.etudia.model.Summary;
 import com.etudia.etudia.model.User;
 import com.etudia.etudia.repository.SummaryRepository;
+import com.etudia.etudia.utils.CleanFileName;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -51,7 +52,8 @@ public class SummaryServiceImpl implements SummaryService {
 
             if (aiResponse != null && aiResponse.getCapsules() != null && aiResponse.getCapsules().getSummary() != null) {
                 String titleForPath = aiResponse.getTitle() != null ? aiResponse.getTitle() : "summary.txt";
-                summaryUrl = supabaseStorageService.storeSummary("summaries", titleForPath, aiResponse.getCapsules().getSummary());
+                String cleanedTitle = CleanFileName.clean(titleForPath);
+                summaryUrl = supabaseStorageService.storeSummary("summaries", cleanedTitle, aiResponse.getCapsules().getSummary());
             }
 
             if (summaryUrl == null || summaryUrl.isEmpty()) {

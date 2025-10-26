@@ -6,12 +6,13 @@ import { useEffect, useState } from "react";
 import { Diamond, FileText, Plus } from "lucide-react";
 import Link from "next/link";
 import Loader from "@/app/components/ui/Loader";
-import ModaleFlashcards from "@/app/components/capsules/ModaleFlashcards";
 import ExtendedSession from "@/types/ExtendedSession";
 import Bloc from "@/types/Bloc";
 import fonts from "@/utils/fonts";
 import ButtonLink from "@/app/components/ui/ButtonLink";
 import FlashcardCard from "@/app/components/capsules/FlashcardCard";
+
+import getBlocs from "@/lib/apiBlocs"
 
 export default function Flashcards() {
     const { data: session, status } = useSession() as { 
@@ -19,51 +20,24 @@ export default function Flashcards() {
         status: string 
     };
 
-    const [blocs, setBlocs] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [blocSelected, setBlocSelected] = useState<Bloc | null>(null);
+    const [blocs, setBlocs] = useState<Bloc[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
 
-    const getBlocs = async (): Promise<void> => {
-        try {
-            if (!session?.user?.id) return;
+    useEffect(() => {
+        const fetchBlocs = async () => {
             setLoading(true);
-            const apiUrl = typeof window !== 'undefined' && window.location.hostname === 'localhost' ? process.env.NEXT_PUBLIC_API_URL : process.env.NEXT_PUBLIC_API_URL_MOBILE;
-            const response = await fetch(
-                `${apiUrl}/bloc/read/${session.user.id}`,
-                {
-                    method: "GET",
-                    headers: {
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${session.user.jwtToken}`
-                    }
-                }
-            );
-            if (!response.ok) {
-                const errorBody = await response.text();
-                throw new Error(`HTTP error, status: ${response.status}, body: ${errorBody}`);
+            try {
+                const datas = await getBlocs(session);
+                setBlocs(datas);
+            } catch (error) {
+
+
+            } finally {
+                setLoading(false);
             }
-            const datas = await response.json();
-            setBlocs(datas);
-        } catch (error) {
-        } finally {
-            setLoading(false);
-        }
-    };
-
-    const GoFlashcards = (bloc: Bloc) => {
-        setBlocSelected(bloc);
-    }
-
-    useEffect(() => {
-        getBlocs();
+        };
+        fetchBlocs();
     }, [session]);
-
-    useEffect(() => {
-        if (blocSelected) {
-            const modal = document.getElementById('my_modal_4') as HTMLDialogElement | null;
-            modal?.showModal();
-        }
-    }, [blocSelected]);
 
     return (
         <>
@@ -71,14 +45,19 @@ export default function Flashcards() {
                 <h2 className="flex items-center font-fredoka font-medium text-2xl"><Diamond className="mr-2"/> Mes flashcards</h2>
                 <ButtonLink classSup="w-fit m-0 bg-base-200 hover:bg-base-300" href="/dashboard/etudiant/cours" text="Mes cours" icon={<FileText />} />
             </div>
+
             <div className={`relative cards-content grid grid-cols-1 md:grid-cols-3 gap-2 ${fonts.openSans.className}`}>
+
                 {blocs?.length === 0 ? (
                     <Loader isLoading={loading} classSup="relative"/>
                 ) : (
                     <>
+
                         {blocs.map((bloc: Bloc) => (
-                            <FlashcardCard key={bloc.id} bloc={bloc} onClick={() => GoFlashcards(bloc)} />
+                            <FlashcardCard key={bloc.id} bloc={bloc} session={session} />
                         ))}
+
+
                         <div className="card bg-base-100 border-4 border-primary border-dashed text-primary-content w-full">
                             <div className="card-body p-5 flex flex-col justify-between">
                                 <div className="card-actions w-full h-full">
@@ -89,8 +68,8 @@ export default function Flashcards() {
                     </>
                 )}
 
-                <ModaleFlashcards bloc={blocSelected ?? undefined} userToken={session?.user.jwtToken} />
             </div>
+
         </>
     );
 }
