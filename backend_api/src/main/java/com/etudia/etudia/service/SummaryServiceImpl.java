@@ -55,7 +55,7 @@ public class SummaryServiceImpl implements SummaryService {
                 String cleanedTitle = CleanFileName.clean(titleForPath);
                 summaryUrl = supabaseStorageService.storeSummary("summaries", cleanedTitle, aiResponse.getCapsules().getSummary());
             }
-        
+
             if (summaryUrl == null || summaryUrl.isEmpty()) {
                 log.error("Le stockage du résumé a échoué.");
                 throw new RuntimeException("Erreur lors du stockage du résumé, summaryUrl est vide");
