@@ -129,12 +129,12 @@ export default function NavBarDashboardEtudiant() {
                                     <Link
                                         className={
                                             pathname ==
-                                            "/dashboard/etudiant/resumes"
+                                            "/dashboard/etudiant/summaries"
                                                 ? "bg-secondary"
                                                 : ""
                                         }
                                         onClick={handleClick}
-                                        href="/dashboard/etudiant/resumes"
+                                        href="/dashboard/etudiant/summaries"
                                     >
                                         <ReceiptText /> Mes résumés
                                     </Link>
