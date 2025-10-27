@@ -29,20 +29,12 @@ public class SupabaseStorageServiceImpl implements SupabaseStorageService {
 
         try {
 
-            MultipartBodyBuilder builder = new MultipartBodyBuilder();
-            builder.part("file", new ByteArrayResource(content.getBytes(StandardCharsets.UTF_8)) {
-                @Override
-                public String getFilename() {
-                    return path;
-                }
-            }).header("Content-Type", "text/plain");
-
             String safePath = path.replaceAll("[^a-zA-Z0-9-_\\.]", "_");
 
             webClient.post()
-                .uri("/storage/v1/object/{bucket}/{path}", bucket, path)
-                .contentType(MediaType.MULTIPART_FORM_DATA)
-                .body(BodyInserters.fromMultipartData(builder.build()))
+                .uri("/storage/v1/object/{bucket}/{path}", bucket, safePath)
+                .contentType(MediaType.TEXT_PLAIN)
+                .bodyValue(content.getBytes(StandardCharsets.UTF_8))
                 .retrieve()
                 .bodyToMono(String.class)
                 .block();
