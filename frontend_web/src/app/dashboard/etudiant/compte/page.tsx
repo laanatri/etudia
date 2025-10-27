@@ -1,12 +1,13 @@
 "use client";
 
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import fonts from "@/utils/fonts";
 import Input from "@/app/components/ui/Input";
 import ButtonForm from "@/app/components/ui/ButtonForm";
 import Alert from "@/app/components/ui/Alert";
 import Loader from "@/app/components/ui/Loader";
 import { useEffect, useState } from "react";
+import { Delete, Save, User } from "lucide-react";
 
 interface ExtendedSession {
     user: {
@@ -22,14 +23,11 @@ interface ExtendedSession {
 
 export default function Compte() {
     const { data: session, status, update } = useSession();
+
     const typedSession = session as ExtendedSession | null;
 
-    const [errorMessage, setErrorMessage] = useState<string | undefined>(
-        undefined
-    );
-    const [successMessage, setSuccessMessage] = useState<string | undefined>(
-        undefined
-    );
+    const [errorMessage, setErrorMessage] = useState<string | undefined>(undefined);
+    const [successMessage, setSuccessMessage] = useState<string | undefined>(undefined);
     const [isPending, setIsPending] = useState<boolean>(false);
     const [isFill, setIsFill] = useState<boolean[]>([true, true, true, true]);
 
@@ -78,10 +76,7 @@ export default function Compte() {
         setErrorMessage(undefined);
         setSuccessMessage(undefined);
 
-        const values = Object.fromEntries(formData.entries()) as Record<
-            string,
-            string
-        >;
+        const values = Object.fromEntries(formData.entries()) as Record<string, string>;
 
         try {
             const response = await fetch(
@@ -169,9 +164,58 @@ export default function Compte() {
         return <div>Vous devez être connecté pour accéder à cette page.</div>;
     }
 
+    const displayDeleteAcountModale = () => {
+        const modale = document.getElementById('my_modal_5') as HTMLDialogElement | null;
+        modale?.showModal()
+    }
+
+    const handleDeleteAcount = async () => {
+
+        try {
+
+            const modale = document.getElementById('my_modal_5') as HTMLDialogElement | null;
+            modale?.close();
+
+            setIsPending(true);
+            setErrorMessage(undefined);
+            setSuccessMessage(undefined);
+
+            const response = await fetch(
+                `${process.env.NEXT_PUBLIC_API_URL}/user/delete/${session?.user.id}`,
+                {
+                    method: "DELETE",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${typedSession.user.jwtToken}`,
+                    }
+                }
+            );
+
+            const result = await response.text();
+
+            if (!response.ok) {
+                throw new Error(
+                    result || "Une erreur est survenue lors de la suppression du compte."
+                );
+            }
+
+            signOut({ callbackUrl: "/" });
+
+        } catch (error) {
+            const errorMsg =
+                error instanceof Error
+                    ? error.message
+                    : "Erreur inconnue lors de la suppression";
+            setErrorMessage(errorMsg);
+        } finally {
+            setIsPending(false);
+        }
+
+    }
+
     return (
-        <div className="card bg-white w-full max-w-[350] p-5 mx-auto">
-            <p className="font-fredoka font-medium text-2xl mb-5">Mon compte</p>
+        <div className="card bg-white w-full max-w-[350] p-5 mt-20 mx-auto border border-black shadow-[4px_4px_0_0_rgba(0,0,0,1)]">
+            <p className="flex items-center font-fredoka font-medium text-2xl mb-5"><User className="mr-2 stroke-3" /> Mon compte</p>
 
             <div className="w-full">
                 <form
@@ -245,6 +289,7 @@ export default function Compte() {
                         <ButtonForm
                             disabled={isPending || !isFill.every((b) => b)}
                             text="Enregistrer"
+                            icon={<Save/>}
                         />
 
                         {errorMessage && (
@@ -293,6 +338,34 @@ export default function Compte() {
                     </div>
                     <Loader isLoading={isPending} />
                 </form>
+
+                <button
+                    onClick={displayDeleteAcountModale}
+                    className="mt-4 mx-auto w-full md:max-w-100 btn btn-error rounded-full text-xl font-normal text-black border border-black shadow-[4px_4px_0_0_rgba(0,0,0,1)]"
+                    ><Delete /> Supprimer votre compte
+                </button>
+
+                <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
+                    <div className="modal-box border-2 border-error">
+                        <h3 className="font-bold text-lg text-error">Suppression du compte</h3>
+                        <p className="py-4 font-openSans">
+                        Êtes-vous sûr de vouloir supprimer votre compte ? <br />
+                        Cette action est <span className="font-bold text-error">irréversible</span> : votre accès sera définitivement supprimé.<br />
+                        Cliquez sur "Valider" pour confirmer la suppression ou sur "Annuler" pour revenir en arrière.
+                        </p>                        
+                        <div className="modal-action">
+                            <button 
+                                className="mt-4 w-fit mr-5 md:max-w-100 btn btn-error rounded-full text-xl font-normal text-black border border-black shadow-[4px_4px_0_0_rgba(0,0,0,1)]" 
+                                type="button" 
+                                onClick={handleDeleteAcount}
+                            >Valider</button>
+                            <form method="dialog">
+                                <button className="btn mt-4 w-fit md:max-w-100 rounded-full text-xl font-normal text-black border border-black shadow-[4px_4px_0_0_rgba(0,0,0,1)]">Annuler</button>
+                            </form>
+                        </div>
+                    </div>
+                </dialog>
+
             </div>
         </div>
     );
