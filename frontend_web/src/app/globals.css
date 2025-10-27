@@ -41,3 +41,43 @@
   --depth: 0;
   --noise: 0;
 }
+
+
+.summmary-style span.bold {
+  font-weight: 600;
+}
+
+.summmary-style span.italic {
+  font-style: italic;
+}
+
+.summmary-style span.highlight {
+  background-color: #6EE7B7;
+}
+
+.summmary-style span.underline {
+  text-decoration: underline;
+}
+
+.summmary-style span.keyword {
+  font-weight: 600;
+}
+
+.summmary-style ul {
+  margin: 10px 0;
+}
+
+.summmary-style li {
+  list-style: inside;
+}
+
+
+
+
+/* Format JSX possible de chat gpt avec classes CSS :
+<span className="bold">texte gras</span>, 
+<span className="italic">texte italique</span>, 
+<span className="highlight">texte surligné</span>, 
+<span className="underline">texte souligné</span>, 
+<ul className="bullet-list"><li>points importants</li></ul>, 
+<span className="keyword">mots-clés</span> */

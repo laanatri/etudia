@@ -3,12 +3,9 @@ import Bloc from "@/types/Bloc";
 
 const getBlocs = async (session: ExtendedSession | null): Promise<Bloc[]> => {
     if (!session?.user?.id) return [];
-    const apiUrl = typeof window !== 'undefined' && window.location.hostname === 'localhost'
-        ? process.env.NEXT_PUBLIC_API_URL
-        : process.env.NEXT_PUBLIC_API_URL_MOBILE;
 
     const response = await fetch(
-        `${apiUrl}/bloc/user/${session.user.id}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/bloc/user/${session.user.id}`,
         {
             method: "GET",
             headers: {
