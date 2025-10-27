@@ -11,6 +11,7 @@ import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import java.nio.charset.StandardCharsets;
+import java.time.Duration;
 
 @Service
 @Slf4j
@@ -37,6 +38,10 @@ public class SupabaseStorageServiceImpl implements SupabaseStorageService {
                 .bodyValue(content.getBytes(StandardCharsets.UTF_8))
                 .retrieve()
                 .bodyToMono(String.class)
+                .timeout(Duration.ofSeconds(60))
+                .retry(2)
+                .doOnError(error -> log.error("Erreur lors du stockage: {}", error.getMessage()))
+                .doOnSuccess(response -> log.info("Résumé stocké avec succès: {}", safePath))
                 .block();
 
             return supabaseUrl + "/storage/v1/object/public/" + bucket + "/" + safePath;
