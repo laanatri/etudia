@@ -3,6 +3,7 @@ package com.etudia.etudia.service;
 import com.etudia.etudia.dto.CapsulesGenerateResponse;
 import com.etudia.etudia.dto.SummaryDto;
 import com.etudia.etudia.model.Course;
+import com.etudia.etudia.model.Quiz;
 import com.etudia.etudia.model.Summary;
 import com.etudia.etudia.model.User;
 import com.etudia.etudia.repository.SummaryRepository;
@@ -79,5 +80,14 @@ public class SummaryServiceImpl implements SummaryService {
             return true;
 
     }
+
+    @Override
+    public void toggleFavorite(Integer summaryId) {
+        Summary summary = summaryRepository.findById(summaryId)
+                .orElseThrow(() -> new RuntimeException("summary not found with id: " + summaryId));
+
+        summary.setIsFavorite(!summary.getIsFavorite());
+        summaryRepository.save(summary);
+    };
 
 }

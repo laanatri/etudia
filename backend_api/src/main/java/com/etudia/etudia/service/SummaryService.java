@@ -13,4 +13,6 @@ public interface SummaryService {
 
     boolean saveSummary(User user, Course course, CapsulesGenerateResponse aiResponse);
 
+    void toggleFavorite(Integer summaryId);
+
 }
