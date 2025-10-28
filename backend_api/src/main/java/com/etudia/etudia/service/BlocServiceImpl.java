@@ -4,6 +4,7 @@ import com.etudia.etudia.dto.BlocDto;
 import com.etudia.etudia.dto.CapsulesGenerateResponse;
 import com.etudia.etudia.model.Bloc;
 import com.etudia.etudia.model.Course;
+import com.etudia.etudia.model.Quiz;
 import com.etudia.etudia.model.User;
 import com.etudia.etudia.repository.BlocRepository;
 import com.etudia.etudia.repository.ReadingRepository;
@@ -75,5 +76,14 @@ public class BlocServiceImpl implements BlocService {
         }
 
     }
+
+    @Override
+    public void toggleFavorite(Integer blocId) {
+        Bloc bloc = blocRepository.findById(blocId)
+                .orElseThrow(() -> new RuntimeException("Quiz not found with id: " + blocId));
+
+        bloc.setIsFavorite(!bloc.getIsFavorite());
+        blocRepository.save(bloc);
+    };
 
 }

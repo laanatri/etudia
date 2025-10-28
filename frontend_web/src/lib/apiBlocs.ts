@@ -21,4 +21,25 @@ const getBlocs = async (session: ExtendedSession | null): Promise<Bloc[]> => {
     return await response.json();
 };
 
-export default getBlocs;
+
+
+const blocFavorite = async (blocId: number, session: ExtendedSession) => {
+
+    const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/bloc/favorite/${blocId}`,
+        {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${session.user.jwtToken}`
+            }
+        }
+        
+    );
+
+    const data = response.json
+    return data;
+
+}
+
+export {getBlocs, blocFavorite};

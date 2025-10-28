@@ -12,7 +12,7 @@ import fonts from "@/utils/fonts";
 import ButtonLink from "@/app/components/ui/ButtonLink";
 import FlashcardCard from "@/app/components/capsules/FlashcardCard";
 
-import getBlocs from "@/lib/apiBlocs"
+import { getBlocs } from "@/lib/apiBlocs"
 
 export default function Flashcards() {
     const { data: session, status } = useSession() as { 
