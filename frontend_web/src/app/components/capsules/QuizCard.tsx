@@ -3,6 +3,8 @@ import { Star } from "lucide-react";
 import { useState } from "react";
 import ModaleQuiz from "./ModaleQuiz";
 
+import {quizFavorite} from "@/lib/apiQuizzes"
+
 interface QuizCardProps {
     quiz: QuizType;
     session: any;
@@ -21,12 +23,20 @@ export default function QuizCard({quiz, session}: QuizCardProps) {
         if (score > bestScore) setBestScore(score);
     }
 
+    const handleMakeFavorite = () => {
+
+        const favorite = !isFavorite;
+        quizFavorite(quiz.id, session);
+        setIsFavorite(favorite);
+
+    }
+
     return (
         <div key={quiz.id} className="card bg-base-300 border-2 border-black text-primary-content w-full">
             <div className="card-body text-black py-5 flex flex-col justify-between">
                 <div className="flex justify-between mb-2">
                     <h2 className="card-title flex-1 min-w-0 mr-3 truncate">{quiz.name}</h2>
-                    <Star width={30} height={30} fill={isFavorite ? "#FFD700" : "none"} onClick={() => setIsFavorite(!isFavorite)} />
+                    <Star className="cursor-pointer" width={30} height={30} fill={isFavorite ? "#FFD700" : "none"} onClick={handleMakeFavorite} />
                 </div>
                 <div className="mb-2">
                     {quiz.themes &&
