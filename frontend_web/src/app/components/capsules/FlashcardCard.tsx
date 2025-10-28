@@ -2,6 +2,7 @@ import Bloc from "@/types/Bloc";
 import { Star } from "lucide-react";
 import { useState } from "react";
 import ModaleFlashcards from "./ModaleFlashcards";
+import { blocFavorite } from "@/lib/apiBlocs";
 
 interface FlashcardCardProps {
     bloc: Bloc;
@@ -17,12 +18,20 @@ export default function FlashcardsCard({bloc, session}: FlashcardCardProps) {
         setShowModale(true);
     }
 
+    const handleMakeFavorite = () => {
+
+        const favorite = !isFavorite;
+        blocFavorite(bloc.id, session);
+        setIsFavorite(favorite);
+
+    }
+
     return (
         <div key={bloc.id} className="card bg-base-300 border-2 border-black text-primary-content w-full">
             <div className="card-body text-black py-5 flex flex-col justify-between">
                 <div className="flex justify-between mb-2">
                     <h2 className="card-title flex-1 min-w-0 mr-3 truncate">{bloc.name}</h2>
-                    <Star width={30} height={30} fill={isFavorite ? "#FFD700" : "none"} onClick={() => setIsFavorite(!isFavorite)} />
+                    <Star className="cursor-pointer" width={30} height={30} fill={isFavorite ? "#FFD700" : "none"} onClick={handleMakeFavorite} />
                 </div>
                 <div className="mb-2">
                     {bloc.themes &&

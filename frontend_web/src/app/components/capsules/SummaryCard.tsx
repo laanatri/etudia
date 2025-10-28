@@ -3,6 +3,7 @@ import Summary from "@/types/Summary"
 import { ArrowBigRight, Star } from "lucide-react"
 import { useState } from "react"
 import ModaleSummary from "./ModaleSummary";
+import { summaryFavorite } from "@/lib/apiSummaries";
 
 interface SummaryCardProps {
     summary: Summary;
@@ -18,12 +19,22 @@ export default function SummaryCard({summary, session}: SummaryCardProps) {
         setShowModale(true);
     }
 
+    const handleMakeFavorite = () => {
+
+        if (!session) return;
+
+        const favorite = !isFavorite;
+        summaryFavorite(summary.id, session);
+        setIsFavorite(favorite);
+
+    }
+
     return (
         <div key={summary.id} className="card bg-base-200 border-2 border-black text-primary-content w-full">
             <div className="card-body text-black py-5 flex flex-col justify-between">
                 <div className="flex justify-between mb-2">
                     <h2 className="card-title flex-1 min-w-0 mr-3 truncate">{summary.name}</h2>
-                    <Star width={30} height={30} fill={isFavorite ? "#FFD700" : "none"} onClick={() => setIsFavorite(!isFavorite)} />
+                    <Star className="cursor-pointer" width={30} height={30} fill={isFavorite ? "#FFD700" : "none"} onClick={handleMakeFavorite} />
                 </div>
                 <div className="mb-2">
                     {summary.themes &&

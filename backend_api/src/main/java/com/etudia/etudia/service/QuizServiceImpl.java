@@ -70,4 +70,13 @@ public class QuizServiceImpl implements QuizService {
 
     };
 
+    @Override
+    public void toggleFavorite(Integer quizId) {
+        Quiz quiz = quizRepository.findById(quizId)
+                .orElseThrow(() -> new RuntimeException("Quiz not found with id: " + quizId));
+
+        quiz.setIsFavorite(!quiz.getIsFavorite());
+        quizRepository.save(quiz);
+    };
+
 }

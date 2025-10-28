@@ -13,4 +13,6 @@ public interface BlocService {
 
     Boolean saveBloc(User user, Course course, CapsulesGenerateResponse aiResponse);
 
+    void toggleFavorite(Integer blocId);
+
 }

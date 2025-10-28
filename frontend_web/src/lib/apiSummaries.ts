@@ -28,6 +28,8 @@ const getSummaries = async (session: ExtendedSession | null): Promise<Summary[]>
     return await response.json();
 }
 
+
+
 const getSummary = async (summaryUrl: string): Promise<React.ReactNode | null> => {
 
     const filePath = extractFilePath(summaryUrl);
@@ -41,4 +43,25 @@ const getSummary = async (summaryUrl: string): Promise<React.ReactNode | null> =
     return null;
 }
 
-export {getSummaries, getSummary};
+
+
+const summaryFavorite = async (summaryId: number, session: ExtendedSession) => {
+
+    const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/summary/favorite/${summaryId}`,
+        {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${session.user.jwtToken}`
+            }
+        }
+        
+    );
+
+    const data = response.json
+    return data;
+
+}
+
+export {getSummaries, getSummary, summaryFavorite};

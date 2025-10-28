@@ -19,4 +19,9 @@ public class QuizController {
         return quizService.getQuizByUserId(user_id, favorite);
     }
 
+    @PatchMapping("/favorite/{quiz_id}")
+    public void toggleFavorite(@PathVariable Integer quiz_id) {
+        quizService.toggleFavorite(quiz_id);
+    }
+
 }

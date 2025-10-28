@@ -70,9 +70,29 @@ const saveGame = async (gameResult: number, quizId: number, session: ExtendedSes
     );
 
     const data = response.json
-    console.log(data);
     return data;
 
 }
 
-export {getQuizzes, getQuestions, saveGame};
+
+
+const quizFavorite = async (quizId: number, session: ExtendedSession) => {
+
+    const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/quiz/favorite/${quizId}`,
+        {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${session.user.jwtToken}`
+            }
+        }
+        
+    );
+
+    const data = response.json
+    return data;
+
+}
+
+export {getQuizzes, getQuestions, saveGame, quizFavorite};

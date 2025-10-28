@@ -13,4 +13,6 @@ public interface QuizService {
 
     Boolean saveQuiz(User user, Course course, CapsulesGenerateResponse aiResponse);
 
+    void toggleFavorite(Integer quizId);
+
 }
