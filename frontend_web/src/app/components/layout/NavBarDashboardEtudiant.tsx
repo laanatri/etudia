@@ -143,12 +143,12 @@ export default function NavBarDashboardEtudiant() {
                                     <Link
                                         className={
                                             pathname ==
-                                            "/dashboard/etudiant/quizz"
+                                            "/dashboard/etudiant/quiz"
                                                 ? "bg-secondary"
                                                 : ""
                                         }
                                         onClick={handleClick}
-                                        href="/dashboard/etudiant/quizz"
+                                        href="/dashboard/etudiant/quiz"
                                     >
                                         <CircleQuestionMark /> Mes quiz
                                     </Link>
