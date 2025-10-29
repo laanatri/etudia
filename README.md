@@ -90,9 +90,35 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=...
 
 #### Back-end (`.env` dans `backend_api/`)
 ```env
-DATABASE_URL=...
-AI_SERVICE_KEY=...
-AI_SERVICE_URL=http://127.0.0.1:8000
+SPRING_PROFILES_ACTIVE=...
+
+
+
+DATABASE_URL_DEV=...
+DATABASE_USER_DEV=...
+DATABASE_PASS_DEV=...
+
+AI_SERVICE_KEY_DEV=...
+AI_SERVICE_URL_DEV=http://localhost:8000
+
+FRONT_URL_DEV=http://localhost:3000
+
+NEXT_PUBLIC_SUPABASE_URL_DEV=...
+NEXT_PUBLIC_SUPABASE_ANON_KEY_DEV=...
+
+
+
+DATABASE_URL_PROD=...
+DATABASE_USER_PROD=...
+DATABASE_PASS_PROD=...
+
+AI_SERVICE_KEY_PROD=...
+AI_SERVICE_URL_PROD=...
+
+FRONT_URL_PROD=...
+
+NEXT_PUBLIC_SUPABASE_URL_PROD=...
+NEXT_PUBLIC_SUPABASE_ANON_KEY_PROD=...
 ```
 
 #### Microservice IA (`.env` dans `microservice_ia/`)
@@ -113,15 +139,15 @@ pnpm run dev
 #### Back-end
 ```bash
 cd backend_api
-./mvnw clean install
-./mvnw -DskipTests spring-boot:run
+./mvn clean install
+./mvn spring-boot:run -Pdev
 ```
 
 #### Microservice IA
 ```bash
 cd microservice_ia
 pip install -r requirements.txt
-uvicorn app.main:app --reload --port 8000
+uvicorn main:app --reload --port 8000
 ```
 
 ---
@@ -138,7 +164,7 @@ uvicorn app.main:app --reload --port 8000
 
 ## 📊 Suivi qualité
 
-- Tests unitaires et d’intégration  
+- Tests unitaires 
 - Vérification de l’accessibilité  
 - Optimisation des performances et éco-conception
 
