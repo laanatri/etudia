@@ -214,7 +214,7 @@ export default function Compte() {
     }
 
     return (
-        <div className="card bg-white w-full max-w-[350] p-5 mt-20 mx-auto border border-black shadow-[4px_4px_0_0_rgba(0,0,0,1)]">
+        <div className="card bg-white w-full max-w-[350] p-5 mt-10 md:mt-20 mb-20 mx-auto border border-black shadow-[4px_4px_0_0_rgba(0,0,0,1)]">
             <p className="flex items-center font-fredoka font-medium text-2xl mb-5"><User className="mr-2 stroke-3" /> Mon compte</p>
 
             <div className="w-full">

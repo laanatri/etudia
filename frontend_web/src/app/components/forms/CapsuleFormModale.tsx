@@ -274,7 +274,7 @@ export default function CapsuleFormModale({datasFile, onClose, onStartCreate, on
                                 <div className="collapse-content text-sm">
                                     <div className="flex mb-3">
                                         <input name="createQuiz" type="checkbox" className="checkbox checkbox-accent mr-3" checked={datasCreateCapsule.capsules.quiz.create} onChange={handleCheckboxChange} />
-                                        <p>Créer des Quiz</p>
+                                        <p>Créer un Quiz</p>
                                     </div>
                                     <p className="mb-3">Combien de questions voulez vous dans votre quiz ?</p>
                                     <select name="questionsCount" defaultValue="10" className="select select-accent">

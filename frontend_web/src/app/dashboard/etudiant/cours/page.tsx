@@ -49,7 +49,7 @@ export default function Cours() {
 
     return (
         <>
-            <p className="font-fredoka font-medium text-2xl mb-10">Mes cours</p>
+            <p className="font-fredoka font-medium text-2xl mt-6 mb-10">Mes cours</p>
             <div className={`relative cards-content space-y-5 ${fonts.openSans.className}`}>
                 {courses?.length === 0 ? (
                     <Loader isLoading={loading} classSup="relative"/>

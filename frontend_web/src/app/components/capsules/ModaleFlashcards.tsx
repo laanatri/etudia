@@ -108,7 +108,7 @@ export default function ModaleFlashcards({ bloc, userToken, onResult, onClose }:
                 setCountFlashcardsDone(countFlashcardsDone + 1);
                 success && setCountSuccessfulFlashcards(countSuccessfulFlashcards + 1);
 
-            }, 200)
+            }, 4000)
         } else {
 
             // Fin de partie
@@ -127,7 +127,7 @@ export default function ModaleFlashcards({ bloc, userToken, onResult, onClose }:
                 setShowResults(true);
                 setIsLoading(false);
 
-            }, 2000)
+            }, 4000)
         }
 
     }
@@ -179,14 +179,14 @@ export default function ModaleFlashcards({ bloc, userToken, onResult, onClose }:
             <div id="modal-card" className="modal-box bg-base-200 w-11/12 max-w-5xl opacity-0 translate-y-10 transform transition-all duration-500 delay-100 ease-out">
                 <form method="dialog">
                     <button 
-                        className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" 
+                        className="btn btn-sm btn-circle btn-ghost text-black absolute right-2 top-2" 
                         onClick={() => {
                             handleCloseModale();
                             onClose && onClose();
                         }}
                     ><X/></button>
                 </form>
-                <h3 className="font-bold text-lg">{bloc.name}</h3>
+                <h3 className="font-bold text-lg text-black">{bloc.name}</h3>
                 <div className="modal-action py-10 flex justify-center mt-0">
                     <Loader isLoading={isLoading} classSup="relative rounded-lg"/>
                     {flashcards?.length === 0 ? (
@@ -194,8 +194,8 @@ export default function ModaleFlashcards({ bloc, userToken, onResult, onClose }:
                     ) : (
                         <>
                             
-                            <div className={`flashcard relative transition ease-in-out duration-500 ${!showResults && !isLoading ? "block" : "hidden"}`} style={{perspective: "1000px", transformStyle: "preserve-3d", transform: cardFliped ? "rotateY(180deg)" : "rotateY(0deg)"}}>
-                                <div className="card rounded-lg bg-secondary border-2 border-black text-black w-96 h-100  mx-auto backface-hidden">
+                            <div className={`flashcard w-full max-w-lg relative transition ease-in-out duration-500 ${!showResults && !isLoading ? "block" : "hidden"}`} style={{perspective: "1000px", transformStyle: "preserve-3d", transform: cardFliped ? "rotateY(180deg)" : "rotateY(0deg)"}}>
+                                <div className="card rounded-lg bg-secondary border-2 border-black text-black w-full h-100  mx-auto backface-hidden">
                                     <div className="card-body flex justify-center items-center text-center p-5">
                                         <p className="grow-0 text-xl text-balance">{flashcards[countFlashcardsDone]?.question}</p>
                                     </div>
@@ -220,14 +220,14 @@ export default function ModaleFlashcards({ bloc, userToken, onResult, onClose }:
                                         alt="Lines"
                                         width={400}
                                         height={400}
-                                        className="absolute opacity-50 w-13/15 left-1/2 top-[53%] -translate-x-1/2 -translate-y-1/2"
+                                        className="absolute opacity-50 w-13/15 left-1/2 top-[53%] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
                                     />
                                 </div>
                                 <div className="absolute top-2 right-2 cursor-pointer text-black" onClick={handleFlipCard}><ArrowBigRightDash height={40} width={40} /></div>
                             </div>
 
 
-                            <div className={`results ${showResults ? "bloc" : "hidden"}`}>
+                            <div className={`results text-black ${showResults ? "bloc" : "hidden"}`}>
                                 <p className="text-center">Résultat : <br /> <span className={`font-bold text-5xl ${result < 50 ? "text-warning" : "text-secondary"}`}>{result.toString()}%</span> <br />de Flashcards retenues</p>
 
                                 <p>Best score : {bloc.bestScore}</p>
@@ -236,7 +236,7 @@ export default function ModaleFlashcards({ bloc, userToken, onResult, onClose }:
                     )}
                 </div>
                 <div className="flex justify-center flex-wrap gap-2">
-                    {flashcards.map((_, index) => (
+                    {!showResults && flashcards.map((_, index) => (
                         <div className={`dot w-5 h-7 bg-primary rounded-md transform transition-all duration-300 ease-out ${index <= countFlashcardsDone - 1 ? "rotate-10 scale-100" : "-rotate-10 scale-60"}`} key={index}></div>
                     ))}
                 </div>

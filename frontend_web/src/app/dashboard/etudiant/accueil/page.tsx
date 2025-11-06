@@ -4,6 +4,7 @@ import FileUpload from "@/app/components/forms/FileUpload";
 import {useState} from "react";
 import CapsuleFormModale from "@/app/components/forms/CapsuleFormModale";
 import Alert from "@/app/components/ui/Alert";
+import Image from "next/image";
 
 export default function Accueil() {
 
@@ -28,16 +29,16 @@ export default function Accueil() {
     setCapsuleStatus(success ? "success" : "error");
     setSelectedFile(null);
     setResetFileUpload(true);
-    setTimeout(() => {
-        setShowStatusModal(false);
-        setResetFileUpload(false);
-    }, 2000);
+        setTimeout(() => {
+            setShowStatusModal(false);
+            setResetFileUpload(false);
+        }, 3000);
     };
 
     return (
         <>
 
-            <p className="font-fredoka font-medium text-2xl mb-3">Dashboard</p>
+            <p className="font-fredoka font-medium text-2xl mb-10 mt-6">Dashboard</p>
 
             <FileUpload onSubmit={handleFileSelect} reset={resetFileUpload} />
 
@@ -55,27 +56,33 @@ export default function Accueil() {
 
             {showStatusModal && (
                 <dialog className="modal" open>
-                    <div className="modal-box">
+                    <div className="modal-box flex flex-col items-center bg-base-200 text-black border border-black shadow-[4px_4px_0_0_rgba(0,0,0,1)]">
                         {capsuleStatus === "loading" && (
-                            <Alert
-                                type="info"
-                                picto={<span>⏳</span>}
-                                text="Création des capsules en cours..."
-                            />
+                            <>
+                                <Image className="loader-picto" src="/loading.png" width={100} height={100} alt="loading" />
+                                <Alert
+                                    type="alert-info"
+                                    text="Création des capsules en cours..."
+                                />
+                            </>
                         )}
                         {capsuleStatus === "success" && (
-                            <Alert
-                                type="success"
-                                picto={<span>✅</span>}
-                                text="Capsules créées avec succès !"
-                            />
+                            <>
+                                <Image src="/success.png" width={100} height={100} alt="loading" />
+                                <Alert
+                                    type="alert-success"
+                                    text="Capsules créées avec succès !"
+                                />
+                            </>
                         )}
                         {capsuleStatus === "error" && (
-                            <Alert
-                                type="error"
-                                picto={<span>❌</span>}
-                                text="Erreur lors de la création des capsules."
-                            />
+                            <>
+                                <Image src="/error.png" width={100} height={100} alt="loading" />
+                                <Alert
+                                    type="alert-error"
+                                    text="Erreur lors de la création des capsules."
+                                />
+                            </>
                         )}
                     </div>
                 </dialog>

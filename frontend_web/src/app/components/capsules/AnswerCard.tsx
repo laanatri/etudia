@@ -21,7 +21,7 @@ export default function AnswerCard({index, answer, questionAnswered, isSelected,
         <div 
             key={index}
             onClick={onClick} 
-            className={`py-3 px-4 w-full border-2 mb-5 rounded-md bg-base-200 transition-all relative
+            className={`flex py-3 px-4 w-full border-2 mb-5 rounded-md bg-base-200 transition-all relative
                 ${!questionAnswered ? "cursor-pointer" : "cursor-default"}
                 ${borders()}
                 ${isSelected && questionAnswered ? "border-4" : "border-2"}
