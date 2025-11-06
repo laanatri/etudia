@@ -109,11 +109,13 @@ export default function ModaleQuiz({quiz, session, onResult, onClose}: ModaleQui
                 setCountQuestionsDone(prev => prev + 1);
                 setQuestionAnswered(false);
                 setSelectedAnswerIndex(null);
-            }, 1000);
+            }, 4000);
 
         } else {
 
-            setIsLoading(true);
+            setTimeout(() => {
+                setIsLoading(true);
+            }, 4000)
 
             setTimeout(() => {
                 const finalScore = Math.round(((countSuccessfulQuestions + (isCorrect ? 1 : 0)) / questions.length) * 100);
@@ -142,7 +144,8 @@ export default function ModaleQuiz({quiz, session, onResult, onClose}: ModaleQui
                 <div className="modal-action w-5/6 max-w-lg mx-auto py-10 flex justify-center mt-0">
                     <Loader isLoading={isLoading} classSup="relative rounded-lg"/>
                     {questions?.length === 0 ? (
-                        <p>Vous n'avez pas encore créer de quiz.</p>
+                        // <p>Vous n'avez pas encore créer de quiz.</p>
+                        <p></p>
                     ) : (
                         <>
                             
