@@ -51,7 +51,7 @@ export default function FileUpload({ onSubmit, reset }: FileUploadProps): JSX.El
                 accept=".txt,.pdf"
                 onChange={checkIfFile}
             />
-            <Button disabled={isFill} text="Creer une capsule"/>
+            <Button disabled={isFill} text="Créer une capsule"/>
         </form>
     )
 
