@@ -46,7 +46,7 @@ export default function NavBarDashboardEtudiant() {
     }
 
     return (
-        <div className="drawer w-fit h-full z-20">
+        <div className="drawer fixed top-0 left-0 w-fit h-full z-20">
             <input
                 id="my-drawer"
                 type="checkbox"
@@ -54,7 +54,7 @@ export default function NavBarDashboardEtudiant() {
                 checked={checked}
                 onChange={(e) => setChecked(e.target.checked)}
             />
-            <div className="drawer-content absolute top-5 left-5 z-10">
+            <div className="drawer-content absolute top-5 left-5 z-10 border-2 border-base-200 rounded-2xl">
                 <label
                     htmlFor="my-drawer"
                     className="btn btn-primary drawer-button p-3 rounded-2xl"
@@ -68,7 +68,7 @@ export default function NavBarDashboardEtudiant() {
                     aria-label="close sidebar"
                     className="drawer-overlay"
                 ></label>
-                <ul className="menu bg-base-200 text-md min-h-full w-80 p-2 pt-15 md:pt-25 text-xl space-y-2">
+                <ul className="menu bg-base-200 text-md min-h-full w-80 p-2 pt-25 md:pt-25 text-xl space-y-2">
                     <div className="flex pl-3 mb-15">
                         <div className="w-8 h-8 mr-5 rounded-full overflow-hidden">
                             <img
