@@ -1,6 +1,6 @@
 interface AlertProps {
     type: string; //info, success, warning, error
-    picto: React.ReactNode;
+    picto?: React.ReactNode;
     text: string;
 }
 
