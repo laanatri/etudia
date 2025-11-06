@@ -46,7 +46,7 @@ export default function summaries() {
                 <ButtonLink classSup="w-fit m-0 bg-base-200 hover:bg-base-300" href="/dashboard/etudiant/cours" text="Mes cours" icon={<FileText />} />
             </div>
 
-            <div className={`relative cards-content grid grid-cols-1 md:grid-cols-2 gap-2 ${fonts.openSans.className}`}>
+            <div className={`relative cards-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 ${fonts.openSans.className}`}>
 
                 {summaries.length === 0 ? (
                     <Loader isLoading={loading} classSup="relative"/>

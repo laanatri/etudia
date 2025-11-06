@@ -43,10 +43,10 @@ export default function Flashcards() {
         <>
             <div className="flex items-baseline justify-between mb-10">
                 <h2 className="flex items-center font-fredoka font-medium text-2xl"><Diamond className="mr-2"/> Mes flashcards</h2>
-                <ButtonLink classSup="w-fit m-0 bg-base-200 hover:bg-base-300" href="/dashboard/etudiant/cours" text="Mes cours" icon={<FileText />} />
+                <ButtonLink classSup="w-fit mt-0 bg-base-200 hover:bg-base-300" href="/dashboard/etudiant/cours" text="Mes cours" icon={<FileText />} />
             </div>
 
-            <div className={`relative cards-content grid grid-cols-1 md:grid-cols-3 gap-2 ${fonts.openSans.className}`}>
+            <div className={`relative cards-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 ${fonts.openSans.className}`}>
 
                 {blocs?.length === 0 ? (
                     <Loader isLoading={loading} classSup="relative"/>
